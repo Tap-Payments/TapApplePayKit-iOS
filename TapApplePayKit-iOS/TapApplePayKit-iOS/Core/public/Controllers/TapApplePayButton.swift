@@ -10,17 +10,24 @@ import Foundation
 import class UIKit.UIView
 import class UIKit.UIButton
 import struct UIKit.CGFloat
+import class UIKit.UIViewController
 import struct UIKit.CGRect
-import  PassKit
+import  class PassKit.PKPaymentToken
+import  class PassKit.PKPaymentButton
 
+/// Data source to provide needed data for the apple pay button to start the apple authorization process
 @objc public protocol TapApplePayButtonDataSource {
+    /// This s the Tap wrapper of Apple pay request and it is a must to be correctly filled before firing Apple pay request
     var tapApplePayRequest:TapApplePayRequest { get set }
 }
 
+/// Delegate of methods Tap Apple Pay will use to pass back the results of the authorization process
 @objc public protocol TapApplePayButtonDelegate {
-    func tapApplePayErrorOccured(error:Error)->()
-    func tapApplePayAthorisationStatus(changed to:PKPaymentAuthorizationStatus)->()
-    func tapApplePayFinished(with appleToken:Data)->()
+    /**
+     This method will be called once the authprization happened
+     - Parameter appleToken: The correctly and authorized tokenized payment data from Apple Pay kit
+     */
+    func tapApplePayFinished(with appleToken:PKPaymentToken)->()
 }
 /// Class represents the UIView that has Apple pay button wrapped inside Tap Kit
 @objcMembers public class TapApplePayButton: UIView {
@@ -39,6 +46,12 @@ import  PassKit
     }
     /// The actaual apple pay button wrappd inside Tap Kit
     internal var applePayButton:PKPaymentButton?
+    
+    /// The delegate to get action notifications from the Tap apple pay button
+    var delegate:TapApplePayButtonDelegate?
+    
+    /// The delegate to get action notifications from the Tap apple pay button
+    var dataSource:TapApplePayButtonDataSource?
     
     @objc public override init(frame: CGRect) {
         super.init(frame: frame)
@@ -82,7 +95,24 @@ import  PassKit
             nonNullApplePayButtonClickBlock(self)
         }else {
             // We need to handle the apple pay authorization process ourselves
-            authorizePayment()
+            startApplePaymentAuthorization()
+        }
+    }
+    
+    /// This will start the native Apple Pay authprization process
+    internal func startApplePaymentAuthorization() {
+        // It is a must to have a data source, henc the payment request itself
+        if let nonNullDataSource = dataSource {
+            
+            // Initiate the authorization and wait for the feedback from Apple
+            TapApplePay().authorizePayment(in: self.findViewController()!, for: nonNullDataSource.tapApplePayRequest , tokenized: { (token) in
+                if let nonNullDelegate = delegate {
+                    // If there is alistener, let him know that the authorization is done with the provided tokem
+                    nonNullDelegate.tapApplePayFinished(with: token)
+                }
+            })
+        }else {
+            fatalError("Tap Apple Pay Button must have a valid data source that pass a valid TapApplePayRequest")
         }
     }
     
@@ -92,8 +122,23 @@ import  PassKit
     
 }
 
-
-
 extension String: LocalizedError {
     public var errorDescription: String? { return self }
+}
+
+
+internal extension UIView {
+    /**
+     An extension method to detect the viewcontroller which the current view is embedded in
+     - Returns: UIViewcontroller that holds the current view or nil if not found for any case
+ **/
+    func findViewController() -> UIViewController? {
+        if let nextResponder = self.next as? UIViewController {
+            return nextResponder
+        } else if let nextResponder = self.next as? UIView {
+            return nextResponder.findViewController()
+        } else {
+            return nil
+        }
+    }
 }

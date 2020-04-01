@@ -7,11 +7,18 @@
 //
 
 import Foundation
-import class PassKit.PKPaymentAuthorizationController
+import class PassKit.PKPaymentAuthorizationViewController
+import class PassKit.PKPayment
+import protocol PassKit.PKPaymentAuthorizationViewControllerDelegate
+import class PassKit.PKPaymentAuthorizationResult
 import class PassKit.PKPassLibrary
+import class PassKit.PKPaymentToken
+import class UIKit.UIViewController
 
 /// This is the Tap provided class that provides the Tap-ApplePay functionalities
 @objcMembers public class TapApplePay:NSObject {
+    
+    internal var tokenizedBlock:((PKPaymentToken)->())?
     
     /**
         This static interface is used if Pay is available as per the device capability!
@@ -20,11 +27,11 @@ import class PassKit.PKPassLibrary
      */
     public static func applePayStatus(for tapPaymentNetworks:[TapApplePayPaymentNetwork] = [], shouldOpenSetupDirectly:Bool = false) -> TapApplePayStatus {
         
-        if   PKPaymentAuthorizationController.canMakePayments() {
+        if   PKPaymentAuthorizationViewController.canMakePayments() {
             // Pay is available as per the device capability!
             // Check if the caller wants to determine for certain payments networks
             if !tapPaymentNetworks.isEmpty {
-                if PKPaymentAuthorizationController.canMakePayments(usingNetworks: tapPaymentNetworks.map { $0.applePayNetwork! }) {
+                if PKPaymentAuthorizationViewController.canMakePayments(usingNetworks: tapPaymentNetworks.map { $0.applePayNetwork! }) {
                     // The device can make payments using the provided payment networks
                     return .Eligible
                 }else {
@@ -44,6 +51,19 @@ import class PassKit.PKPassLibrary
         
     }
     
+    /**
+     Public interface to be used to start Apple pay athprization process without the need to include out Tap APple Pay button
+     - Parameter presenter: The UIViewcontroller you want to show the native Apple Pay sheet in
+     - Parameter tapApplePayRequest: The Tap apple request wrapper that has the valid data of your transaction
+     - Parameter tokenized: The block to be called once the user successfully authorize the payment
+     */
+    public func authorizePayment(in presenter:UIViewController, for tapApplePayRequest:TapApplePayRequest, tokenized:((PKPaymentToken)->())) {
+        
+        let paymentController = PKPaymentAuthorizationViewController.init(paymentRequest: tapApplePayRequest.appleRequest)
+        paymentController?.delegate = self
+        
+    }
+    
     
     /// This will trigger the provided Apple pay official method for starting the wallet app
     public static func startApplePaySetupProcess() {
@@ -51,4 +71,18 @@ import class PassKit.PKPassLibrary
         PKPassLibrary().openPaymentSetup()
     }
     
+}
+
+extension TapApplePay:PKPaymentAuthorizationViewControllerDelegate {
+    public func paymentAuthorizationViewControllerDidFinish(_ controller: PKPaymentAuthorizationViewController) {
+        controller.dismiss(animated: true, completion: nil)
+    }
+    
+    public func paymentAuthorizationViewController(_ controller: PKPaymentAuthorizationViewController, didAuthorizePayment payment: PKPayment, handler completion: @escaping (PKPaymentAuthorizationResult) -> Void){
+        completion(PKPaymentAuthorizationResult(status: .success,errors: nil))
+        
+        if let nonNullTokenizedBlock = tokenizedBlock {
+            nonNullTokenizedBlock(payment.token)
+        }
+    }
 }
