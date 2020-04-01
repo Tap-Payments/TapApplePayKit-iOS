@@ -18,6 +18,7 @@
 		E86451002434539A00E3B4C9 /* TapApplePay.swift in Sources */ = {isa = PBXBuildFile; fileRef = E86450FF2434539A00E3B4C9 /* TapApplePay.swift */; };
 		E86451022434552E00E3B4C9 /* TapApplePayPaymentNetwork.swift in Sources */ = {isa = PBXBuildFile; fileRef = E86451012434552E00E3B4C9 /* TapApplePayPaymentNetwork.swift */; };
 		E86451052434726A00E3B4C9 /* TapApplePayButtonType.swift in Sources */ = {isa = PBXBuildFile; fileRef = E86451042434726A00E3B4C9 /* TapApplePayButtonType.swift */; };
+		E8645107243499E800E3B4C9 /* TapApplePayButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8645106243499E800E3B4C9 /* TapApplePayButton.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -36,6 +37,7 @@
 		E86450FF2434539A00E3B4C9 /* TapApplePay.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TapApplePay.swift; sourceTree = "<group>"; };
 		E86451012434552E00E3B4C9 /* TapApplePayPaymentNetwork.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TapApplePayPaymentNetwork.swift; sourceTree = "<group>"; };
 		E86451042434726A00E3B4C9 /* TapApplePayButtonType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TapApplePayButtonType.swift; sourceTree = "<group>"; };
+		E8645106243499E800E3B4C9 /* TapApplePayButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TapApplePayButton.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -137,6 +139,7 @@
 			isa = PBXGroup;
 			children = (
 				E86450FF2434539A00E3B4C9 /* TapApplePay.swift */,
+				E8645106243499E800E3B4C9 /* TapApplePayButton.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -257,6 +260,7 @@
 				E86451052434726A00E3B4C9 /* TapApplePayButtonType.swift in Sources */,
 				E86450FD2434520500E3B4C9 /* TapApplePayStatus.swift in Sources */,
 				E86451002434539A00E3B4C9 /* TapApplePay.swift in Sources */,
+				E8645107243499E800E3B4C9 /* TapApplePayButton.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

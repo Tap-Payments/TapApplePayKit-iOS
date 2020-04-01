@@ -7,7 +7,7 @@
 //
 
 import Foundation
-import PassKit
+import PassKit.PKConstants
 
 /// Enum to define  the type/context of the TapApplePayButton, this will effect the title on the button
 @objc public enum TapApplePayButtonType: Int, RawRepresentable, CaseIterable {
