@@ -7,26 +7,40 @@
 //
 
 import Foundation
-import UIKit
-import PassKit
+import class UIKit.UIView
+import class UIKit.UIButton
+import struct UIKit.CGFloat
+import struct UIKit.CGRect
+import class PassKit.PKPaymentButton
 
+/// Class represents the UIView that has Apple pay button wrapped inside Tap Kit
 @objcMembers public class TapApplePayButton: UIView {
     
+    /// Click handler block, if this is set, then the caller determines that he will handle the click on the Apple Pay button himself.
     var tapApplePayButtonClicked:((TapApplePayButton)->())?
+    /// Apple pay button width
     internal lazy var buttonWidth:CGFloat = 140
+    /// Apple pay button height
     internal lazy var buttonHeight:CGFloat = 40
+    /// Button type, which will define the title printed on Apple Pay button. If not provided, then Plain button will be shown.
     var buttonType:TapApplePayButtonType = .AppleLogoOnly {
         didSet{
             configureApplePayButton()
         }
     }
-    var applePayButton:PKPaymentButton?
+    /// The actaual apple pay button wrappd inside Tap Kit
+    internal var applePayButton:PKPaymentButton?
     
     @objc public override init(frame: CGRect) {
         super.init(frame: frame)
+        self.backgroundColor = .clear
     }
     
-    
+    /**
+     Method to configure the tap apple pay button
+     - Parameter tapApplePayButtonClicked: Inform when the apple pay button is clicked
+     - Parameter buttonType: The type/title to show for the Apple pay button
+     */
     public func setup(tapApplePayButtonClicked:((TapApplePayButton)->())? = nil,buttonType:TapApplePayButtonType = .AppleLogoOnly) {
         
         self.tapApplePayButtonClicked = tapApplePayButtonClicked
@@ -38,7 +52,7 @@ import PassKit
         
     }
     
-    
+    /// This holds the logic that will create the actual apple pay button, setting the size, the type, the color and the handler
     internal func configureApplePayButton() {
         if let nonNullApplePayButton = applePayButton {
             nonNullApplePayButton.removeFromSuperview()
@@ -54,6 +68,7 @@ import PassKit
     
     
     @objc internal func applePayClicked(_ sender : UIButton) {
+        // Check if the caller defined a block to listen to the handler, if so call it
             if let nonNullApplePayButtonClickBlock = tapApplePayButtonClicked {
                 nonNullApplePayButtonClickBlock(self)
             }
