@@ -11,8 +11,17 @@ import class UIKit.UIView
 import class UIKit.UIButton
 import struct UIKit.CGFloat
 import struct UIKit.CGRect
-import class PassKit.PKPaymentButton
+import  PassKit
 
+@objc public protocol TapApplePayButtonDataSource {
+    var tapApplePayRequest:TapApplePayRequest { get set }
+}
+
+@objc public protocol TapApplePayButtonDelegate {
+    func tapApplePayErrorOccured(error:Error)->()
+    func tapApplePayAthorisationStatus(changed to:PKPaymentAuthorizationStatus)->()
+    func tapApplePayFinished(with appleToken:Data)->()
+}
 /// Class represents the UIView that has Apple pay button wrapped inside Tap Kit
 @objcMembers public class TapApplePayButton: UIView {
     
@@ -44,11 +53,11 @@ import class PassKit.PKPaymentButton
     public func setup(tapApplePayButtonClicked:((TapApplePayButton)->())? = nil,buttonType:TapApplePayButtonType = .AppleLogoOnly) {
         
         self.tapApplePayButtonClicked = tapApplePayButtonClicked
+        // The minimum size accepted by Apple
         self.buttonWidth = (frame.width >= 140) ? frame.width : 140
         self.buttonHeight = (frame.height >= 40) ? frame.height : 40
         self.buttonType = buttonType
         configureApplePayButton()
-        //(paymentButtonType: self.buttonType.applePayButtonType!, paymentButtonStyle: .black)
         
     }
     
@@ -69,13 +78,22 @@ import class PassKit.PKPaymentButton
     
     @objc internal func applePayClicked(_ sender : UIButton) {
         // Check if the caller defined a block to listen to the handler, if so call it
-            if let nonNullApplePayButtonClickBlock = tapApplePayButtonClicked {
-                nonNullApplePayButtonClickBlock(self)
-            }
+        if let nonNullApplePayButtonClickBlock = tapApplePayButtonClicked {
+            nonNullApplePayButtonClickBlock(self)
+        }else {
+            // We need to handle the apple pay authorization process ourselves
+            authorizePayment()
+        }
     }
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
     
+}
+
+
+
+extension String: LocalizedError {
+    public var errorDescription: String? { return self }
 }

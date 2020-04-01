@@ -19,6 +19,8 @@
 		E86451022434552E00E3B4C9 /* TapApplePayPaymentNetwork.swift in Sources */ = {isa = PBXBuildFile; fileRef = E86451012434552E00E3B4C9 /* TapApplePayPaymentNetwork.swift */; };
 		E86451052434726A00E3B4C9 /* TapApplePayButtonType.swift in Sources */ = {isa = PBXBuildFile; fileRef = E86451042434726A00E3B4C9 /* TapApplePayButtonType.swift */; };
 		E8645107243499E800E3B4C9 /* TapApplePayButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8645106243499E800E3B4C9 /* TapApplePayButton.swift */; };
+		E86451092434A9E200E3B4C9 /* TapCountryCode.swift in Sources */ = {isa = PBXBuildFile; fileRef = E86451082434A9E200E3B4C9 /* TapCountryCode.swift */; };
+		E864510C2434AD6E00E3B4C9 /* TapApplePayRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = E864510B2434AD6E00E3B4C9 /* TapApplePayRequest.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -38,6 +40,8 @@
 		E86451012434552E00E3B4C9 /* TapApplePayPaymentNetwork.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TapApplePayPaymentNetwork.swift; sourceTree = "<group>"; };
 		E86451042434726A00E3B4C9 /* TapApplePayButtonType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TapApplePayButtonType.swift; sourceTree = "<group>"; };
 		E8645106243499E800E3B4C9 /* TapApplePayButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TapApplePayButton.swift; sourceTree = "<group>"; };
+		E86451082434A9E200E3B4C9 /* TapCountryCode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TapCountryCode.swift; sourceTree = "<group>"; };
+		E864510B2434AD6E00E3B4C9 /* TapApplePayRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TapApplePayRequest.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -112,6 +116,7 @@
 		E86450F92434517600E3B4C9 /* public */ = {
 			isa = PBXGroup;
 			children = (
+				E864510A2434AD6200E3B4C9 /* Models */,
 				E86450FE243452FD00E3B4C9 /* Controllers */,
 				E86450FB2434518400E3B4C9 /* enums */,
 			);
@@ -128,6 +133,7 @@
 		E86450FB2434518400E3B4C9 /* enums */ = {
 			isa = PBXGroup;
 			children = (
+				E86451082434A9E200E3B4C9 /* TapCountryCode.swift */,
 				E86450FC2434520500E3B4C9 /* TapApplePayStatus.swift */,
 				E86451012434552E00E3B4C9 /* TapApplePayPaymentNetwork.swift */,
 				E86451042434726A00E3B4C9 /* TapApplePayButtonType.swift */,
@@ -142,6 +148,14 @@
 				E8645106243499E800E3B4C9 /* TapApplePayButton.swift */,
 			);
 			path = Controllers;
+			sourceTree = "<group>";
+		};
+		E864510A2434AD6200E3B4C9 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				E864510B2434AD6E00E3B4C9 /* TapApplePayRequest.swift */,
+			);
+			path = Models;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -257,9 +271,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				E86451022434552E00E3B4C9 /* TapApplePayPaymentNetwork.swift in Sources */,
+				E864510C2434AD6E00E3B4C9 /* TapApplePayRequest.swift in Sources */,
 				E86451052434726A00E3B4C9 /* TapApplePayButtonType.swift in Sources */,
 				E86450FD2434520500E3B4C9 /* TapApplePayStatus.swift in Sources */,
 				E86451002434539A00E3B4C9 /* TapApplePay.swift in Sources */,
+				E86451092434A9E200E3B4C9 /* TapCountryCode.swift in Sources */,
 				E8645107243499E800E3B4C9 /* TapApplePayButton.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

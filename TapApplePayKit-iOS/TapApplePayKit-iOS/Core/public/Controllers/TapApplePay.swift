@@ -13,7 +13,6 @@ import class PassKit.PKPassLibrary
 /// This is the Tap provided class that provides the Tap-ApplePay functionalities
 @objcMembers public class TapApplePay:NSObject {
     
-    
     /**
         This static interface is used if Pay is available as per the device capability!
      - Parameter tapPaymentNetworks: If the payment should be done through certain payment networks, please pass them here to check if the current user has valid cards added to his wallet belongs to at least one of the needed payment networks. Default is Empty
