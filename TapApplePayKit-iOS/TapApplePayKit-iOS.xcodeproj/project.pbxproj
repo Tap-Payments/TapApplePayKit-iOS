@@ -14,6 +14,9 @@
 		E86450EE2433BC6300E3B4C9 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E86450EC2433BC6300E3B4C9 /* Main.storyboard */; };
 		E86450F02433BC6400E3B4C9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E86450EF2433BC6400E3B4C9 /* Assets.xcassets */; };
 		E86450F32433BC6400E3B4C9 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E86450F12433BC6400E3B4C9 /* LaunchScreen.storyboard */; };
+		E86450FD2434520500E3B4C9 /* TapApplePayStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = E86450FC2434520500E3B4C9 /* TapApplePayStatus.swift */; };
+		E86451002434539A00E3B4C9 /* TapApplePay.swift in Sources */ = {isa = PBXBuildFile; fileRef = E86450FF2434539A00E3B4C9 /* TapApplePay.swift */; };
+		E86451022434552E00E3B4C9 /* TapApplePayPaymentNetwork.swift in Sources */ = {isa = PBXBuildFile; fileRef = E86451012434552E00E3B4C9 /* TapApplePayPaymentNetwork.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -28,6 +31,9 @@
 		E86450EF2433BC6400E3B4C9 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		E86450F22433BC6400E3B4C9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		E86450F42433BC6400E3B4C9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		E86450FC2434520500E3B4C9 /* TapApplePayStatus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TapApplePayStatus.swift; sourceTree = "<group>"; };
+		E86450FF2434539A00E3B4C9 /* TapApplePay.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TapApplePay.swift; sourceTree = "<group>"; };
+		E86451012434552E00E3B4C9 /* TapApplePayPaymentNetwork.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TapApplePayPaymentNetwork.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -93,8 +99,43 @@
 		E86450F82433BCFB00E3B4C9 /* Core */ = {
 			isa = PBXGroup;
 			children = (
+				E86450FA2434517F00E3B4C9 /* private */,
+				E86450F92434517600E3B4C9 /* public */,
 			);
 			path = Core;
+			sourceTree = "<group>";
+		};
+		E86450F92434517600E3B4C9 /* public */ = {
+			isa = PBXGroup;
+			children = (
+				E86450FE243452FD00E3B4C9 /* Controllers */,
+				E86450FB2434518400E3B4C9 /* enums */,
+			);
+			path = public;
+			sourceTree = "<group>";
+		};
+		E86450FA2434517F00E3B4C9 /* private */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = private;
+			sourceTree = "<group>";
+		};
+		E86450FB2434518400E3B4C9 /* enums */ = {
+			isa = PBXGroup;
+			children = (
+				E86450FC2434520500E3B4C9 /* TapApplePayStatus.swift */,
+				E86451012434552E00E3B4C9 /* TapApplePayPaymentNetwork.swift */,
+			);
+			path = enums;
+			sourceTree = "<group>";
+		};
+		E86450FE243452FD00E3B4C9 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				E86450FF2434539A00E3B4C9 /* TapApplePay.swift */,
+			);
+			path = Controllers;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -158,6 +199,7 @@
 				TargetAttributes = {
 					E86450D42433BC2E00E3B4C9 = {
 						CreatedOnToolsVersion = 11.2.1;
+						LastSwiftMigration = 1120;
 					};
 					E86450E32433BC6300E3B4C9 = {
 						CreatedOnToolsVersion = 11.2.1;
@@ -208,6 +250,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E86451022434552E00E3B4C9 /* TapApplePayPaymentNetwork.swift in Sources */,
+				E86450FD2434520500E3B4C9 /* TapApplePayStatus.swift in Sources */,
+				E86451002434539A00E3B4C9 /* TapApplePay.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -366,6 +411,7 @@
 		E86450DE2433BC2E00E3B4C9 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEFINES_MODULE = YES;
 				DEVELOPMENT_TEAM = G46S76PUH4;
@@ -383,6 +429,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "company.tap.TapApplePayKit-iOS";
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SKIP_INSTALL = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -391,6 +438,7 @@
 		E86450DF2433BC2E00E3B4C9 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEFINES_MODULE = YES;
 				DEVELOPMENT_TEAM = G46S76PUH4;
