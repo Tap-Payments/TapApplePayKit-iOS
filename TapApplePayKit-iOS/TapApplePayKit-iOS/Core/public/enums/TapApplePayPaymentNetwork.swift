@@ -176,4 +176,50 @@ import struct PassKit.PKPaymentNetwork
             }else {return ""}
         }
     }
+    
+    public var applePayNetwork : PKPaymentNetwork? {
+        switch self {
+            case .Amex:
+                return .amex
+            case .CartesBancaires:
+                return .cartesBancaires
+            case .Discover:
+                return .discover
+            case .Eftpos:
+                return .eftpos
+            case .Electron:
+                return .electron
+            case .idCredit:
+                return .idCredit
+            case .Interac:
+                return .interac
+            case .JCB:
+                return .JCB
+            case .Maestro:
+                return .maestro
+            case .MasterCard:
+                return .masterCard
+            case .PrivateLabel:
+                return .privateLabel
+            case .QuicPay:
+                return .quicPay
+            case .Suica:
+                return .suica
+            case .Visa:
+                return .visa
+            case .VPay:
+                return .vPay
+        default:
+            if #available(iOS 12.1.1, *) {
+                    switch self {
+                        case .Elo:
+                            return .elo
+                        case .Mada:
+                            return .mada
+                        default:
+                            return nil
+                    }
+            }else {return nil}
+        }
+    }
 }
