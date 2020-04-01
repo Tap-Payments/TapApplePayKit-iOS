@@ -9,7 +9,7 @@
 import Foundation
 import struct PassKit.PKPaymentNetwork
 
-/// Enum to define  the results of the can scan check
+/// Enum to define  a payment network to be provided into Apple Pay request
 @objc public enum TapApplePayPaymentNetwork: Int, RawRepresentable {
     
     case Amex
