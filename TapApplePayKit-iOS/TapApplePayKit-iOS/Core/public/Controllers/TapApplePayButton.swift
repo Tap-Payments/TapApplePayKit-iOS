@@ -12,7 +12,6 @@ import class UIKit.UIButton
 import struct UIKit.CGFloat
 import class UIKit.UIViewController
 import struct UIKit.CGRect
-import  class PassKit.PKPaymentToken
 import  class PassKit.PKPaymentButton
 
 /// Data source to provide needed data for the apple pay button to start the apple authorization process
@@ -27,7 +26,7 @@ import  class PassKit.PKPaymentButton
      This method will be called once the authprization happened
      - Parameter appleToken: The correctly and authorized tokenized payment data from Apple Pay kit
      */
-    func tapApplePayFinished(with appleToken:PKPaymentToken)->()
+    func tapApplePayFinished(with tapAppleToken:TapApplePayToken)->()
 }
 /// Class represents the UIView that has Apple pay button wrapped inside Tap Kit
 @objcMembers public class TapApplePayButton: UIView {
