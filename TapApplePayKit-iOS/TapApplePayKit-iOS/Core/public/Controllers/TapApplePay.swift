@@ -60,7 +60,7 @@ import class UIKit.UIViewController
     public func authorizePayment(in presenter:UIViewController, for tapApplePayRequest:TapApplePayRequest, tokenized:@escaping ((TapApplePayToken)->())) {
        
         self.tokenizedBlock = tokenized
-        
+        tapApplePayRequest.updateValues()
         
         let paymentController = PKPaymentAuthorizationController.init(paymentRequest: tapApplePayRequest.appleRequest)
         paymentController.delegate = self//presenter as? PKPaymentAuthorizationControllerDelegate

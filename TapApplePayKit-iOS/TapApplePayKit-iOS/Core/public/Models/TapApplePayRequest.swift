@@ -47,7 +47,7 @@ import PassKit
         configureApplePayRequest()
     }
     
-    public func updateValues() {
+    internal func updateValues() {
         configureApplePayRequest()
     }
     

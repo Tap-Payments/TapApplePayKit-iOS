@@ -36,7 +36,6 @@ class ViewController: UIViewController {
             
             DispatchQueue.main.async {
                 self?.tapApplePayRequest.countryCode =  TapCountryCode.allCases[selectedIndices[0]]
-                self?.tapApplePayRequest.updateValues()
                 self?.featuresTableView.reloadData()
             }
         })
@@ -50,7 +49,6 @@ class ViewController: UIViewController {
             
             DispatchQueue.main.async {
                 self?.tapApplePayRequest.currencyCode =  TapCurrencyCode.allCases[selectedIndices[0]]
-                self?.tapApplePayRequest.updateValues()
                 self?.featuresTableView.reloadData()
             }
         })
@@ -63,7 +61,6 @@ class ViewController: UIViewController {
             
             DispatchQueue.main.async {
                 self?.tapApplePayRequest.paymentNetworks =  selectedValues.map{TapApplePayPaymentNetwork.init(rawValue: $0)!}
-                self?.tapApplePayRequest.updateValues()
                 self?.featuresTableView.reloadData()
             }
         })
