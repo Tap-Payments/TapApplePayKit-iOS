@@ -23,6 +23,13 @@
 		E864510C2434AD6E00E3B4C9 /* TapApplePayRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = E864510B2434AD6E00E3B4C9 /* TapApplePayRequest.swift */; };
 		E864510F2435A6C500E3B4C9 /* TapApplePayToken.swift in Sources */ = {isa = PBXBuildFile; fileRef = E864510E2435A6C500E3B4C9 /* TapApplePayToken.swift */; };
 		E86451112435B8B900E3B4C9 /* TapCurrencyCode.swift in Sources */ = {isa = PBXBuildFile; fileRef = E86451102435B8B900E3B4C9 /* TapCurrencyCode.swift */; };
+		E864511D2435C5FC00E3B4C9 /* YBTextPickerDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E86451142435C5FC00E3B4C9 /* YBTextPickerDataModel.swift */; };
+		E864511E2435C5FC00E3B4C9 /* YBTextPickerCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E86451162435C5FC00E3B4C9 /* YBTextPickerCell.xib */; };
+		E864511F2435C5FC00E3B4C9 /* YBTextPickerCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E86451172435C5FC00E3B4C9 /* YBTextPickerCell.swift */; };
+		E86451202435C5FC00E3B4C9 /* YBTextPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = E86451182435C5FC00E3B4C9 /* YBTextPicker.swift */; };
+		E86451212435C5FC00E3B4C9 /* YBTextPicker_checked.png in Resources */ = {isa = PBXBuildFile; fileRef = E864511A2435C5FC00E3B4C9 /* YBTextPicker_checked.png */; };
+		E86451222435C5FC00E3B4C9 /* YBTextPicker_unchecked.png in Resources */ = {isa = PBXBuildFile; fileRef = E864511B2435C5FC00E3B4C9 /* YBTextPicker_unchecked.png */; };
+		E86451232435C5FC00E3B4C9 /* YBTextPicker.xib in Resources */ = {isa = PBXBuildFile; fileRef = E864511C2435C5FC00E3B4C9 /* YBTextPicker.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -47,6 +54,13 @@
 		E864510E2435A6C500E3B4C9 /* TapApplePayToken.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TapApplePayToken.swift; sourceTree = "<group>"; };
 		E86451102435B8B900E3B4C9 /* TapCurrencyCode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TapCurrencyCode.swift; sourceTree = "<group>"; };
 		E86451122435C0CA00E3B4C9 /* TapApplePayKit-Example.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "TapApplePayKit-Example.entitlements"; sourceTree = "<group>"; };
+		E86451142435C5FC00E3B4C9 /* YBTextPickerDataModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YBTextPickerDataModel.swift; sourceTree = "<group>"; };
+		E86451162435C5FC00E3B4C9 /* YBTextPickerCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = YBTextPickerCell.xib; sourceTree = "<group>"; };
+		E86451172435C5FC00E3B4C9 /* YBTextPickerCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YBTextPickerCell.swift; sourceTree = "<group>"; };
+		E86451182435C5FC00E3B4C9 /* YBTextPicker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YBTextPicker.swift; sourceTree = "<group>"; };
+		E864511A2435C5FC00E3B4C9 /* YBTextPicker_checked.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = YBTextPicker_checked.png; sourceTree = "<group>"; };
+		E864511B2435C5FC00E3B4C9 /* YBTextPicker_unchecked.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = YBTextPicker_unchecked.png; sourceTree = "<group>"; };
+		E864511C2435C5FC00E3B4C9 /* YBTextPicker.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = YBTextPicker.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -98,6 +112,7 @@
 		E86450E52433BC6300E3B4C9 /* TapApplePayKit-Example */ = {
 			isa = PBXGroup;
 			children = (
+				E86451132435C5FC00E3B4C9 /* YBTextPicker */,
 				E86451122435C0CA00E3B4C9 /* TapApplePayKit-Example.entitlements */,
 				E86450E62433BC6300E3B4C9 /* AppDelegate.swift */,
 				E86450E82433BC6300E3B4C9 /* SceneDelegate.swift */,
@@ -164,6 +179,36 @@
 				E864510E2435A6C500E3B4C9 /* TapApplePayToken.swift */,
 			);
 			path = Models;
+			sourceTree = "<group>";
+		};
+		E86451132435C5FC00E3B4C9 /* YBTextPicker */ = {
+			isa = PBXGroup;
+			children = (
+				E86451142435C5FC00E3B4C9 /* YBTextPickerDataModel.swift */,
+				E86451152435C5FC00E3B4C9 /* YBTextPickerCell */,
+				E86451182435C5FC00E3B4C9 /* YBTextPicker.swift */,
+				E86451192435C5FC00E3B4C9 /* Assets */,
+				E864511C2435C5FC00E3B4C9 /* YBTextPicker.xib */,
+			);
+			path = YBTextPicker;
+			sourceTree = "<group>";
+		};
+		E86451152435C5FC00E3B4C9 /* YBTextPickerCell */ = {
+			isa = PBXGroup;
+			children = (
+				E86451162435C5FC00E3B4C9 /* YBTextPickerCell.xib */,
+				E86451172435C5FC00E3B4C9 /* YBTextPickerCell.swift */,
+			);
+			path = YBTextPickerCell;
+			sourceTree = "<group>";
+		};
+		E86451192435C5FC00E3B4C9 /* Assets */ = {
+			isa = PBXGroup;
+			children = (
+				E864511A2435C5FC00E3B4C9 /* YBTextPicker_checked.png */,
+				E864511B2435C5FC00E3B4C9 /* YBTextPicker_unchecked.png */,
+			);
+			path = Assets;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -265,9 +310,13 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E86451222435C5FC00E3B4C9 /* YBTextPicker_unchecked.png in Resources */,
 				E86450F32433BC6400E3B4C9 /* LaunchScreen.storyboard in Resources */,
 				E86450F02433BC6400E3B4C9 /* Assets.xcassets in Resources */,
 				E86450EE2433BC6300E3B4C9 /* Main.storyboard in Resources */,
+				E864511E2435C5FC00E3B4C9 /* YBTextPickerCell.xib in Resources */,
+				E86451212435C5FC00E3B4C9 /* YBTextPicker_checked.png in Resources */,
+				E86451232435C5FC00E3B4C9 /* YBTextPicker.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -296,7 +345,10 @@
 			files = (
 				E86450EB2433BC6300E3B4C9 /* ViewController.swift in Sources */,
 				E86450E72433BC6300E3B4C9 /* AppDelegate.swift in Sources */,
+				E864511F2435C5FC00E3B4C9 /* YBTextPickerCell.swift in Sources */,
 				E86450E92433BC6300E3B4C9 /* SceneDelegate.swift in Sources */,
+				E864511D2435C5FC00E3B4C9 /* YBTextPickerDataModel.swift in Sources */,
+				E86451202435C5FC00E3B4C9 /* YBTextPicker.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

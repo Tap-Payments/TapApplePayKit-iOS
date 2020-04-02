@@ -10,7 +10,7 @@ import UIKit
 import TapApplePayKit_iOS
 
 class ViewController: UIViewController {
-
+    
     @IBOutlet weak var featuresTableView: UITableView!
     
     let tapApplePayRequest:TapApplePayRequest = .init()
@@ -27,6 +27,66 @@ class ViewController: UIViewController {
         featuresTableView.delegate = self
     }
     
+    
+    func selectCurrencyCode() {
+        
+        
+        showPicker(with: "Select currency", placeHolder: "Search currency", dataSource: TapCurrencyCode.allCases.map{$0.rawValue},onSelected:{
+            [weak self] (selectedValues,selectedIndices) in
+            
+            DispatchQueue.main.async {
+                self?.tapApplePayRequest.currencyCode =  TapCurrencyCode.allCases[selectedIndices[0]]
+                self?.featuresTableView.reloadData()
+            }
+        })
+    }
+    
+    
+    func showPicker(with title:String, placeHolder:String, dataSource:[String],allowMultipleSelection:Bool = false,onSelected:(([String],[Int])->())? = nil) {
+        let regularFont = UIFont.systemFont(ofSize: 16)
+        let boldFont = UIFont.boldSystemFont(ofSize: 16)
+        let blueColor = UIColor.black
+        
+        let blueAppearance = YBTextPickerAppearanceManager.init(
+            pickerTitle         : title,
+            titleFont           : boldFont,
+            titleTextColor      : .black,
+            titleBackground     : .clear,
+            searchBarFont       : regularFont,
+            searchBarPlaceholder: placeHolder,
+            closeButtonTitle    : "Cancel",
+            closeButtonColor    : .darkGray,
+            closeButtonFont     : regularFont,
+            doneButtonTitle     : "Done",
+            doneButtonColor     : blueColor,
+            doneButtonFont      : boldFont,
+            checkMarkPosition   : .Right,
+            itemCheckedImage    : UIImage(named:"blue_ic_checked"),
+            itemUncheckedImage  : UIImage(),
+            itemColor           : .black,
+            itemFont            : regularFont
+        )
+        
+        let picker = YBTextPicker.init(with: dataSource, appearance: blueAppearance,
+                                       onCompletion: { (selectedIndexes, selectedValues) in
+                                        if selectedValues.count > 0{
+                                            
+                                            if let nonNullBlock = onSelected {
+                                                nonNullBlock(selectedValues,selectedIndexes)
+                                            }
+                                        }else{
+                                            //self.btnFruitsPicker.setTitle("Select Fruits", for: .normal)
+                                        }
+        },
+                                       onCancel: {
+                                        print("Cancelled")
+        }
+        )
+        
+        picker.allowMultipleSelection = false
+        
+        picker.show(withAnimation: .Fade)
+    }
     
     func checkApplePayStats() {
         let applePayStatus:TapApplePayStatus = TapApplePay.applePayStatus()
@@ -75,7 +135,7 @@ extension ViewController:UITableViewDelegate,UITableViewDataSource {
             case 2:
                 cell.detailTextLabel?.text = "Selected \(tapApplePayRequest.paymentNetworks.map{ $0.rawValue }.joined(separator:" , "))"
                 break
-            case 4:
+            case 3:
                 cell.detailTextLabel?.text = "Selected \(tapApplePayRequest.paymentAmount)"
                 break
             default:
@@ -93,8 +153,8 @@ extension ViewController:UITableViewDelegate,UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         switch indexPath.row {
-        case 0:
-            checkApplePayStats()
+        case 1:
+            selectCurrencyCode()
         default:
             return
         }
