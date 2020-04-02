@@ -17,7 +17,7 @@ import  class PassKit.PKPaymentButton
 /// Data source to provide needed data for the apple pay button to start the apple authorization process
 @objc public protocol TapApplePayButtonDataSource {
     /// This s the Tap wrapper of Apple pay request and it is a must to be correctly filled before firing Apple pay request
-    var tapApplePayRequest:TapApplePayRequest { get set }
+    var tapApplePayRequest:TapApplePayRequest { get }
 }
 
 /// Delegate of methods Tap Apple Pay will use to pass back the results of the authorization process
@@ -43,6 +43,14 @@ import  class PassKit.PKPaymentButton
             configureApplePayButton()
         }
     }
+    internal let tapApplePay = TapApplePay()
+    
+    /// Button type, which will define the style of the Tap Apple Pay Button
+    public var buttonStyle:TapApplePayButtonStyleOutline = .Black {
+        didSet{
+            configureApplePayButton()
+        }
+    }
     /// The actaual apple pay button wrappd inside Tap Kit
     internal var applePayButton:PKPaymentButton?
     
@@ -62,9 +70,10 @@ import  class PassKit.PKPaymentButton
      - Parameter tapApplePayButtonClicked: Inform when the apple pay button is clicked
      - Parameter buttonType: The type/title to show for the Apple pay button
      */
-    public func setup(tapApplePayButtonClicked:((TapApplePayButton)->())? = nil,buttonType:TapApplePayButtonType = .AppleLogoOnly) {
+    public func setup(tapApplePayButtonClicked:((TapApplePayButton)->())? = nil,buttonType:TapApplePayButtonType = .AppleLogoOnly, buttonStyle:TapApplePayButtonStyleOutline = .Black) {
         
         self.tapApplePayButtonClicked = tapApplePayButtonClicked
+        self.buttonStyle = buttonStyle
         // The minimum size accepted by Apple
         self.buttonWidth = (frame.width >= 140) ? frame.width : 140
         self.buttonHeight = (frame.height >= 40) ? frame.height : 40
@@ -78,9 +87,8 @@ import  class PassKit.PKPaymentButton
         if let nonNullApplePayButton = applePayButton {
             nonNullApplePayButton.removeFromSuperview()
             applePayButton?.removeTarget(self, action: #selector(applePayClicked), for: .touchUpInside)
-        }else{
-            applePayButton = .init(paymentButtonType: self.buttonType.applePayButtonType!, paymentButtonStyle: .black)
         }
+        applePayButton = .init(paymentButtonType: self.buttonType.applePayButtonType!, paymentButtonStyle: buttonStyle.applePayButtonStyle!)
         applePayButton?.frame = CGRect(x: 0,y: 0,width: self.buttonWidth,height: self.buttonHeight)
         self.addSubview(applePayButton!)
         self.bringSubviewToFront(applePayButton!)
@@ -104,7 +112,7 @@ import  class PassKit.PKPaymentButton
         if let nonNullDataSource = dataSource {
             
             // Initiate the authorization and wait for the feedback from Apple
-            TapApplePay().authorizePayment(in: self.findViewController()!, for: nonNullDataSource.tapApplePayRequest , tokenized: { [weak self] (token) in
+            tapApplePay.authorizePayment(in: self.findViewController()!, for: nonNullDataSource.tapApplePayRequest , tokenized: { [weak self] (token) in
                 if let nonNullDelegate = self?.delegate {
                     // If there is alistener, let him know that the authorization is done with the provided tokem
                     nonNullDelegate.tapApplePayFinished(with: token)
@@ -116,7 +124,8 @@ import  class PassKit.PKPaymentButton
     }
     
     required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
+        super.init(coder:coder)
+        //fatalError("init(coder:) has not been implemented")
     }
     
 }

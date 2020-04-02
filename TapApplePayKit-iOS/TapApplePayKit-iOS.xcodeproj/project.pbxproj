@@ -30,7 +30,34 @@
 		E86451212435C5FC00E3B4C9 /* YBTextPicker_checked.png in Resources */ = {isa = PBXBuildFile; fileRef = E864511A2435C5FC00E3B4C9 /* YBTextPicker_checked.png */; };
 		E86451222435C5FC00E3B4C9 /* YBTextPicker_unchecked.png in Resources */ = {isa = PBXBuildFile; fileRef = E864511B2435C5FC00E3B4C9 /* YBTextPicker_unchecked.png */; };
 		E86451232435C5FC00E3B4C9 /* YBTextPicker.xib in Resources */ = {isa = PBXBuildFile; fileRef = E864511C2435C5FC00E3B4C9 /* YBTextPicker.xib */; };
+		E86451272435E69300E3B4C9 /* TapApplePayButtonStyleOutline.swift in Sources */ = {isa = PBXBuildFile; fileRef = E86451262435E69300E3B4C9 /* TapApplePayButtonStyleOutline.swift */; };
+		E86451292435ED3800E3B4C9 /* TapApplePayKit_iOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E86450D52433BC2E00E3B4C9 /* TapApplePayKit_iOS.framework */; };
+		E864512A2435ED3800E3B4C9 /* TapApplePayKit_iOS.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = E86450D52433BC2E00E3B4C9 /* TapApplePayKit_iOS.framework */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 /* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		E864512B2435ED3800E3B4C9 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = E86450CC2433BC2E00E3B4C9 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = E86450D42433BC2E00E3B4C9;
+			remoteInfo = "TapApplePayKit-iOS";
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		E864512D2435ED3800E3B4C9 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				E864512A2435ED3800E3B4C9 /* TapApplePayKit_iOS.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		E86450D52433BC2E00E3B4C9 /* TapApplePayKit_iOS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = TapApplePayKit_iOS.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -61,6 +88,7 @@
 		E864511A2435C5FC00E3B4C9 /* YBTextPicker_checked.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = YBTextPicker_checked.png; sourceTree = "<group>"; };
 		E864511B2435C5FC00E3B4C9 /* YBTextPicker_unchecked.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = YBTextPicker_unchecked.png; sourceTree = "<group>"; };
 		E864511C2435C5FC00E3B4C9 /* YBTextPicker.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = YBTextPicker.xib; sourceTree = "<group>"; };
+		E86451262435E69300E3B4C9 /* TapApplePayButtonStyleOutline.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TapApplePayButtonStyleOutline.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -75,6 +103,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E86451292435ED3800E3B4C9 /* TapApplePayKit_iOS.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -87,6 +116,7 @@
 				E86450D72433BC2E00E3B4C9 /* TapApplePayKit-iOS */,
 				E86450E52433BC6300E3B4C9 /* TapApplePayKit-Example */,
 				E86450D62433BC2E00E3B4C9 /* Products */,
+				E86451282435ED3800E3B4C9 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -159,6 +189,7 @@
 				E86451012434552E00E3B4C9 /* TapApplePayPaymentNetwork.swift */,
 				E86451042434726A00E3B4C9 /* TapApplePayButtonType.swift */,
 				E86451102435B8B900E3B4C9 /* TapCurrencyCode.swift */,
+				E86451262435E69300E3B4C9 /* TapApplePayButtonStyleOutline.swift */,
 			);
 			path = enums;
 			sourceTree = "<group>";
@@ -211,6 +242,13 @@
 			path = Assets;
 			sourceTree = "<group>";
 		};
+		E86451282435ED3800E3B4C9 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
@@ -250,10 +288,12 @@
 				E86450E02433BC6300E3B4C9 /* Sources */,
 				E86450E12433BC6300E3B4C9 /* Frameworks */,
 				E86450E22433BC6300E3B4C9 /* Resources */,
+				E864512D2435ED3800E3B4C9 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				E864512C2435ED3800E3B4C9 /* PBXTargetDependency */,
 			);
 			name = "TapApplePayKit-Example";
 			productName = "TapApplePayKit-Example";
@@ -333,6 +373,7 @@
 				E864510F2435A6C500E3B4C9 /* TapApplePayToken.swift in Sources */,
 				E86450FD2434520500E3B4C9 /* TapApplePayStatus.swift in Sources */,
 				E86451002434539A00E3B4C9 /* TapApplePay.swift in Sources */,
+				E86451272435E69300E3B4C9 /* TapApplePayButtonStyleOutline.swift in Sources */,
 				E86451092434A9E200E3B4C9 /* TapCountryCode.swift in Sources */,
 				E86451112435B8B900E3B4C9 /* TapCurrencyCode.swift in Sources */,
 				E8645107243499E800E3B4C9 /* TapApplePayButton.swift in Sources */,
@@ -353,6 +394,14 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		E864512C2435ED3800E3B4C9 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = E86450D42433BC2E00E3B4C9 /* TapApplePayKit-iOS */;
+			targetProxy = E864512B2435ED3800E3B4C9 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		E86450EC2433BC6300E3B4C9 /* Main.storyboard */ = {

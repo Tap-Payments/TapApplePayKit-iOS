@@ -17,7 +17,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="vMj-7t-bll">
-                                <rect key="frame" x="0.0" y="88" width="414" height="774"/>
+                                <rect key="frame" x="0.0" y="88" width="414" height="726"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="featureCell" textLabel="LnO-D8-uH1" detailTextLabel="sWy-an-OdI" style="IBUITableViewCellStyleSubtitle" id="R7Y-Vq-LOp">
@@ -46,11 +46,21 @@
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="W0U-CF-1yV">
+                                <rect key="frame" x="20" y="822" width="374" height="40"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="g3d-E4-iUS"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="vMj-7t-bll" secondAttribute="bottom" id="JTx-bm-RW3"/>
+                            <constraint firstItem="W0U-CF-1yV" firstAttribute="bottom" secondItem="6Tk-OE-BBY" secondAttribute="bottom" id="0WM-2d-oNJ"/>
+                            <constraint firstItem="W0U-CF-1yV" firstAttribute="top" secondItem="vMj-7t-bll" secondAttribute="bottom" constant="8" id="HJd-YK-s0g"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="W0U-CF-1yV" secondAttribute="trailing" constant="20" id="Z68-5e-3Ir"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="vMj-7t-bll" secondAttribute="trailing" id="g37-2f-smZ"/>
+                            <constraint firstItem="W0U-CF-1yV" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="hzu-8s-pk5"/>
                             <constraint firstItem="vMj-7t-bll" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="iM1-fi-FqE"/>
                             <constraint firstItem="vMj-7t-bll" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="uYS-Ib-JQc"/>
                         </constraints>
@@ -59,6 +69,7 @@
                     <navigationItem key="navigationItem" title="Configure your transaction" id="cgg-ru-zFy"/>
                     <connections>
                         <outlet property="featuresTableView" destination="vMj-7t-bll" id="1PP-lx-MXS"/>
+                        <outlet property="tapApplePayButtonHolder" destination="W0U-CF-1yV" id="Pni-H1-D1K"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>

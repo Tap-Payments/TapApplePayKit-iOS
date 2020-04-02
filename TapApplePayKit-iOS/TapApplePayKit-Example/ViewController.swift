@@ -13,29 +13,41 @@ class ViewController: UIViewController {
     
     @IBOutlet weak var featuresTableView: UITableView!
     
-    let tapApplePayRequest:TapApplePayRequest = .init()
+    @IBOutlet weak var tapApplePayButtonHolder: UIView!
+    let myTapApplePayRequest:TapApplePayRequest = .init()
     let tapApplePay:TapApplePay = .init()
+    var tapApplePayButton:TapApplePayButton?
     
-    let dataSource = [["Country Code","Currency Code","Payment Networks","Transaction Amount"],["Check Apple Pay Status","Try Apple Pay Setup","Authorize Payment"]]
+    let dataSource = [["Country Code","Currency Code","Payment Networks","Transaction Amount"],["Check Apple Pay Status","Try Apple Pay Setup","Authorize Payment"],["Tap Apple Pay Button Type","Tap Apple Pay Button Outline"]]
     
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
         
-        tapApplePayRequest.build(paymentAmount: 10, merchantID: "merchant.tap.gosell")
+        myTapApplePayRequest.build(paymentAmount: 10, merchantID: "merchant.tap.gosell")
         
         featuresTableView.dataSource = self
         featuresTableView.delegate = self
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        tapApplePayButton = TapApplePayButton.init(frame: tapApplePayButtonHolder.bounds)
+        tapApplePayButton?.setup()
+        tapApplePayButtonHolder.addSubview(tapApplePayButton!)
+        
+        tapApplePayButton?.dataSource = self
+        tapApplePayButton?.delegate = self
+        //tapApplePayButton?.setup(buttonType: .DonateWithApplePay,buttonStyle: .WhiteOutline)
+    }
     
     func selectCountryCode() {
         
-        showPicker(with: "Select country", placeHolder: "Search country", dataSource: TapCountryCode.allCases.map{$0.rawValue},preselect: [tapApplePayRequest.countryCode.rawValue],onSelected:{
+        showPicker(with: "Select country", placeHolder: "Search country", dataSource: TapCountryCode.allCases.map{$0.rawValue},preselect: [myTapApplePayRequest.countryCode.rawValue],onSelected:{
             [weak self] (selectedValues,selectedIndices) in
             
             DispatchQueue.main.async {
-                self?.tapApplePayRequest.countryCode =  TapCountryCode.allCases[selectedIndices[0]]
+                self?.myTapApplePayRequest.countryCode =  TapCountryCode.allCases[selectedIndices[0]]
                 self?.featuresTableView.reloadData()
             }
         })
@@ -44,11 +56,11 @@ class ViewController: UIViewController {
     
     func selectCurrencyCode() {
         
-        showPicker(with: "Select currency", placeHolder: "Search currency", dataSource: TapCurrencyCode.allCases.map{$0.rawValue},preselect: [tapApplePayRequest.currencyCode.rawValue],onSelected:{
+        showPicker(with: "Select currency", placeHolder: "Search currency", dataSource: TapCurrencyCode.allCases.map{$0.rawValue},preselect: [myTapApplePayRequest.currencyCode.rawValue],onSelected:{
             [weak self] (selectedValues,selectedIndices) in
             
             DispatchQueue.main.async {
-                self?.tapApplePayRequest.currencyCode =  TapCurrencyCode.allCases[selectedIndices[0]]
+                self?.myTapApplePayRequest.currencyCode =  TapCurrencyCode.allCases[selectedIndices[0]]
                 self?.featuresTableView.reloadData()
             }
         })
@@ -56,12 +68,34 @@ class ViewController: UIViewController {
     
     func selectPaymentNetworks() {
         
-        showPicker(with: "Select Network(s)", placeHolder: "Search networks", dataSource: TapApplePayPaymentNetwork.allCases.map{$0.rawValue},allowMultipleSelection: true,preselect: tapApplePayRequest.paymentNetworks.map{ $0.rawValue },onSelected:{
+        showPicker(with: "Select Network(s)", placeHolder: "Search networks", dataSource: TapApplePayPaymentNetwork.allCases.map{$0.rawValue},allowMultipleSelection: true,preselect: myTapApplePayRequest.paymentNetworks.map{ $0.rawValue },onSelected:{
             [weak self] (selectedValues,selectedIndices) in
             
             DispatchQueue.main.async {
-                self?.tapApplePayRequest.paymentNetworks =  selectedValues.map{TapApplePayPaymentNetwork.init(rawValue: $0)!}
+                self?.myTapApplePayRequest.paymentNetworks =  selectedValues.map{TapApplePayPaymentNetwork.init(rawValue: $0)!}
                 self?.featuresTableView.reloadData()
+            }
+        })
+    }
+    
+    
+    func selectButtonType() {
+        
+        showPicker(with: "Select type", placeHolder: "Search type", dataSource: TapApplePayButtonType.allCases.map{$0.rawValue},preselect: [(tapApplePayButton?.buttonType.rawValue)!],onSelected:{
+            [weak self] (selectedValues,selectedIndices) in
+            
+            DispatchQueue.main.async {
+                self?.tapApplePayButton?.buttonType = TapApplePayButtonType.allCases[selectedIndices[0]]
+            }
+        })
+    }
+    
+    func selectButtonStyle() {
+        showPicker(with: "Select style", placeHolder: "Search style", dataSource: TapApplePayButtonStyleOutline.allCases.map{$0.rawValue},preselect: [(tapApplePayButton?.buttonStyle.rawValue)!],onSelected:{
+            [weak self] (selectedValues,selectedIndices) in
+            
+            DispatchQueue.main.async {
+                self?.tapApplePayButton?.buttonStyle = TapApplePayButtonStyleOutline.allCases[selectedIndices[0]]
             }
         })
     }
@@ -71,7 +105,12 @@ class ViewController: UIViewController {
         let regularFont = UIFont.systemFont(ofSize: 16)
         let boldFont = UIFont.boldSystemFont(ofSize: 16)
         let blueColor = UIColor.black
-        
+        var titleColor = UIColor.black
+        if #available(iOS 13, *) {
+            if UITraitCollection.current.userInterfaceStyle == UIUserInterfaceStyle.dark {
+                titleColor = .white
+            }
+        }
         let blueAppearance = YBTextPickerAppearanceManager.init(
             pickerTitle         : title,
             titleFont           : boldFont,
@@ -88,7 +127,7 @@ class ViewController: UIViewController {
             checkMarkPosition   : .Right,
             itemCheckedImage    : UIImage(named:"blue_ic_checked"),
             itemUncheckedImage  : UIImage(),
-            itemColor           : .black,
+            itemColor           : titleColor,
             itemFont            : regularFont
         )
         
@@ -113,9 +152,9 @@ class ViewController: UIViewController {
     }
     
     func checkApplePayStats() {
-        let applePayStatus:TapApplePayStatus = TapApplePay.applePayStatus(for: tapApplePayRequest.paymentNetworks, shouldOpenSetupDirectly: false)
+        let applePayStatus:TapApplePayStatus = TapApplePay.applePayStatus(for: myTapApplePayRequest.paymentNetworks, shouldOpenSetupDirectly: false)
         
-        let alertControl = UIAlertController(title: "Apple Pay Status for \(tapApplePayRequest.paymentNetworks.map{$0.rawValue}.joined(separator: " , "))", message: applePayStatus.rawValue(), preferredStyle: .alert)
+        let alertControl = UIAlertController(title: "Apple Pay Status for \(myTapApplePayRequest.paymentNetworks.map{$0.rawValue}.joined(separator: " , "))", message: applePayStatus.rawValue(), preferredStyle: .alert)
         if applePayStatus == .NeedSetup {
             let setupAction = UIAlertAction(title: "Setup?", style: .default) { [weak self] (_) in
                 self?.startApplePaySetup()
@@ -138,18 +177,25 @@ class ViewController: UIViewController {
             present(paymentController, animated: true, completion: nil)
         }*/
         
-        tapApplePay.authorizePayment(in: self, for: tapApplePayRequest) { [weak self] (token) in
-            let alertControl = UIAlertController(title: "Token", message: token.stringAppleToken, preferredStyle: .alert)
-            let copyAction = UIAlertAction(title: "Copy", style: .default) { (_) in
-                UIPasteboard.general.string = token.stringAppleToken
+        tapApplePay.authorizePayment(in: self, for: myTapApplePayRequest) { [weak self] (token) in
+            self?.showTokenizedData(with: token)
+        }
+    }
+    
+    func showTokenizedData(with token:TapApplePayToken) {
+        let alertControl = UIAlertController(title: "Token", message: token.stringAppleToken, preferredStyle: .alert)
+        let copyAction = UIAlertAction(title: "Copy", style: .default) { (_) in
+            DispatchQueue.main.async { [weak self] in
+                let vc = UIActivityViewController(activityItems: [token.stringAppleToken!], applicationActivities: [])
+                self?.present(vc, animated: true)
             }
-            alertControl.addAction(copyAction)
-            let cancelAction = UIAlertAction(title: "Cancel", style: .cancel,handler: nil)
-            alertControl.addAction(cancelAction)
-            DispatchQueue.main.async {
-                self?.present(alertControl, animated: true, completion: nil)
-            }
-            }
+        }
+        alertControl.addAction(copyAction)
+        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel,handler: nil)
+        alertControl.addAction(cancelAction)
+        DispatchQueue.main.async { [weak self] in
+            self?.present(alertControl, animated: true, completion: nil)
+        }
     }
 }
 
@@ -157,7 +203,7 @@ class ViewController: UIViewController {
 extension ViewController:UITableViewDelegate,UITableViewDataSource {
     
     func numberOfSections(in tableView: UITableView) -> Int {
-        return 2
+        return dataSource.count
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -165,7 +211,16 @@ extension ViewController:UITableViewDelegate,UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        return (section == 0) ? "Transaction Data Attributes" : "Features Testing"
+        switch section {
+        case 0:
+            return "Transaction Data Attributes"
+        case 1:
+            return "Features Testing"
+        case 2:
+            return "Tap Apple Pay Button"
+        default:
+            return ""
+        }
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -176,16 +231,27 @@ extension ViewController:UITableViewDelegate,UITableViewDataSource {
         if indexPath.section == 0 {
             switch indexPath.row {
             case 0:
-                cell.detailTextLabel?.text = "Selected \(tapApplePayRequest.countryCode.rawValue)"
+                cell.detailTextLabel?.text = "Selected \(myTapApplePayRequest.countryCode.rawValue)"
                 break
             case 1:
-                cell.detailTextLabel?.text = "Selected \(tapApplePayRequest.currencyCode.rawValue)"
+                cell.detailTextLabel?.text = "Selected \(myTapApplePayRequest.currencyCode.rawValue)"
                 break
             case 2:
-                cell.detailTextLabel?.text = "Selected \(tapApplePayRequest.paymentNetworks.map{ $0.rawValue }.joined(separator:" , "))"
+                cell.detailTextLabel?.text = "Selected \(myTapApplePayRequest.paymentNetworks.map{ $0.rawValue }.joined(separator:" , "))"
                 break
             case 3:
-                cell.detailTextLabel?.text = "Selected \(tapApplePayRequest.paymentAmount)"
+                cell.detailTextLabel?.text = "Selected \(myTapApplePayRequest.paymentAmount)"
+                break
+            default:
+                break
+            }
+        }else if indexPath.section == 2 {
+            switch indexPath.row {
+            case 0:
+                cell.detailTextLabel?.text = "Selected \(tapApplePayButton?.buttonType.rawValue ?? "")"
+                break
+            case 1:
+                cell.detailTextLabel?.text = "Selected \(tapApplePayButton?.buttonStyle.rawValue ?? "")"
                 break
             default:
                 break
@@ -223,6 +289,26 @@ extension ViewController:UITableViewDelegate,UITableViewDataSource {
             default:
                 return
             }
+        } else if indexPath.section == 2 {
+            switch indexPath.row {
+            case 0:
+                selectButtonType()
+            case 1:
+                selectButtonStyle()
+            default:
+                return
+            }
         }
+    }
+}
+
+
+extension ViewController:TapApplePayButtonDataSource,TapApplePayButtonDelegate {
+    var tapApplePayRequest: TapApplePayRequest {
+        return myTapApplePayRequest
+    }
+    
+    func tapApplePayFinished(with tapAppleToken: TapApplePayToken) {
+        showTokenizedData(with: tapAppleToken)
     }
 }
