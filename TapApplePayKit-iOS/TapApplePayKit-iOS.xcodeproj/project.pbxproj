@@ -3,10 +3,11 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
+		A8E360929BEE6C127412AAF0 /* Pods_TapApplePayKit_iOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 681061C0D3109E50FA28C777 /* Pods_TapApplePayKit_iOS.framework */; };
 		E86450DA2433BC2E00E3B4C9 /* TapApplePayKit_iOS.h in Headers */ = {isa = PBXBuildFile; fileRef = E86450D82433BC2E00E3B4C9 /* TapApplePayKit_iOS.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		E86450E72433BC6300E3B4C9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E86450E62433BC6300E3B4C9 /* AppDelegate.swift */; };
 		E86450E92433BC6300E3B4C9 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E86450E82433BC6300E3B4C9 /* SceneDelegate.swift */; };
@@ -33,6 +34,8 @@
 		E86451272435E69300E3B4C9 /* TapApplePayButtonStyleOutline.swift in Sources */ = {isa = PBXBuildFile; fileRef = E86451262435E69300E3B4C9 /* TapApplePayButtonStyleOutline.swift */; };
 		E86451292435ED3800E3B4C9 /* TapApplePayKit_iOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E86450D52433BC2E00E3B4C9 /* TapApplePayKit_iOS.framework */; };
 		E864512A2435ED3800E3B4C9 /* TapApplePayKit_iOS.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = E86450D52433BC2E00E3B4C9 /* TapApplePayKit_iOS.framework */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		E864512F2435EFF100E3B4C9 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = E864512E2435EFF100E3B4C9 /* GoogleService-Info.plist */; };
+		F89894382CF2786EB3A5912A /* Pods_TapApplePayKit_Example.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BB2861F7261D7F563795F280 /* Pods_TapApplePayKit_Example.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -60,6 +63,11 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		05033F414FD6864F18F3A36C /* Pods-TapApplePayKit-Example.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TapApplePayKit-Example.debug.xcconfig"; path = "Target Support Files/Pods-TapApplePayKit-Example/Pods-TapApplePayKit-Example.debug.xcconfig"; sourceTree = "<group>"; };
+		57C35D5C3F27474E48282DFC /* Pods-TapApplePayKit-iOS.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TapApplePayKit-iOS.debug.xcconfig"; path = "Target Support Files/Pods-TapApplePayKit-iOS/Pods-TapApplePayKit-iOS.debug.xcconfig"; sourceTree = "<group>"; };
+		681061C0D3109E50FA28C777 /* Pods_TapApplePayKit_iOS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TapApplePayKit_iOS.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		8AC50E9D939C9156FB7E562C /* Pods-TapApplePayKit-Example.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TapApplePayKit-Example.release.xcconfig"; path = "Target Support Files/Pods-TapApplePayKit-Example/Pods-TapApplePayKit-Example.release.xcconfig"; sourceTree = "<group>"; };
+		BB2861F7261D7F563795F280 /* Pods_TapApplePayKit_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TapApplePayKit_Example.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E86450D52433BC2E00E3B4C9 /* TapApplePayKit_iOS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = TapApplePayKit_iOS.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E86450D82433BC2E00E3B4C9 /* TapApplePayKit_iOS.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TapApplePayKit_iOS.h; sourceTree = "<group>"; };
 		E86450D92433BC2E00E3B4C9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -89,6 +97,8 @@
 		E864511B2435C5FC00E3B4C9 /* YBTextPicker_unchecked.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = YBTextPicker_unchecked.png; sourceTree = "<group>"; };
 		E864511C2435C5FC00E3B4C9 /* YBTextPicker.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = YBTextPicker.xib; sourceTree = "<group>"; };
 		E86451262435E69300E3B4C9 /* TapApplePayButtonStyleOutline.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TapApplePayButtonStyleOutline.swift; sourceTree = "<group>"; };
+		E864512E2435EFF100E3B4C9 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		EA4F8A30CBF862BF46BEA9A1 /* Pods-TapApplePayKit-iOS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TapApplePayKit-iOS.release.xcconfig"; path = "Target Support Files/Pods-TapApplePayKit-iOS/Pods-TapApplePayKit-iOS.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -96,6 +106,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A8E360929BEE6C127412AAF0 /* Pods_TapApplePayKit_iOS.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -104,12 +115,24 @@
 			buildActionMask = 2147483647;
 			files = (
 				E86451292435ED3800E3B4C9 /* TapApplePayKit_iOS.framework in Frameworks */,
+				F89894382CF2786EB3A5912A /* Pods_TapApplePayKit_Example.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		8E1180928D3B51A2C7D4C249 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				05033F414FD6864F18F3A36C /* Pods-TapApplePayKit-Example.debug.xcconfig */,
+				8AC50E9D939C9156FB7E562C /* Pods-TapApplePayKit-Example.release.xcconfig */,
+				57C35D5C3F27474E48282DFC /* Pods-TapApplePayKit-iOS.debug.xcconfig */,
+				EA4F8A30CBF862BF46BEA9A1 /* Pods-TapApplePayKit-iOS.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
 		E86450CB2433BC2E00E3B4C9 = {
 			isa = PBXGroup;
 			children = (
@@ -117,6 +140,7 @@
 				E86450E52433BC6300E3B4C9 /* TapApplePayKit-Example */,
 				E86450D62433BC2E00E3B4C9 /* Products */,
 				E86451282435ED3800E3B4C9 /* Frameworks */,
+				8E1180928D3B51A2C7D4C249 /* Pods */,
 			);
 			sourceTree = "<group>";
 		};
@@ -144,6 +168,7 @@
 			children = (
 				E86451132435C5FC00E3B4C9 /* YBTextPicker */,
 				E86451122435C0CA00E3B4C9 /* TapApplePayKit-Example.entitlements */,
+				E864512E2435EFF100E3B4C9 /* GoogleService-Info.plist */,
 				E86450E62433BC6300E3B4C9 /* AppDelegate.swift */,
 				E86450E82433BC6300E3B4C9 /* SceneDelegate.swift */,
 				E86450EA2433BC6300E3B4C9 /* ViewController.swift */,
@@ -245,6 +270,8 @@
 		E86451282435ED3800E3B4C9 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				BB2861F7261D7F563795F280 /* Pods_TapApplePayKit_Example.framework */,
+				681061C0D3109E50FA28C777 /* Pods_TapApplePayKit_iOS.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -267,6 +294,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = E86450DD2433BC2E00E3B4C9 /* Build configuration list for PBXNativeTarget "TapApplePayKit-iOS" */;
 			buildPhases = (
+				DD848B3793D0DB6235D1A5FC /* [CP] Check Pods Manifest.lock */,
 				E86450D02433BC2E00E3B4C9 /* Headers */,
 				E86450D12433BC2E00E3B4C9 /* Sources */,
 				E86450D22433BC2E00E3B4C9 /* Frameworks */,
@@ -285,10 +313,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = E86450F52433BC6400E3B4C9 /* Build configuration list for PBXNativeTarget "TapApplePayKit-Example" */;
 			buildPhases = (
+				68944A9B71AFE7516E349323 /* [CP] Check Pods Manifest.lock */,
 				E86450E02433BC6300E3B4C9 /* Sources */,
 				E86450E12433BC6300E3B4C9 /* Frameworks */,
 				E86450E22433BC6300E3B4C9 /* Resources */,
 				E864512D2435ED3800E3B4C9 /* Embed Frameworks */,
+				7EAEE0E6C63D6B6C6FF083FB /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -357,10 +387,75 @@
 				E864511E2435C5FC00E3B4C9 /* YBTextPickerCell.xib in Resources */,
 				E86451212435C5FC00E3B4C9 /* YBTextPicker_checked.png in Resources */,
 				E86451232435C5FC00E3B4C9 /* YBTextPicker.xib in Resources */,
+				E864512F2435EFF100E3B4C9 /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		68944A9B71AFE7516E349323 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-TapApplePayKit-Example-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		7EAEE0E6C63D6B6C6FF083FB /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-TapApplePayKit-Example/Pods-TapApplePayKit-Example-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-TapApplePayKit-Example/Pods-TapApplePayKit-Example-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-TapApplePayKit-Example/Pods-TapApplePayKit-Example-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		DD848B3793D0DB6235D1A5FC /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-TapApplePayKit-iOS-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		E86450D12433BC2E00E3B4C9 /* Sources */ = {
@@ -545,6 +640,7 @@
 		};
 		E86450DE2433BC2E00E3B4C9 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 57C35D5C3F27474E48282DFC /* Pods-TapApplePayKit-iOS.debug.xcconfig */;
 			buildSettings = {
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
@@ -572,6 +668,7 @@
 		};
 		E86450DF2433BC2E00E3B4C9 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = EA4F8A30CBF862BF46BEA9A1 /* Pods-TapApplePayKit-iOS.release.xcconfig */;
 			buildSettings = {
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
@@ -598,6 +695,7 @@
 		};
 		E86450F62433BC6400E3B4C9 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 05033F414FD6864F18F3A36C /* Pods-TapApplePayKit-Example.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = "TapApplePayKit-Example/TapApplePayKit-Example.entitlements";
@@ -618,6 +716,7 @@
 		};
 		E86450F72433BC6400E3B4C9 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 8AC50E9D939C9156FB7E562C /* Pods-TapApplePayKit-Example.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = "TapApplePayKit-Example/TapApplePayKit-Example.entitlements";

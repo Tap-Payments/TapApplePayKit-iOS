@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CLIENT_ID</key>
+	<string>978574814080-anukgd6iou2v4f24iqeoltdp5qhkqdiq.apps.googleusercontent.com</string>
+	<key>REVERSED_CLIENT_ID</key>
+	<string>com.googleusercontent.apps.978574814080-anukgd6iou2v4f24iqeoltdp5qhkqdiq</string>
+	<key>API_KEY</key>
+	<string>AIzaSyB54wkx5b_CxUKXuJgOkuRJ2BsaeiFcaf4</string>
+	<key>GCM_SENDER_ID</key>
+	<string>978574814080</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>company.tap.TapApplePayKit-Example</string>
+	<key>PROJECT_ID</key>
+	<string>tapapplepaykit-ios</string>
+	<key>STORAGE_BUCKET</key>
+	<string>tapapplepaykit-ios.appspot.com</string>
+	<key>IS_ADS_ENABLED</key>
+	<false></false>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false></false>
+	<key>IS_APPINVITE_ENABLED</key>
+	<true></true>
+	<key>IS_GCM_ENABLED</key>
+	<true></true>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true></true>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:978574814080:ios:8b0c9eaba992122353ef65</string>
+	<key>DATABASE_URL</key>
+	<string>https://tapapplepaykit-ios.firebaseio.com</string>
+</dict>
+</plist>
