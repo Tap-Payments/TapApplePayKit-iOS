@@ -7,9 +7,9 @@
 //
 
 import Foundation
-import class PassKit.PKPaymentAuthorizationViewController
+import class PassKit.PKPaymentAuthorizationController
 import class PassKit.PKPayment
-import protocol PassKit.PKPaymentAuthorizationViewControllerDelegate
+import protocol PassKit.PKPaymentAuthorizationControllerDelegate
 import class PassKit.PKPaymentAuthorizationResult
 import class PassKit.PKPassLibrary
 import class UIKit.UIViewController
@@ -18,6 +18,7 @@ import class UIKit.UIViewController
 @objcMembers public class TapApplePay:NSObject {
     
     internal var tokenizedBlock:((TapApplePayToken)->())?
+//    var paymentController = PKPaymentAuthorizationController.init()
     
     /**
         This static interface is used if Pay is available as per the device capability!
@@ -26,11 +27,11 @@ import class UIKit.UIViewController
      */
     public static func applePayStatus(for tapPaymentNetworks:[TapApplePayPaymentNetwork] = [], shouldOpenSetupDirectly:Bool = false) -> TapApplePayStatus {
         
-        if   PKPaymentAuthorizationViewController.canMakePayments() {
+        if   PKPaymentAuthorizationController.canMakePayments() {
             // Pay is available as per the device capability!
             // Check if the caller wants to determine for certain payments networks
             if !tapPaymentNetworks.isEmpty {
-                if PKPaymentAuthorizationViewController.canMakePayments(usingNetworks: tapPaymentNetworks.map { $0.applePayNetwork! }) {
+                if PKPaymentAuthorizationController.canMakePayments(usingNetworks: tapPaymentNetworks.map { $0.applePayNetwork! }) {
                     // The device can make payments using the provided payment networks
                     return .Eligible
                 }else {
@@ -56,10 +57,16 @@ import class UIKit.UIViewController
      - Parameter tapApplePayRequest: The Tap apple request wrapper that has the valid data of your transaction
      - Parameter tokenized: The block to be called once the user successfully authorize the payment
      */
-    public func authorizePayment(in presenter:UIViewController, for tapApplePayRequest:TapApplePayRequest, tokenized:((TapApplePayToken)->())) {
+    public func authorizePayment(in presenter:UIViewController, for tapApplePayRequest:TapApplePayRequest, tokenized:@escaping ((TapApplePayToken)->())) {
+       
+        self.tokenizedBlock = tokenized
         
-        let paymentController = PKPaymentAuthorizationViewController.init(paymentRequest: tapApplePayRequest.appleRequest)
-        paymentController?.delegate = self
+        
+        let paymentController = PKPaymentAuthorizationController.init(paymentRequest: tapApplePayRequest.appleRequest)
+        paymentController.delegate = self//presenter as? PKPaymentAuthorizationControllerDelegate
+        paymentController.present { (done) in
+            print("PRESENTED : \(done)")
+        }
         
     }
     
@@ -72,12 +79,16 @@ import class UIKit.UIViewController
     
 }
 
-extension TapApplePay:PKPaymentAuthorizationViewControllerDelegate {
-    public func paymentAuthorizationViewControllerDidFinish(_ controller: PKPaymentAuthorizationViewController) {
-        controller.dismiss(animated: true, completion: nil)
+extension TapApplePay:PKPaymentAuthorizationControllerDelegate {
+   
+    public func paymentAuthorizationControllerDidFinish(_ controller: PKPaymentAuthorizationController) {
+        controller.dismiss {
+            print("DISMISSED")
+        }
     }
     
-    public func paymentAuthorizationViewController(_ controller: PKPaymentAuthorizationViewController, didAuthorizePayment payment: PKPayment, handler completion: @escaping (PKPaymentAuthorizationResult) -> Void){
+    public func paymentAuthorizationController(_ controller: PKPaymentAuthorizationController, didAuthorizePayment payment: PKPayment, handler completion: @escaping (PKPaymentAuthorizationResult) -> Void) {
+        print("FINISHED")
         completion(PKPaymentAuthorizationResult(status: .success,errors: nil))
         
         if let nonNullTokenizedBlock = tokenizedBlock {

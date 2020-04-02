@@ -23,10 +23,10 @@ import PassKit
     /// The total amount you want to collect
     public lazy var paymentAmount:Double = 0
     /// The apple pay merchant identefier
-    lazy var merchantID:String = ""
+    public lazy var merchantID:String = ""
     
     /// The actual apple pay request
-    internal lazy var appleRequest:PKPaymentRequest = .init()
+    public lazy var appleRequest:PKPaymentRequest = .init()
     
     /**
      Creates a Tap Apple Pay request that can be used afterards to make an apple pay request
@@ -47,13 +47,18 @@ import PassKit
         configureApplePayRequest()
     }
     
+    public func updateValues() {
+        configureApplePayRequest()
+    }
     
     internal func configureApplePayRequest() {
         appleRequest = .init()
         appleRequest.countryCode = countryCode.rawValue
         appleRequest.currencyCode = currencyCode.rawValue
         appleRequest.paymentSummaryItems = paymentItems
+        appleRequest.paymentSummaryItems.append(.init(label: "", amount: NSDecimalNumber(value: paymentAmount)))
         appleRequest.supportedNetworks = paymentNetworks.map{ $0.applePayNetwork! }
         appleRequest.merchantIdentifier = merchantID
+        appleRequest.merchantCapabilities = [.capability3DS,.capabilityCredit,.capabilityDebit,.capabilityEMV]
     }
 }

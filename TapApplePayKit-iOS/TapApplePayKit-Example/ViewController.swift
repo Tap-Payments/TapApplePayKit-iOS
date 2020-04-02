@@ -14,6 +14,7 @@ class ViewController: UIViewController {
     @IBOutlet weak var featuresTableView: UITableView!
     
     let tapApplePayRequest:TapApplePayRequest = .init()
+    let tapApplePay:TapApplePay = .init()
     
     let dataSource = [["Country Code","Currency Code","Payment Networks","Transaction Amount"],["Check Apple Pay Status","Try Apple Pay Setup","Authorize Payment"]]
     
@@ -35,6 +36,7 @@ class ViewController: UIViewController {
             
             DispatchQueue.main.async {
                 self?.tapApplePayRequest.countryCode =  TapCountryCode.allCases[selectedIndices[0]]
+                self?.tapApplePayRequest.updateValues()
                 self?.featuresTableView.reloadData()
             }
         })
@@ -48,6 +50,7 @@ class ViewController: UIViewController {
             
             DispatchQueue.main.async {
                 self?.tapApplePayRequest.currencyCode =  TapCurrencyCode.allCases[selectedIndices[0]]
+                self?.tapApplePayRequest.updateValues()
                 self?.featuresTableView.reloadData()
             }
         })
@@ -60,6 +63,7 @@ class ViewController: UIViewController {
             
             DispatchQueue.main.async {
                 self?.tapApplePayRequest.paymentNetworks =  selectedValues.map{TapApplePayPaymentNetwork.init(rawValue: $0)!}
+                self?.tapApplePayRequest.updateValues()
                 self?.featuresTableView.reloadData()
             }
         })
@@ -112,18 +116,43 @@ class ViewController: UIViewController {
     }
     
     func checkApplePayStats() {
-        let applePayStatus:TapApplePayStatus = TapApplePay.applePayStatus()
+        let applePayStatus:TapApplePayStatus = TapApplePay.applePayStatus(for: tapApplePayRequest.paymentNetworks, shouldOpenSetupDirectly: false)
         
-        let alertControl = UIAlertController(title: "Apple Pay Status", message: applePayStatus.rawValue(), preferredStyle: .alert)
+        let alertControl = UIAlertController(title: "Apple Pay Status for \(tapApplePayRequest.paymentNetworks.map{$0.rawValue}.joined(separator: " , "))", message: applePayStatus.rawValue(), preferredStyle: .alert)
         if applePayStatus == .NeedSetup {
-            let setupAction = UIAlertAction(title: "Setup?", style: .default) { (_) in
-                TapApplePay.startApplePaySetupProcess()
+            let setupAction = UIAlertAction(title: "Setup?", style: .default) { [weak self] (_) in
+                self?.startApplePaySetup()
             }
             alertControl.addAction(setupAction)
         }
-        let cancelAction = UIAlertAction(title: "Cancel", style: .default,handler: nil)
+        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel,handler: nil)
         alertControl.addAction(cancelAction)
         present(alertControl, animated: true, completion: nil)
+    }
+    
+    func startApplePaySetup() {
+        TapApplePay.startApplePaySetupProcess()
+    }
+    
+    func authorisePayment() {
+        
+        /*if let paymentController = PKPaymentAuthorizationViewController.init(paymentRequest: tapApplePayRequest.appleRequest) {
+            paymentController.delegate = self
+            present(paymentController, animated: true, completion: nil)
+        }*/
+        
+        tapApplePay.authorizePayment(in: self, for: tapApplePayRequest) { [weak self] (token) in
+            let alertControl = UIAlertController(title: "Token", message: token.stringAppleToken, preferredStyle: .alert)
+            let copyAction = UIAlertAction(title: "Copy", style: .default) { (_) in
+                UIPasteboard.general.string = token.stringAppleToken
+            }
+            alertControl.addAction(copyAction)
+            let cancelAction = UIAlertAction(title: "Cancel", style: .cancel,handler: nil)
+            alertControl.addAction(cancelAction)
+            DispatchQueue.main.async {
+                self?.present(alertControl, animated: true, completion: nil)
+            }
+            }
     }
 }
 
@@ -175,17 +204,28 @@ extension ViewController:UITableViewDelegate,UITableViewDataSource {
     
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        switch indexPath.row {
-        case 0:
-            selectCountryCode()
-        case 1:
-            selectCurrencyCode()
-        case 2:
-            selectPaymentNetworks()
-        default:
-            return
+        if indexPath.section == 0 {
+            switch indexPath.row {
+            case 0:
+                selectCountryCode()
+            case 1:
+                selectCurrencyCode()
+            case 2:
+                selectPaymentNetworks()
+            default:
+                return
+            }
+        } else if indexPath.section == 1 {
+            switch indexPath.row {
+            case 0:
+                checkApplePayStats()
+            case 1:
+                startApplePaySetup()
+            case 2:
+                authorisePayment()
+            default:
+                return
+            }
         }
     }
-    
 }
-

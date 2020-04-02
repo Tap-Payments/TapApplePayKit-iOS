@@ -38,7 +38,7 @@ import  class PassKit.PKPaymentButton
     /// Apple pay button height
     internal lazy var buttonHeight:CGFloat = 40
     /// Button type, which will define the title printed on Apple Pay button. If not provided, then Plain button will be shown.
-    var buttonType:TapApplePayButtonType = .AppleLogoOnly {
+    public var buttonType:TapApplePayButtonType = .AppleLogoOnly {
         didSet{
             configureApplePayButton()
         }
@@ -47,10 +47,10 @@ import  class PassKit.PKPaymentButton
     internal var applePayButton:PKPaymentButton?
     
     /// The delegate to get action notifications from the Tap apple pay button
-    var delegate:TapApplePayButtonDelegate?
+    public var delegate:TapApplePayButtonDelegate?
     
     /// The delegate to get action notifications from the Tap apple pay button
-    var dataSource:TapApplePayButtonDataSource?
+    public var dataSource:TapApplePayButtonDataSource?
     
     @objc public override init(frame: CGRect) {
         super.init(frame: frame)
@@ -104,8 +104,8 @@ import  class PassKit.PKPaymentButton
         if let nonNullDataSource = dataSource {
             
             // Initiate the authorization and wait for the feedback from Apple
-            TapApplePay().authorizePayment(in: self.findViewController()!, for: nonNullDataSource.tapApplePayRequest , tokenized: { (token) in
-                if let nonNullDelegate = delegate {
+            TapApplePay().authorizePayment(in: self.findViewController()!, for: nonNullDataSource.tapApplePayRequest , tokenized: { [weak self] (token) in
+                if let nonNullDelegate = self?.delegate {
                     // If there is alistener, let him know that the authorization is done with the provided tokem
                     nonNullDelegate.tapApplePayFinished(with: token)
                 }
