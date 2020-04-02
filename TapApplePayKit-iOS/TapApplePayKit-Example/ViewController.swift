@@ -28,10 +28,22 @@ class ViewController: UIViewController {
     }
     
     
+    func selectCountryCode() {
+        
+        showPicker(with: "Select country", placeHolder: "Search country", dataSource: TapCountryCode.allCases.map{$0.rawValue},preselect: [tapApplePayRequest.countryCode.rawValue],onSelected:{
+            [weak self] (selectedValues,selectedIndices) in
+            
+            DispatchQueue.main.async {
+                self?.tapApplePayRequest.countryCode =  TapCountryCode.allCases[selectedIndices[0]]
+                self?.featuresTableView.reloadData()
+            }
+        })
+    }
+    
+    
     func selectCurrencyCode() {
         
-        
-        showPicker(with: "Select currency", placeHolder: "Search currency", dataSource: TapCurrencyCode.allCases.map{$0.rawValue},onSelected:{
+        showPicker(with: "Select currency", placeHolder: "Search currency", dataSource: TapCurrencyCode.allCases.map{$0.rawValue},preselect: [tapApplePayRequest.currencyCode.rawValue],onSelected:{
             [weak self] (selectedValues,selectedIndices) in
             
             DispatchQueue.main.async {
@@ -41,8 +53,20 @@ class ViewController: UIViewController {
         })
     }
     
+    func selectPaymentNetworks() {
+        
+        showPicker(with: "Select Network(s)", placeHolder: "Search networks", dataSource: TapApplePayPaymentNetwork.allCases.map{$0.rawValue},allowMultipleSelection: true,preselect: tapApplePayRequest.paymentNetworks.map{ $0.rawValue },onSelected:{
+            [weak self] (selectedValues,selectedIndices) in
+            
+            DispatchQueue.main.async {
+                self?.tapApplePayRequest.paymentNetworks =  selectedValues.map{TapApplePayPaymentNetwork.init(rawValue: $0)!}
+                self?.featuresTableView.reloadData()
+            }
+        })
+    }
     
-    func showPicker(with title:String, placeHolder:String, dataSource:[String],allowMultipleSelection:Bool = false,onSelected:(([String],[Int])->())? = nil) {
+    
+    func showPicker(with title:String, placeHolder:String, dataSource:[String],allowMultipleSelection:Bool = false,preselect:[String] = [],onSelected:(([String],[Int])->())? = nil) {
         let regularFont = UIFont.systemFont(ofSize: 16)
         let boldFont = UIFont.boldSystemFont(ofSize: 16)
         let blueColor = UIColor.black
@@ -82,9 +106,8 @@ class ViewController: UIViewController {
                                         print("Cancelled")
         }
         )
-        
-        picker.allowMultipleSelection = false
-        
+        picker.preSelectedValues = preselect
+        picker.allowMultipleSelection = allowMultipleSelection
         picker.show(withAnimation: .Fade)
     }
     
@@ -153,8 +176,12 @@ extension ViewController:UITableViewDelegate,UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         switch indexPath.row {
+        case 0:
+            selectCountryCode()
         case 1:
             selectCurrencyCode()
+        case 2:
+            selectPaymentNetworks()
         default:
             return
         }

@@ -10,7 +10,21 @@ import Foundation
 import struct PassKit.PKPaymentNetwork
 
 /// Enum to define  a payment network to be provided into Apple Pay request
-@objc public enum TapApplePayPaymentNetwork: Int, RawRepresentable {
+@objc public enum TapApplePayPaymentNetwork: Int, RawRepresentable, CaseIterable {
+   
+    public typealias AllCases = [TapApplePayPaymentNetwork]
+    
+    public static var allCases: AllCases {
+      get {
+        var allCasesArray:[TapApplePayPaymentNetwork] = [.Amex,.CartesBancaires,.Discover,.Eftpos,.Electron,.idCredit,.Interac,.JCB,.Maestro,.MasterCard,.PrivateLabel,.QuicPay,.Suica,.Visa,.VPay]
+        if #available(iOS 12.1.1, *) {
+            allCasesArray.append(.Mada)
+            allCasesArray.append(.Elo)
+        }
+        return allCasesArray
+      }
+    }
+    
     
     case Amex
     case CartesBancaires
@@ -70,7 +84,7 @@ import struct PassKit.PKPaymentNetwork
                 self = .VPay
             default:
                 if #available(iOS 12.1.1, *) {
-                        switch rawValue {
+                    switch rawValue.lowercased() {
                             case "elo":
                                 self = .Elo
                             case "mada":
