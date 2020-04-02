@@ -46,6 +46,7 @@
 		E864510B2434AD6E00E3B4C9 /* TapApplePayRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TapApplePayRequest.swift; sourceTree = "<group>"; };
 		E864510E2435A6C500E3B4C9 /* TapApplePayToken.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TapApplePayToken.swift; sourceTree = "<group>"; };
 		E86451102435B8B900E3B4C9 /* TapCurrencyCode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TapCurrencyCode.swift; sourceTree = "<group>"; };
+		E86451122435C0CA00E3B4C9 /* TapApplePayKit-Example.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "TapApplePayKit-Example.entitlements"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -97,6 +98,7 @@
 		E86450E52433BC6300E3B4C9 /* TapApplePayKit-Example */ = {
 			isa = PBXGroup;
 			children = (
+				E86451122435C0CA00E3B4C9 /* TapApplePayKit-Example.entitlements */,
 				E86450E62433BC6300E3B4C9 /* AppDelegate.swift */,
 				E86450E82433BC6300E3B4C9 /* SceneDelegate.swift */,
 				E86450EA2433BC6300E3B4C9 /* ViewController.swift */,
@@ -497,6 +499,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = "TapApplePayKit-Example/TapApplePayKit-Example.entitlements";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = G46S76PUH4;
 				INFOPLIST_FILE = "TapApplePayKit-Example/Info.plist";
@@ -516,6 +519,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = "TapApplePayKit-Example/TapApplePayKit-Example.entitlements";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = G46S76PUH4;
 				INFOPLIST_FILE = "TapApplePayKit-Example/Info.plist";
