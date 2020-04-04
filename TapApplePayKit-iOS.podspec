@@ -16,7 +16,7 @@ Pod::Spec.new do |spec|
   #
 
   spec.name         = "TapApplePayKit-iOS"
-  spec.version      = "1.0.0"
+  spec.version      = "1.0.1"
   spec.summary      = "Provide an interface and an easy wrapper for Apple Pay functionalities."
 
   # This description is used to generate tags and improve search results.
@@ -24,7 +24,7 @@ Pod::Spec.new do |spec|
   #   * Try to keep it short, snappy and to the point.
   #   * Write the description between the DESC delimiters below.
   #   * Finally, don't worry about the indent, CocoaPods strips it!
-  spec.description  = Provide an interface for other Tap components or Tap users to add, use and customise Apple Pay. The KIT should provide the following:
+  spec.description  = "Provide an interface for other Tap components or Tap users to add, use and customise Apple Pay. The KIT should provide the following:
 Check if the current device/user is eligible for Apple Pay.
 Setup Apple Pay for customers eligible but not yet created Apple Pay cards.
 Provide customised Apple Pay button based on given context.
@@ -33,7 +33,7 @@ Initiate Apple payments through code or through our Apple Pay button.
 Customise payment requests
 Info for Apple Pay like payment networks and payment items.
 Generate Apple Pay request only.
-Go all the way until Apple Pay tokenisation data.
+Go all the way until Apple Pay tokenisation data."
 
   spec.homepage     = "https://github.com/Tap-Payments/TapApplePayKit-iOS"
   # spec.screenshots  = "www.example.com/screenshots_1.gif", "www.example.com/screenshots_2.gif"

@@ -47,9 +47,10 @@
                                 </prototypes>
                             </tableView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="W0U-CF-1yV">
-                                <rect key="frame" x="20" y="822" width="374" height="40"/>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <rect key="frame" x="82" y="822" width="250" height="40"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
+                                    <constraint firstAttribute="width" constant="250" id="2ry-ud-TP0"/>
                                     <constraint firstAttribute="height" constant="40" id="g3d-E4-iUS"/>
                                 </constraints>
                             </view>
@@ -58,10 +59,9 @@
                         <constraints>
                             <constraint firstItem="W0U-CF-1yV" firstAttribute="bottom" secondItem="6Tk-OE-BBY" secondAttribute="bottom" id="0WM-2d-oNJ"/>
                             <constraint firstItem="W0U-CF-1yV" firstAttribute="top" secondItem="vMj-7t-bll" secondAttribute="bottom" constant="8" id="HJd-YK-s0g"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="W0U-CF-1yV" secondAttribute="trailing" constant="20" id="Z68-5e-3Ir"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="vMj-7t-bll" secondAttribute="trailing" id="g37-2f-smZ"/>
-                            <constraint firstItem="W0U-CF-1yV" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="hzu-8s-pk5"/>
                             <constraint firstItem="vMj-7t-bll" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="iM1-fi-FqE"/>
+                            <constraint firstItem="W0U-CF-1yV" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="lbR-2O-JqO"/>
                             <constraint firstItem="vMj-7t-bll" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="uYS-Ib-JQc"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
