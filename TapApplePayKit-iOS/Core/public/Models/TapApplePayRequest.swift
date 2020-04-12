@@ -8,6 +8,8 @@
 
 import Foundation
 import PassKit
+import enum CommonDataModelsKit_iOS.TapCountryCode
+import enum CommonDataModelsKit_iOS.TapCurrencyCode
 
 /// The class that represents the request details that identefies the transaction
 @objc public class TapApplePayRequest:NSObject {
@@ -54,7 +56,7 @@ import PassKit
     internal func configureApplePayRequest() {
         appleRequest = .init()
         appleRequest.countryCode = countryCode.rawValue
-        appleRequest.currencyCode = currencyCode.rawValue
+        appleRequest.currencyCode = currencyCode.appleRawValue
         appleRequest.paymentSummaryItems = paymentItems
         appleRequest.paymentSummaryItems.append(.init(label: "", amount: NSDecimalNumber(value: paymentAmount)))
         appleRequest.supportedNetworks = paymentNetworks.map{ $0.applePayNetwork! }

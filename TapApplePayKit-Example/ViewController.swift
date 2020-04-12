@@ -8,6 +8,8 @@
 
 import UIKit
 import TapApplePayKit_iOS
+import enum CommonDataModelsKit_iOS.TapCountryCode
+import enum CommonDataModelsKit_iOS.TapCurrencyCode
 
 class ViewController: UIViewController {
     
@@ -56,7 +58,7 @@ class ViewController: UIViewController {
     
     func selectCurrencyCode() {
         
-        showPicker(with: "Select currency", placeHolder: "Search currency", dataSource: TapCurrencyCode.allCases.map{$0.rawValue},preselect: [myTapApplePayRequest.currencyCode.rawValue],onSelected:{
+        showPicker(with: "Select currency", placeHolder: "Search currency", dataSource: TapCurrencyCode.allCases.map{$0.appleRawValue},preselect: [myTapApplePayRequest.currencyCode.appleRawValue],onSelected:{
             [weak self] (selectedValues,selectedIndices) in
             
             DispatchQueue.main.async {

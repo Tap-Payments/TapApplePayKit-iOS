@@ -1,4 +1,5 @@
 PODS:
+  - CommonDataModelsKit-iOS (1.0.1)
   - Firebase/Analytics (6.21.0):
     - Firebase/Core
   - Firebase/Core (6.21.0):
@@ -67,10 +68,12 @@ PODS:
   - PromisesObjC (1.2.8)
 
 DEPENDENCIES:
+  - CommonDataModelsKit-iOS
   - Firebase/Analytics
 
 SPEC REPOS:
   trunk:
+    - CommonDataModelsKit-iOS
     - Firebase
     - FirebaseAnalytics
     - FirebaseCore
@@ -85,6 +88,7 @@ SPEC REPOS:
     - PromisesObjC
 
 SPEC CHECKSUMS:
+  CommonDataModelsKit-iOS: c42e1f329a05ac2ff5ceff735d60f27439f18b54
   Firebase: f378c80340dd41c0ad0914af740c021eb282a04b
   FirebaseAnalytics: a1a0b3327ceb5cd5b4bacffdb293f6c909aa087d
   FirebaseCore: 9f495d3afacb7b558711e6218ebb14b1c51b5802
@@ -98,6 +102,6 @@ SPEC CHECKSUMS:
   nanopb: 18003b5e52dab79db540fe93fe9579f399bd1ccd
   PromisesObjC: c119f3cd559f50b7ae681fa59dc1acd19173b7e6
 
-PODFILE CHECKSUM: 13bc9de50e4e3f2ec122f82eab7e7c8dfdc24104
+PODFILE CHECKSUM: 32a8b91f1f2f2e5952baab791add795fefe4859a
 
 COCOAPODS: 1.8.4
