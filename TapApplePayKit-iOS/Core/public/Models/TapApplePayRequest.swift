@@ -63,4 +63,25 @@ import enum CommonDataModelsKit_iOS.TapCurrencyCode
         appleRequest.merchantIdentifier = merchantID
         appleRequest.merchantCapabilities = [.capability3DS,.capabilityCredit,.capabilityDebit,.capabilityEMV]
     }
+    
+    internal func asDictionary() -> [String:String] {
+        
+        let dictionary:[String:String] =
+            ["countryCode":self.countryCode.rawValue,
+             "paymentNetworks":self.paymentNetworks.map{$0.rawValue}.joined(separator: " , "),
+             "paymentItems":self.paymentItems.map{$0.label}.joined(separator: " , "),
+             "currencyCode":self.currencyCode.appleRawValue,
+             "merchantID":self.merchantID,
+             "paymentAmount":String(self.paymentAmount),
+            ]
+        
+        if let theJSONData = try? JSONSerialization.data(withJSONObject: dictionary, options: [.prettyPrinted]) {
+            
+            if let _ = String(data: theJSONData, encoding: .utf8) {
+                return dictionary
+            }
+        }
+        
+        return [:]
+    }
 }

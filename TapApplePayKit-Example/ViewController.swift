@@ -236,7 +236,7 @@ extension ViewController:UITableViewDelegate,UITableViewDataSource {
                 cell.detailTextLabel?.text = "Selected \(myTapApplePayRequest.countryCode.rawValue)"
                 break
             case 1:
-                cell.detailTextLabel?.text = "Selected \(myTapApplePayRequest.currencyCode.rawValue)"
+                cell.detailTextLabel?.text = "Selected \(myTapApplePayRequest.currencyCode.appleRawValue)"
                 break
             case 2:
                 cell.detailTextLabel?.text = "Selected \(myTapApplePayRequest.paymentNetworks.map{ $0.rawValue }.joined(separator:" , "))"

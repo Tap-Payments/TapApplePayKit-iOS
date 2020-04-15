@@ -63,6 +63,7 @@ import  class PassKit.PKPaymentButton
     @objc public override init(frame: CGRect) {
         super.init(frame: frame)
         self.backgroundColor = .clear
+        FlurryLogger.logEvent(with: "Apple_Pay_Button_Created")
     }
     
     /**
@@ -93,6 +94,8 @@ import  class PassKit.PKPaymentButton
         self.addSubview(applePayButton!)
         self.bringSubviewToFront(applePayButton!)
         applePayButton?.addTarget(self, action: #selector(applePayClicked), for: .touchUpInside)
+        
+        FlurryLogger.logEvent(with: "Apple_Pay_Button_Configured", timed:false , params:["type":self.buttonType.rawValue,"style":buttonStyle.rawValue])
     }
     
     

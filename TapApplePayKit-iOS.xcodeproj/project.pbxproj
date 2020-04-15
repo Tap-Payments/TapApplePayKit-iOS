@@ -33,6 +33,7 @@
 		E86451292435ED3800E3B4C9 /* TapApplePayKit_iOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E86450D52433BC2E00E3B4C9 /* TapApplePayKit_iOS.framework */; };
 		E864512A2435ED3800E3B4C9 /* TapApplePayKit_iOS.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = E86450D52433BC2E00E3B4C9 /* TapApplePayKit_iOS.framework */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		E864512F2435EFF100E3B4C9 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = E864512E2435EFF100E3B4C9 /* GoogleService-Info.plist */; };
+		E8CF1898244707B400E59772 /* FlurryLogger.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8CF1897244707B400E59772 /* FlurryLogger.swift */; };
 		F89894382CF2786EB3A5912A /* Pods_TapApplePayKit_Example.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BB2861F7261D7F563795F280 /* Pods_TapApplePayKit_Example.framework */; };
 /* End PBXBuildFile section */
 
@@ -94,6 +95,7 @@
 		E864511C2435C5FC00E3B4C9 /* YBTextPicker.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = YBTextPicker.xib; sourceTree = "<group>"; };
 		E86451262435E69300E3B4C9 /* TapApplePayButtonStyleOutline.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TapApplePayButtonStyleOutline.swift; sourceTree = "<group>"; };
 		E864512E2435EFF100E3B4C9 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		E8CF1897244707B400E59772 /* FlurryLogger.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FlurryLogger.swift; sourceTree = "<group>"; };
 		EA4F8A30CBF862BF46BEA9A1 /* Pods-TapApplePayKit-iOS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TapApplePayKit-iOS.release.xcconfig"; path = "Target Support Files/Pods-TapApplePayKit-iOS/Pods-TapApplePayKit-iOS.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -198,6 +200,7 @@
 		E86450FA2434517F00E3B4C9 /* private */ = {
 			isa = PBXGroup;
 			children = (
+				E8CF1897244707B400E59772 /* FlurryLogger.swift */,
 			);
 			path = private;
 			sourceTree = "<group>";
@@ -458,6 +461,7 @@
 			files = (
 				E86451022434552E00E3B4C9 /* TapApplePayPaymentNetwork.swift in Sources */,
 				E864510C2434AD6E00E3B4C9 /* TapApplePayRequest.swift in Sources */,
+				E8CF1898244707B400E59772 /* FlurryLogger.swift in Sources */,
 				E86451052434726A00E3B4C9 /* TapApplePayButtonType.swift in Sources */,
 				E864510F2435A6C500E3B4C9 /* TapApplePayToken.swift in Sources */,
 				E86450FD2434520500E3B4C9 /* TapApplePayStatus.swift in Sources */,
