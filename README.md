@@ -79,3 +79,102 @@ $ pod update
     
 
   Making it one of the most inclusive pods in the market, yet one of the easiest to integrate with.
+
+## Models
+
+This section will descripe the models used within the kit. This is an important introduction to understand how to utilise and use the kit.
+
+
+
+### TapApplePayPaymentNetwork
+
+This an expressive enum to wrap PKPaymentNetwork. Following are the supported cases stating if any of them require a minimum iOS version
+
+*Swift*:
+
+```swift
+case Amex
+case CartesBancaires
+case Discover
+case Eftpos
+case Electron
+@available(iOS 12.1.1, *)
+case Elo
+case idCredit
+case Interac
+case JCB
+@available(iOS 12.1.1, *)
+case Mada
+case Maestro
+case MasterCard
+case PrivateLabel
+case QuicPay
+case Suica
+case Visa
+case VPay
+
+```
+
+
+
+### TapApplePayStatus
+
+This enum is a wrapper to indicate the current device/user status to deal with Apple Pay.
+
+*Swift*:
+
+```swift
+ /// This means the current device/user has Apple pay activated and a card belongs to the given payment networks
+    case Eligible
+    /// This means the current device/user has Apple pay activated but has no card belongs to the given payment networks
+    case NeedSetup
+    /// This means the current device/user cannot use Apple pay from Apple
+    case NotEligible
+```
+
+
+
+### TapApplePayButtonType
+
+This enum is an expresive wrapper of PKPaymentButtonType to define the type/context of the TapApplePayButton, this will effect the title on the button
+
+*Swift*:
+
+```swift
+ /// Title : Pay
+    case AppleLogoOnly
+ /// Title : Buy with Pay
+    case BuyWithApplePay
+ /// Title : Setup Pay
+    case SetupApplePay
+ /// Title : Pay with Pay
+    case PayWithApplePay
+ /// Title : Donate with Pay
+    case DonateWithApplePay
+ /// Title : Checkout with Pay
+    case CheckoutWithApplePay
+ /// Title : Book with Pay
+    case BookWithApplePay
+ /// Title : Subscribe with Pay
+    case SubscribeWithApplePay
+```
+
+
+
+### TapApplePayButtonType
+
+This enum is an expresive wrapper of PKPaymentButtonStyle to define the style of the TapApplePayButton
+
+*Swift*:
+
+```swift
+ /// Full black with white title
+    case Black
+/// Full white with black title
+    case White
+/// Full white with black border and black title
+    case WhiteOutline
+```
+
+
+
