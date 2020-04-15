@@ -291,3 +291,75 @@ To start the payment process with one line call as follows:
 
 
 
+## Examples
+
+### Starting the KIT from within your UI
+
+*Swift*:
+
+```swift
+import TapApplePayKit_iOS
+import enum CommonDataModelsKit_iOS.TapCountryCode
+import enum CommonDataModelsKit_iOS.TapCurrencyCode
+
+// Prepare the needed parameters, to adjust them once you need to start the process
+let myTapApplePayRequest:TapApplePayRequest = .init()
+let tapApplePay:TapApplePay = .init()
+
+// Fill in the required data for your transaction to the TapApplePayRequest object
+myTapApplePayRequest.build(with: .US, paymentNetworks: [.Amex,.Visa,.MasterCard], paymentItems: [PKPaymentSummaryItem(label: "My Best Seller", amount: 10)], paymentAmount: 10, currencyCode: .USD, merchantID:"merchant.tap.gosell")
+// PS : you can use the default parameters and just pass the amount and merchant id as follows:
+myTapApplePayRequest.build(paymentAmount: 10, merchantID: "merchant.tap.gosell")
+
+
+// Then you can start the payment authorization process with one call whenever you. want as follows
+tapApplePay.authorizePayment(in: self, for: myTapApplePayRequest) { [weak self] (token) in
+	print("I can do whatever i want with the result token")
+}
+```
+
+
+
+### Utilizing TapApplePayButton
+
+*Swift*:
+
+```swift
+import TapApplePayKit_iOS
+import enum CommonDataModelsKit_iOS.TapCountryCode
+import enum CommonDataModelsKit_iOS.TapCurrencyCode
+
+// Prepare the needed parameters, to adjust them once you need to start the process
+let myTapApplePayRequest:TapApplePayRequest = .init()
+let tapApplePay:TapApplePay = .init()
+// Create the TapApplePayButton by providing the bounds if the uiview holder inside your layoutu
+let tapApplePayButton = TapApplePayButton.init(frame: tapApplePayButtonHolder.bounds)
+
+// Then we need to setup the button to provide the needed UI customisation, you can use the default or provide yours.
+
+tapApplePayButton.setup(tapApplePayButtonClicked: { (clickedTapApplePayButton:TapApplePayButton) in
+            print("A Tap apple pay button was clicked !")
+        }, buttonType: .PayWithApplePay, buttonStyle: .Black)
+// PS : You can use the default values and just call:
+tapApplePayButton.setup()
+// Add the Button to your UI
+tapApplePayButtonHolder.addSubview(tapApplePayButton)
+
+// Provide the data source and the delegate protocols
+tapApplePayButton.dataSource = self
+tapApplePayButton.delegate   = self
+
+
+// Implement the delegates and the data sources needed methods
+extension ViewController:TapApplePayButtonDataSource,TapApplePayButtonDelegate {
+  // You have to return the TapApplePayRequest which we defined up, to start the apple pay process
+    var tapApplePayRequest: TapApplePayRequest {
+        return myTapApplePayRequest
+    }
+    
+    func tapApplePayFinished(with tapAppleToken: TapApplePayToken) {
+        print("I can do whatever i want with the result token")
+    }
+}
+```
+
