@@ -53,3 +53,29 @@ Then, run the following command:
 $ pod update
 ```
 
+
+
+## Features
+
+------
+
+`TapApplePayKit` provides extensive ways for utilising Pay in your application with ease:
+
+- Using Tap Apple Pay Button:
+
+  - On the shelf customisble Apple pay button.
+  - Handles Apple payment authorization and processing.
+  - Theme and title are customisable.
+  - <img src="https://i.ibb.co/2t4x2YV/Simulator-Screen-Shot-i-Phone-11-2020-04-15-at-09-50-17.png" alt="Simulator-Screen-Shot-i-Phone-11-2020-04-15-at-09-50-17" style="zoom:50%;" />
+
+- Using your UI:
+
+  - You can start `TapApplePayKit`  from your own UI at the point you see convient.
+
+  - Will handle Apple pay authorization.
+
+  - Will delegate back the Apple Pay processing result.
+
+    
+
+  Making it one of the most inclusive pods in the market, yet one of the easiest to integrate with.
