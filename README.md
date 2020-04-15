@@ -6,6 +6,7 @@ A SDK that provides an interface to show, process and authorize Pay in your a
 [![CocoaPods Compatible](https://img.shields.io/cocoapods/v/TapApplePayKit-iOS.svg?style=flat)](https://img.shields.io/Tap-Payments/v/TapApplePayKit-iOS)
 
 
+![Tap Apple Pay Kit Demo](demo.gif)
 
 ## Requirements
 
