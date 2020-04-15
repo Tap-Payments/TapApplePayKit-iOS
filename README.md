@@ -178,3 +178,42 @@ This enum is an expresive wrapper of PKPaymentButtonStyle to define the style of
 
 
 
+### TapApplePayToken
+
+A class to represent TapApplePayToken model. This wraps the PKPaymentToken and will be used in the DataSource for `TapApplePayKit` . 
+
+Also, it converts the raw  PKPaymentToken data to string and json and are publically accessible.
+
+*Swift*:
+
+```swift
+ /**
+     Create TapApplePayToken object with an apple payment token
+     - Parameter rawAppleToken: This is the raw apple token you want to wrap. All other representations will be converted automatically
+     */
+    public init(with rawAppleToken:PKPaymentToken)
+```
+
+
+
+### TapApplePayRequest
+
+The class that represents the request details that identefies the transaction and to be filled by the datasource of `TapApplePayKit` .  The app will have to pass mandatory information to fulfil Pay requirements.
+
+
+
+*Swift*:
+
+```swift
+/**
+     Creates a Tap Apple Pay request that can be used afterards to make an apple pay request
+     - Parameter countryCode: The country code where the user transacts default .US
+     - Parameter currencyCode: The currency code the transaction has default .USD
+     - Parameter paymentNetworks:  The payment networks you  want to limit the payment to default [.Amex,.Visa,.Mada,.MasterCard]
+     - Parameter var paymentItems: What are the items you want to show in the apple pay sheet default  []
+     - Parameter paymentAmount: The total amount you want to collect
+     - Parameter merchantID: The apple pay merchant identefier default ""
+     **/
+    public func build(with countryCode:TapCountryCode = .US, paymentNetworks:[TapApplePayPaymentNetwork] = [.Amex,.Visa,.MasterCard], paymentItems:[PKPaymentSummaryItem] = [], paymentAmount:Double,currencyCode:TapCurrencyCode = .USD,merchantID:String)
+```
+
