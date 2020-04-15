@@ -217,3 +217,77 @@ The class that represents the request details that identefies the transaction an
     public func build(with countryCode:TapCountryCode = .US, paymentNetworks:[TapApplePayPaymentNetwork] = [.Amex,.Visa,.MasterCard], paymentItems:[PKPaymentSummaryItem] = [], paymentAmount:Double,currencyCode:TapCurrencyCode = .USD,merchantID:String)
 ```
 
+
+
+## Controllers
+
+This section descripes the actual controllers that your app will be dealing with. The controller is different based on the integration mode the app utilises. Whether using our TapApplePayButton or starting the kit from your own UI.
+
+
+
+### TapApplePayButton
+
+`TapApplePayKit` provides a from the shelf UIView that will show Apple Pay button to the user. The button will handle himself and will start and process Apple payment when clicked.
+
+The button provides ways to customise its look and a datasource protocol to fill in the required data to start Apple pay process. Also it provides a delegate protocol to pass back to your app the parsed apple payment token when the user authorizes the payment.
+
+*Datasource, Swift*:
+
+```swift
+/// Data source to provide needed data for the apple pay button to start the apple authorization process
+@objc public protocol TapApplePayButtonDataSource {
+    /// This s the Tap wrapper of Apple pay request and it is a must to be correctly filled before firing Apple pay request
+    var tapApplePayRequest:TapApplePayRequest { get }
+}
+```
+
+*Delegate, Swift*:
+
+```swift
+/// Delegate of methods Tap Apple Pay will use to pass back the results of the authorization process
+@objc public protocol TapApplePayButtonDelegate {
+    /**
+     This method will be called once the authprization happened
+     - Parameter appleToken: The correctly and authorized tokenized payment data from Apple Pay kit
+     */
+    func tapApplePayFinished(with tapAppleToken:TapApplePayToken)->()
+}
+```
+
+After setting its frame as any normal UIView, you can setup it to provide a customised look as needed by your app as follows:
+
+*Swift*:
+
+```swift
+/**
+     Method to configure the tap apple pay button
+     - Parameter tapApplePayButtonClicked: Inform when the apple pay button is clicked so you can do any logic if you want
+     - Parameter buttonType: The type/title to show for the Apple pay button
+		 - Parameter buttonStyle: The UI style you want to apply to the button
+     */
+    public func setup(tapApplePayButtonClicked:((TapApplePayButton)->())? = nil,buttonType:TapApplePayButtonType = .AppleLogoOnly, buttonStyle:TapApplePayButtonStyleOutline = .Black)
+```
+
+### TapApplePay
+
+`TapApplePayKit` provides an interface to start the Apple pay authorisation process based on an event within your own UI.
+
+Use this whenever you want to use your own UI and want to start apple pay process at a certain point of your app's flow. As easy as possible without the need for any datasource or delegates implementation using block based development.
+
+To start the payment process with one line call as follows:
+
+*Swift*:
+
+```swift
+/**
+     Public interface to be used to start Apple pay athprization process without the need to include out Tap APple Pay button
+     - Parameter presenter: The UIViewcontroller you want to show the native Apple Pay sheet in
+     - Parameter tapApplePayRequest: The Tap apple request wrapper that has the valid data of your transaction
+     - Parameter tokenized: The block to be called once the user successfully authorize the payment
+     */
+    public func authorizePayment(in presenter:UIViewController, for tapApplePayRequest:TapApplePayRequest, tokenized:@escaping ((TapApplePayToken)->()))
+
+```
+
+
+
