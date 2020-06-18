@@ -18,7 +18,7 @@ import Foundation
     case NotEligible
     
     
-    public func rawValue() -> String {
+    public func ApplePayStatusRawValue() -> String {
         switch self {
         case .Eligible:
             return "Eligible, This means the current device/user has Apple pay activated and a card belongs to the given payment networks"

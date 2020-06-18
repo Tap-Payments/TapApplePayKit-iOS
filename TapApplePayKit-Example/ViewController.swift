@@ -156,7 +156,7 @@ class ViewController: UIViewController {
     func checkApplePayStats() {
         let applePayStatus:TapApplePayStatus = TapApplePay.applePayStatus(for: myTapApplePayRequest.paymentNetworks, shouldOpenSetupDirectly: false)
         
-        let alertControl = UIAlertController(title: "Apple Pay Status for \(myTapApplePayRequest.paymentNetworks.map{$0.rawValue}.joined(separator: " , "))", message: applePayStatus.rawValue(), preferredStyle: .alert)
+        let alertControl = UIAlertController(title: "Apple Pay Status for \(myTapApplePayRequest.paymentNetworks.map{$0.rawValue}.joined(separator: " , "))", message: applePayStatus.ApplePayStatusRawValue(), preferredStyle: .alert)
         if applePayStatus == .NeedSetup {
             let setupAction = UIAlertAction(title: "Setup?", style: .default) { [weak self] (_) in
                 self?.startApplePaySetup()
