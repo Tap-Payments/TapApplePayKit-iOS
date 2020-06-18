@@ -31,7 +31,7 @@
 		E86451232435C5FC00E3B4C9 /* YBTextPicker.xib in Resources */ = {isa = PBXBuildFile; fileRef = E864511C2435C5FC00E3B4C9 /* YBTextPicker.xib */; };
 		E86451272435E69300E3B4C9 /* TapApplePayButtonStyleOutline.swift in Sources */ = {isa = PBXBuildFile; fileRef = E86451262435E69300E3B4C9 /* TapApplePayButtonStyleOutline.swift */; };
 		E86451292435ED3800E3B4C9 /* TapApplePayKit_iOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E86450D52433BC2E00E3B4C9 /* TapApplePayKit_iOS.framework */; };
-		E864512A2435ED3800E3B4C9 /* TapApplePayKit_iOS.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = E86450D52433BC2E00E3B4C9 /* TapApplePayKit_iOS.framework */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		E864512A2435ED3800E3B4C9 /* TapApplePayKit_iOS.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = E86450D52433BC2E00E3B4C9 /* TapApplePayKit_iOS.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		E864512F2435EFF100E3B4C9 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = E864512E2435EFF100E3B4C9 /* GoogleService-Info.plist */; };
 		E8CF1898244707B400E59772 /* FlurryLogger.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8CF1897244707B400E59772 /* FlurryLogger.swift */; };
 		F89894382CF2786EB3A5912A /* Pods_TapApplePayKit_Example.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BB2861F7261D7F563795F280 /* Pods_TapApplePayKit_Example.framework */; };
@@ -334,7 +334,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 1120;
-				LastUpgradeCheck = 1120;
+				LastUpgradeCheck = 1150;
 				ORGANIZATIONNAME = "Tap Payments";
 				TargetAttributes = {
 					E86450D42433BC2E00E3B4C9 = {
