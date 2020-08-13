@@ -13,33 +13,33 @@ For support, please feel free to contact me at https://www.linkedin.com/in/syeda
 
 import Foundation
 /// Struct to hold info about an item in a transaction
-public struct TransactionItemModel : Codable {
+@objc public class TransactionItemModel : NSObject, Codable {
     /// The displayed title of the item
-	public let title : String?
+	@objc public let title : String?
     /// The displayed description of the item
-	public let description : String?
+	@objc public let itemDescription : String?
     /// The original price of the item
-	public let price : Double?
+	@objc public var price : Double = 0
     /// The discount applied
-	public let discount : Double?
+	@objc public var discount : Double = 0
     /// How many insances of this item are there
-	public let quantity : Double?
+	@objc public var quantity : Double = 0
 
 	enum CodingKeys: String, CodingKey {
 
 		case title = "title"
-		case description = "description"
+		case itemDescription = "description"
 		case price = "price"
 		case discount = "discount"
 		case quantity = "quantity"
 	}
 
-    public init(from decoder: Decoder) throws {
+    required public init(from decoder: Decoder) throws {
 		let values = try decoder.container(keyedBy: CodingKeys.self)
 		title = try values.decodeIfPresent(String.self, forKey: .title)
-		description = try values.decodeIfPresent(String.self, forKey: .description)
-		price = try values.decodeIfPresent(Double.self, forKey: .price)
-		discount = try values.decodeIfPresent(Double.self, forKey: .discount)
-		quantity = try values.decodeIfPresent(Double.self, forKey: .quantity)
+		itemDescription = try values.decodeIfPresent(String.self, forKey: .itemDescription)
+        price = try values.decodeIfPresent(Double.self, forKey: .price) ?? 0
+		discount = try values.decodeIfPresent(Double.self, forKey: .discount) ?? 0
+		quantity = try values.decodeIfPresent(Double.self, forKey: .quantity) ?? 0
 	}
 }

@@ -8,13 +8,13 @@
 
 import Foundation
 /// Presents the interface for common constants
-public class TapCommonConstants {
+@objc public class TapCommonConstants:NSObject {
     
     /**
      Compute the common localisation file path shared as the default file to be used inside all KITS
      - Returns: The default URL path of the json localisation file
      */
-    public static func pathForDefaultLocalisation() -> URL {
+    @objc public static func pathForDefaultLocalisation() -> URL {
         let bundle:Bundle = Bundle(for: TapCommonConstants.self)
         let defaultLocalisationFilePath:URL = URL(fileURLWithPath: bundle.path(forResource: "DefaultTapLocalisation", ofType: "json")!)
         return defaultLocalisationFilePath

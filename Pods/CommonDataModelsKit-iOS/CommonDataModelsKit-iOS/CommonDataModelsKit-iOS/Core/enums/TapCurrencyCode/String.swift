@@ -8,7 +8,7 @@
 
 import Foundation
 
-public protocol CurrencyString {
+protocol CurrencyString {
     var representsZero: Bool { get }
     var hasNumbers: Bool { get }
     var lastNumberOffsetFromEnd: Int? { get }

@@ -192,6 +192,7 @@ class ViewController: UIViewController {
                 self?.present(vc, animated: true)
             }
         }
+        
         alertControl.addAction(copyAction)
         let cancelAction = UIAlertAction(title: "Cancel", style: .cancel,handler: nil)
         alertControl.addAction(cancelAction)

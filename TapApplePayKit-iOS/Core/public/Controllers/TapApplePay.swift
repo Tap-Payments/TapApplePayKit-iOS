@@ -27,7 +27,7 @@ import class UIKit.UIViewController
      */
     public static func applePayStatus(for tapPaymentNetworks:[TapApplePayPaymentNetwork] = [], shouldOpenSetupDirectly:Bool = false) -> TapApplePayStatus {
         
-        FlurryLogger.logEvent(with: "Apple_Pay_Status_Called", timed:false , params: ["forPaymentNetworks":tapPaymentNetworks.map{$0.rawValue}.joined(separator: " , ")])
+        //FlurryLogger.logEvent(with: "Apple_Pay_Status_Called", timed:false , params: ["forPaymentNetworks":tapPaymentNetworks.map{$0.rawValue}.joined(separator: " , ")])
         
         if   PKPaymentAuthorizationController.canMakePayments() {
             // Pay is available as per the device capability!
@@ -62,7 +62,7 @@ import class UIKit.UIViewController
     public func authorizePayment(in presenter:UIViewController, for tapApplePayRequest:TapApplePayRequest, tokenized:@escaping ((TapApplePayToken)->())) {
         
         
-        FlurryLogger.logEvent(with: "Apple_Pay_Authorize_Payment_Called", timed:false , params:tapApplePayRequest.asDictionary())
+        //FlurryLogger.logEvent(with: "Apple_Pay_Authorize_Payment_Called", timed:false , params:tapApplePayRequest.asDictionary())
         
         self.tokenizedBlock = tokenized
         tapApplePayRequest.updateValues()
@@ -70,7 +70,7 @@ import class UIKit.UIViewController
         let paymentController = PKPaymentAuthorizationController.init(paymentRequest: tapApplePayRequest.appleRequest)
         paymentController.delegate = self//presenter as? PKPaymentAuthorizationControllerDelegate
         paymentController.present { (done) in
-            FlurryLogger.logEvent(with: "Apple_Pay_Sheet_Presented")
+            //FlurryLogger.logEvent(with: "Apple_Pay_Sheet_Presented")
             print("PRESENTED : \(done)")
         }
         
@@ -79,7 +79,7 @@ import class UIKit.UIViewController
     
     /// This will trigger the provided Apple pay official method for starting the wallet app
     public static func startApplePaySetupProcess() {
-        FlurryLogger.logEvent(with: "Apple_Pay_Setup_Called")
+        //FlurryLogger.logEvent(with: "Apple_Pay_Setup_Called")
         PKPassLibrary().openPaymentSetup()
     }
     
@@ -89,7 +89,7 @@ extension TapApplePay:PKPaymentAuthorizationControllerDelegate {
    
     public func paymentAuthorizationControllerDidFinish(_ controller: PKPaymentAuthorizationController) {
         controller.dismiss {
-            FlurryLogger.logEvent(with: "Apple_Pay_Sheet_Dismissed")
+            //FlurryLogger.logEvent(with: "Apple_Pay_Sheet_Dismissed")
             print("DISMISSED")
         }
     }
@@ -99,13 +99,13 @@ extension TapApplePay:PKPaymentAuthorizationControllerDelegate {
         
         let tapAppleToken = TapApplePayToken.init(with:payment.token)
         
-        if let jsonToken:[String:String] = tapAppleToken.jsonAppleToken as? [String:String] {
-            FlurryLogger.logEvent(with: "Apple_Pay_Sheet_Authorized", timed:false , params:jsonToken)
+       /* if let jsonToken:[String:String] = tapAppleToken.jsonAppleToken as? [String:String] {
+            //FlurryLogger.logEvent(with: "Apple_Pay_Sheet_Authorized", timed:false , params:jsonToken)
         }else if let stringToken:String = tapAppleToken.stringAppleToken {
-            FlurryLogger.logEvent(with: "Apple_Pay_Sheet_Authorized", timed:false , params:["AppleStringToken":stringToken])
+            //FlurryLogger.logEvent(with: "Apple_Pay_Sheet_Authorized", timed:false , params:["AppleStringToken":stringToken])
         }else {
-            FlurryLogger.logEvent(with: "Apple_Pay_Sheet_Authorized", timed:false , params:["AppleStringToken":""])
-        }
+            //FlurryLogger.logEvent(with: "Apple_Pay_Sheet_Authorized", timed:false , params:["AppleStringToken":""])
+        }*/
         
         completion(PKPaymentAuthorizationResult(status: .success,errors: nil))
         

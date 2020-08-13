@@ -13,18 +13,18 @@ For support, please feel free to contact me at https://www.linkedin.com/in/syeda
 
 import Foundation
 /// A struct that creates a Merchant Model
-public struct MerchantModel : Codable {
+@objc public class MerchantModel : NSObject, Codable {
     /// The merchant business name
-	public let name : String?
+	@objc public let name : String?
     /// The merchant business logo url
-	public let logo : String?
+	@objc public let logo : String?
 
 	enum CodingKeys: String, CodingKey {
 		case name = "name"
 		case logo = "logo"
 	}
 
-	public init(from decoder: Decoder) throws {
+    required public init(from decoder: Decoder) throws {
 		let values = try decoder.container(keyedBy: CodingKeys.self)
 		name = try values.decodeIfPresent(String.self, forKey: .name)
 		logo = try values.decodeIfPresent(String.self, forKey: .logo)

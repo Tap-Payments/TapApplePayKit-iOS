@@ -7,7 +7,6 @@
 //
 
 import Foundation
-import Foundation
 /// The methods to be implemented by the Currency Formatter
 public protocol TapAmountedCurrencyFormatterProtocol {
     var numberFormatter: NumberFormatter! { get }
@@ -27,7 +26,7 @@ public protocol TapAmountedCurrencyFormatterProtocol {
 }
 /// Tap Currency formatter responsible for formatting a given number to its correct market representation of the selected currency with many options
 
-public class TapAmountedCurrencyFormatter: TapAmountedCurrencyFormatterProtocol {
+@objcMembers public class TapAmountedCurrencyFormatter:NSObject, TapAmountedCurrencyFormatterProtocol {
     
     public var localizeCurrencySymbol: Bool = false
     
@@ -241,6 +240,7 @@ public class TapAmountedCurrencyFormatter: TapAmountedCurrencyFormatterProtocol 
     ///
     /// - Parameter handler: configuration handler callback.
     public init(_ handler: InitHandler? = nil) {
+        super.init()
         numberFormatter = NumberFormatter()
         numberFormatter.alwaysShowsDecimalSeparator = false
         numberFormatter.numberStyle = .currency
