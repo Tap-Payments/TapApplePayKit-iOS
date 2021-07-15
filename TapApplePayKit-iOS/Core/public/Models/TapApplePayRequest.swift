@@ -39,7 +39,7 @@ import enum CommonDataModelsKit_iOS.TapCurrencyCode
      - Parameter paymentAmount: The total amount you want to collect
      - Parameter merchantID: The apple pay merchant identefier default ""
      **/
-    public func build(with countryCode:TapCountryCode = .US, paymentNetworks:[TapApplePayPaymentNetwork] = [.Amex,.Visa,.MasterCard], paymentItems:[PKPaymentSummaryItem] = [], paymentAmount:Double,currencyCode:TapCurrencyCode = .USD,merchantID:String) {
+    public func build(with countryCode:TapCountryCode = .US, paymentNetworks:[TapApplePayPaymentNetwork] = [.Amex,.Visa,.MasterCard], paymentItems:[PKPaymentSummaryItem] = [], paymentAmount:Double,currencyCode:TapCurrencyCode = .USD,merchantID:String,merchantCapabilities:PKMerchantCapability = [.capability3DS,.capabilityCredit,.capabilityDebit,.capabilityEMV]) {
         self.countryCode = countryCode
         self.paymentNetworks = paymentNetworks
         self.paymentItems = paymentItems
@@ -61,7 +61,7 @@ import enum CommonDataModelsKit_iOS.TapCurrencyCode
         appleRequest.paymentSummaryItems.append(.init(label: "", amount: NSDecimalNumber(value: paymentAmount)))
         appleRequest.supportedNetworks = paymentNetworks.map{ $0.applePayNetwork! }
         appleRequest.merchantIdentifier = merchantID
-        appleRequest.merchantCapabilities = [.capability3DS,.capabilityCredit,.capabilityDebit,.capabilityEMV]
+        appleRequest.merchantCapabilities = [.capability3DS]
     }
     
     internal func asDictionary() -> [String:String] {
