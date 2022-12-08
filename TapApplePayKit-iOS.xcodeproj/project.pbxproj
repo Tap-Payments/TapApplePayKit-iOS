@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		A8E360929BEE6C127412AAF0 /* Pods_TapApplePayKit_iOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 681061C0D3109E50FA28C777 /* Pods_TapApplePayKit_iOS.framework */; };
+		E84B8BD42941F23B00DFCDD1 /* TapModeEnum.swift in Sources */ = {isa = PBXBuildFile; fileRef = E84B8BD32941F23B00DFCDD1 /* TapModeEnum.swift */; };
 		E86450DA2433BC2E00E3B4C9 /* TapApplePayKit_iOS.h in Headers */ = {isa = PBXBuildFile; fileRef = E86450D82433BC2E00E3B4C9 /* TapApplePayKit_iOS.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		E86450E72433BC6300E3B4C9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E86450E62433BC6300E3B4C9 /* AppDelegate.swift */; };
 		E86450E92433BC6300E3B4C9 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E86450E82433BC6300E3B4C9 /* SceneDelegate.swift */; };
@@ -67,6 +68,7 @@
 		681061C0D3109E50FA28C777 /* Pods_TapApplePayKit_iOS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TapApplePayKit_iOS.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		8AC50E9D939C9156FB7E562C /* Pods-TapApplePayKit-Example.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TapApplePayKit-Example.release.xcconfig"; path = "Target Support Files/Pods-TapApplePayKit-Example/Pods-TapApplePayKit-Example.release.xcconfig"; sourceTree = "<group>"; };
 		BB2861F7261D7F563795F280 /* Pods_TapApplePayKit_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TapApplePayKit_Example.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		E84B8BD32941F23B00DFCDD1 /* TapModeEnum.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TapModeEnum.swift; sourceTree = "<group>"; };
 		E86450D52433BC2E00E3B4C9 /* TapApplePayKit_iOS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = TapApplePayKit_iOS.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E86450D82433BC2E00E3B4C9 /* TapApplePayKit_iOS.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TapApplePayKit_iOS.h; sourceTree = "<group>"; };
 		E86450D92433BC2E00E3B4C9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -212,6 +214,7 @@
 				E86451012434552E00E3B4C9 /* TapApplePayPaymentNetwork.swift */,
 				E86451042434726A00E3B4C9 /* TapApplePayButtonType.swift */,
 				E86451262435E69300E3B4C9 /* TapApplePayButtonStyleOutline.swift */,
+				E84B8BD32941F23B00DFCDD1 /* TapModeEnum.swift */,
 			);
 			path = enums;
 			sourceTree = "<group>";
@@ -334,7 +337,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 1120;
-				LastUpgradeCheck = 1150;
+				LastUpgradeCheck = 1410;
 				ORGANIZATIONNAME = "Tap Payments";
 				TargetAttributes = {
 					E86450D42433BC2E00E3B4C9 = {
@@ -468,6 +471,7 @@
 				E86451002434539A00E3B4C9 /* TapApplePay.swift in Sources */,
 				E86451272435E69300E3B4C9 /* TapApplePayButtonStyleOutline.swift in Sources */,
 				E8645107243499E800E3B4C9 /* TapApplePayButton.swift in Sources */,
+				E84B8BD42941F23B00DFCDD1 /* TapModeEnum.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -540,6 +544,7 @@
 				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
 				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
@@ -603,6 +608,7 @@
 				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
 				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
