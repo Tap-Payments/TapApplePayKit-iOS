@@ -1,5 +1,23 @@
 PODS:
-  - CommonDataModelsKit-iOS (1.0.31)
+  - CommonDataModelsKit-iOS (1.0.86):
+    - SwiftyRSA
+    - TapAdditionsKitV2
+    - TapCardVlidatorKit-iOS
+    - TapKeychain
+  - SwiftyRSA (1.7.0):
+    - SwiftyRSA/ObjC (= 1.7.0)
+  - SwiftyRSA/ObjC (1.7.0)
+  - TapAdditionsKitV2 (0.0.9):
+    - TapSwiftFixesV2
+  - TapCardVlidatorKit-iOS (1.0.19)
+  - TapKeychain (1.0.5)
+  - TapSwiftFixesV2 (1.0.0):
+    - TapSwiftFixesV2/CoreGraphics (= 1.0.0)
+    - TapSwiftFixesV2/Exceptions (= 1.0.0)
+    - TapSwiftFixesV2/Threading (= 1.0.0)
+  - TapSwiftFixesV2/CoreGraphics (1.0.0)
+  - TapSwiftFixesV2/Exceptions (1.0.0)
+  - TapSwiftFixesV2/Threading (1.0.0)
 
 DEPENDENCIES:
   - CommonDataModelsKit-iOS
@@ -7,10 +25,20 @@ DEPENDENCIES:
 SPEC REPOS:
   trunk:
     - CommonDataModelsKit-iOS
+    - SwiftyRSA
+    - TapAdditionsKitV2
+    - TapCardVlidatorKit-iOS
+    - TapKeychain
+    - TapSwiftFixesV2
 
 SPEC CHECKSUMS:
-  CommonDataModelsKit-iOS: 4b1a33cd07686bcd8117f1f1ebe18373bda16af5
+  CommonDataModelsKit-iOS: fbc7741430fbc6010862955755fb00253b78a334
+  SwiftyRSA: 8c6dd1ea7db1b8dc4fb517a202f88bb1354bc2c6
+  TapAdditionsKitV2: 9846381c32b150303cbeff355550d3500a98f77d
+  TapCardVlidatorKit-iOS: ad725812de9e5127bde0ed8903f303a0ea20803e
+  TapKeychain: 143aa70bb2d1b094e0298e944660264034c79849
+  TapSwiftFixesV2: a8623a7273c6790b9754ec7e272e96fce7d3a800
 
 PODFILE CHECKSUM: f85a3ffd56896bf160eb3dab0c6ccdd2da7cbde4
 
-COCOAPODS: 1.9.3
+COCOAPODS: 1.11.2

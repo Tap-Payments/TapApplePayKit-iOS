@@ -1,2 +1,7 @@
 ${PODS_ROOT}/Target Support Files/Pods-TapApplePayKit-Example/Pods-TapApplePayKit-Example-frameworks.sh
 ${BUILT_PRODUCTS_DIR}/CommonDataModelsKit-iOS/CommonDataModelsKit_iOS.framework
+${BUILT_PRODUCTS_DIR}/SwiftyRSA/SwiftyRSA.framework
+${BUILT_PRODUCTS_DIR}/TapAdditionsKitV2/TapAdditionsKitV2.framework
+${BUILT_PRODUCTS_DIR}/TapCardVlidatorKit-iOS/TapCardVlidatorKit_iOS.framework
+${BUILT_PRODUCTS_DIR}/TapKeychain/TapKeychain.framework
+${BUILT_PRODUCTS_DIR}/TapSwiftFixesV2/TapSwiftFixesV2.framework

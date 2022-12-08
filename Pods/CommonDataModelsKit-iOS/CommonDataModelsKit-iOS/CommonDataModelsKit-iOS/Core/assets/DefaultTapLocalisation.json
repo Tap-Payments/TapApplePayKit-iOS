@@ -1,20 +1,49 @@
 {
     "en": {
         "TapCardInputKit": {
-            "cardNumberPlaceHolder": "0000 0000 0000 0000",
-            "cardNamePlaceHolder": "Holder name",
+            "cardNumberPlaceHolder": "Card number",
+            "cardNamePlaceHolder": "Card Holder Name",
             "cardCVVPlaceHolder": "CVV",
             "cardExpiryPlaceHolder": "MM/YY",
-            "cardSaveLabel": "For faster and more secure checkout,\nsave your card",
-            "emailPlaceHolder": "email@email.com"
+            "cardSaveLabel": "Save card for later",
+            "cardSaveForTapLabel": "Save for other stores powered by Tap",
+            "cardSaveForTapInfo":"Checkout everywhere in just one click.\nTap is a better and secure way to pay locally across 100k+ stores. Your details are encrypted and can only be accessed by you. You’ll receive an email to get started and manage your details.",
+            "emailPlaceHolder": "email@email.com",
+            "weSupport":"WE ACCEPT",
+            "cardSectionTitle": "CARD INFORMATION",
+            "savedCardSectionTitle": "SAVED CARD"
         },
         "TapMerchantSection": {
             "paymentFor" : "PAYMENT FOR"
         },
+        "TapLoyaltySection": {
+            "headerView": {
+                "tc": "T&C",
+                "redeem": "Redeem",
+                "balance": "Balance",
+                "lessThanMinimum": "minimum redemption."
+            },
+            "amountView": {
+                "title" : "Amount to redeem"
+            },
+            "footerView": {
+                "points": "Remaining",
+                "amount": "Remaining amount to pay"
+            },
+            "hintView": {
+                "minimumWarning": "Minimum redemption is"
+            }
+        },
         "HorizontalHeaders": {
             "GatewayHeader":{
                 "leftTitle": "SELECT",
-                "rightTitle": "EDIT"
+                "rightTitle": "EDIT",
+                "webViewTitle": "APPROVE PAYMENT"
+            },
+            "SaveCardHeader": {
+                "shippingSectionTitle" : "SHIPPING",
+                "contactDetailsSectionTitle" : "CONTACT DETAILS",
+                "contactCountryPickerHeader" : "PICK YOUR COUNTRY"
             }
         },
         "ItemList": {
@@ -22,12 +51,27 @@
             "hideDesc": "Hide Description",
             "Discount": "Discount"
         },
+        "ExtraFees":
+        {
+            "title": "Confirm Extra Charges",
+            "message": "You will be charged an additional fee of %@ for this type of payment, totalling an amount of %@",
+            "cancel": "Cancel",
+            "confirm": "Confirm"
+        },
+        "DeleteCard":
+        {
+            "title": "Delete Card",
+            "message": "Are you sure you would like to delete card ending with %@?",
+            "cancel": "Cancel",
+            "confirm": "Delete"
+        },
         "Hints":
         {
             "Warning":
             {
                 "missingExpiryCVV": "Expiry date & CVV number are missing.",
-                "missingCVV": "CVV number is missing."
+                "missingCVV": "Enter the %i-digits CVV (usually at the back of the card.)",
+                "missingName": "Card name should be greater than 3 charachters",
             },
             "Error":
             {
@@ -62,7 +106,7 @@
                 "notes": ""
             },
             "mainCards": {
-                "titleEmpty": "For faster and easier checkout,\nuse card scanner or NFC.",
+                "titleEmpty": "For faster and easier checkout,\nuse card scanner.",
                 "titleValid": "For faster and easier checkout,\nsave the card for later.",
                 "subtitle": "",
                 "notes": ""
@@ -84,13 +128,15 @@
             "done": "Done",
             "recent": "Recent",
             "edit": "Edit",
-            "close": "Close",
-            "items": "Items",
-            "item": "Item",
+            "close": "CLOSE",
+            "items": "ITEMS",
+            "item": "ITEM",
             "email": "email",
             "phone": "phone",
             "password": "Password",
-            "change": "change"
+            "change": "change",
+            "cancel": "Cancel",
+            "confirm": "Confirm"
         },
         "GoPay": {
             "HintLabel": "You can access your saved cards from anywhere with goPay."
@@ -100,25 +146,55 @@
             "confirm": "Confirm",
             "resend": "Resend OTP",
             "next": "Next",
-            "signin": "Signin"
+            "signin": "Signin",
+            "cancel":"Cancel"
         }
     },
     "ar": {
         "TapCardInputKit": {
-            "cardNumberPlaceHolder": "0000 0000 0000 0000",
+            "cardNumberPlaceHolder": "رقم البطاقة",
             "cardNamePlaceHolder": "صاحب البطاقة",
             "cardCVVPlaceHolder": "الرمز الأمني",
             "cardExpiryPlaceHolder": "شش/سس",
-            "cardSaveLabel": "لشراء أسرع و أكثر أماناً،\nإحفظ البطاقة",
-            "emailPlaceHolder": "email@email.com"
+            "cardSaveLabel": "لشراء أسرع إحفظ البطاقة",
+            "cardSaveForTapLabel": "إحفظ للإستعمال في كل متاجر Tap",
+            "cardSaveForTapInfo":"يمكنك الدفع في كل مكان بنقرة واحدة فقط\n.يعد النقر طريقة أفضل وآمنة للدفع محليًا عبر أكثر من 100 ألف متجر. يتم تشفير بياناتك ولا يمكن الوصول إليها إلا بواسطتك. ستتلقى بريدًا إلكترونيًا للبدء وإدارة التفاصيل الخاصة بك.",
+            "emailPlaceHolder": "email@email.com",
+            "weSupport":"نحن ندعم",
+            "cardSectionTitle": "بيانات البطاقة",
+            "savedCardSectionTitle": "البطاقة المحفوظة"
         },
         "TapMerchantSection": {
             "paymentFor" : "سأدفع لـ"
         },
+        "TapLoyaltySection": {
+            "headerView": {
+                "tc": "شروط",
+                "redeem": "استخدام",
+                "balance": "الرصيد",
+                "lessThanMinimum": "أقل قيمة"
+            },
+            "amountView": {
+                "title" : "المبلغ المستبدل"
+            },
+            "footerView": {
+                "points": "متبقي",
+                "amount": "متبقي القيمة للدفع"
+            },
+            "hintView": {
+                "minimumWarning": "أقل قيمة للإستبدال"
+            }
+        },
         "HorizontalHeaders": {
             "GatewayHeader":{
                 "leftTitle": "إختر",
-                "rightTitle": "تعديل"
+                "rightTitle": "تعديل",
+                "webViewTitle": "توثيق الدفع"
+            },
+            "SaveCardHeader": {
+                "shippingSectionTitle" : "العنوان",
+                "contactDetailsSectionTitle" : "بيانات الاتصال",
+                "contactCountryPickerHeader" : "إختر بلدك"
             }
         },
         "ItemList": {
@@ -133,12 +209,27 @@
                 "Expired": ""
             }
         },
+        "ExtraFees":
+        {
+            "title": "تأكيد الرسوم الإضافية",
+            "message": "سوف تتم إضافة  %@ لهذا النوع العملية، إجمالي المبلغ المطلوب   %@",
+            "cancel": "إلغاء",
+            "confirm": "تأكيد"
+        },
+        "DeleteCard":
+        {
+            "title": "مسح البطاقة",
+            "message": "هل أنت متأكد من مسح البطاقة %@؟",
+            "cancel": "إلغاء",
+            "confirm": "مسح"
+        },
         "Hints":
         {
             "Warning":
             {
                 "missingExpiryCVV": "تاريخ الإنتهاء و الرمز الأمني مطلوبين",
-                "missingCVV": "الرمز الأمني مطلوب"
+                "missingCVV": "أدخل %i-أرقام الرمز الأمني (عادة بخلف البطاقة.)",
+                "missingName": "يجب إدخال ٣ أحرف على الاقل للإسم",
             },
             "Error":
             {
@@ -204,7 +295,8 @@
             "confirm": "تأكيد",
             "resend": "إعادة إرسال",
             "next": "التالي",
-            "signin": "دخول"
+            "signin": "دخول",
+            "cancel":"إلغاء"
         }
     }
 }
