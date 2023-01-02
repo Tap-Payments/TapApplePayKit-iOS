@@ -192,8 +192,21 @@ class ViewController: UIViewController {
                 self?.present(vc, animated: true)
             }
         }
-        
+        let tapTokenAction = UIAlertAction(title: "Generate Tap Token", style: .default) { [weak self] _ in
+            DispatchQueue.main.async {
+                self?.tapApplePay.createTapToken(for: token, onTokenReady: { tapToken in
+                    let alert:UIAlertController = .init(title: "Tap Token Success", message: tapToken.identifier, preferredStyle: .alert)
+                    alert.addAction(.init(title: "OK", style: .cancel))
+                    self?.present(alert, animated: true)
+                }, onErrorOccured: { (session, result, error) in
+                    let alert:UIAlertController = .init(title: "Tap Token Failed", message: error.debugDescription, preferredStyle: .alert)
+                    alert.addAction(.init(title: "OK", style: .cancel))
+                    self?.present(alert, animated: true)
+                })
+            }
+        }
         alertControl.addAction(copyAction)
+        alertControl.addAction(tapTokenAction)
         let cancelAction = UIAlertAction(title: "Cancel", style: .cancel,handler: nil)
         alertControl.addAction(cancelAction)
         DispatchQueue.main.async { [weak self] in

@@ -71,7 +71,7 @@ import  class PassKit.PKPaymentButton
      - Parameter tapApplePayButtonClicked: Inform when the apple pay button is clicked
      - Parameter buttonType: The type/title to show for the Apple pay button
      */
-    public func setup(tapApplePayButtonClicked:((TapApplePayButton)->())? = nil,buttonType:TapApplePayButtonType = .SetupApplePay, buttonStyle:TapApplePayButtonStyleOutline = .Black) {
+    public func setup(tapApplePayButtonClicked:((TapApplePayButton)->())? = nil,buttonType:TapApplePayButtonType = .PayWithApplePay, buttonStyle:TapApplePayButtonStyleOutline = .Black) {
         
         self.tapApplePayButtonClicked = tapApplePayButtonClicked
         self.buttonStyle = buttonStyle

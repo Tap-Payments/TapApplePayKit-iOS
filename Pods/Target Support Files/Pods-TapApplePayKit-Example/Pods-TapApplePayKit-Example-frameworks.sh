@@ -182,6 +182,8 @@ if [[ "$CONFIGURATION" == "Debug" ]]; then
   install_framework "${BUILT_PRODUCTS_DIR}/TapCardVlidatorKit-iOS/TapCardVlidatorKit_iOS.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/TapKeychain/TapKeychain.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/TapSwiftFixesV2/TapSwiftFixesV2.framework"
+  install_framework "${BUILT_PRODUCTS_DIR}/TapApplicationV2/TapApplicationV2.framework"
+  install_framework "${BUILT_PRODUCTS_DIR}/TapNetworkKit-iOS/TapNetworkKit_iOS.framework"
 fi
 if [[ "$CONFIGURATION" == "Release" ]]; then
   install_framework "${BUILT_PRODUCTS_DIR}/CommonDataModelsKit-iOS/CommonDataModelsKit_iOS.framework"
@@ -190,6 +192,8 @@ if [[ "$CONFIGURATION" == "Release" ]]; then
   install_framework "${BUILT_PRODUCTS_DIR}/TapCardVlidatorKit-iOS/TapCardVlidatorKit_iOS.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/TapKeychain/TapKeychain.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/TapSwiftFixesV2/TapSwiftFixesV2.framework"
+  install_framework "${BUILT_PRODUCTS_DIR}/TapApplicationV2/TapApplicationV2.framework"
+  install_framework "${BUILT_PRODUCTS_DIR}/TapNetworkKit-iOS/TapNetworkKit_iOS.framework"
 fi
 if [ "${COCOAPODS_PARALLEL_CODE_SIGN}" == "true" ]; then
   wait
