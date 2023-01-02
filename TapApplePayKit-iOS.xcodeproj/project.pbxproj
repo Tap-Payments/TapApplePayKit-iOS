@@ -41,6 +41,7 @@
 		E8CD2DF62962B30900BE400B /* Permissions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8CD2DF22962B30900BE400B /* Permissions.swift */; };
 		E8CD2DF72962B30900BE400B /* ApiErrorModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8CD2DF32962B30900BE400B /* ApiErrorModel.swift */; };
 		E8CD2DF92962B6F700BE400B /* TapCreateTokenWithApplePayRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8CD2DF82962B6F700BE400B /* TapCreateTokenWithApplePayRequest.swift */; };
+		E8CD2DFC2962C8A300BE400B /* TapApplePayButton.xib in Resources */ = {isa = PBXBuildFile; fileRef = E8CD2DFB2962C8A300BE400B /* TapApplePayButton.xib */; };
 		E8CF1898244707B400E59772 /* FlurryLogger.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8CF1897244707B400E59772 /* FlurryLogger.swift */; };
 		F89894382CF2786EB3A5912A /* Pods_TapApplePayKit_Example.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BB2861F7261D7F563795F280 /* Pods_TapApplePayKit_Example.framework */; };
 /* End PBXBuildFile section */
@@ -111,6 +112,7 @@
 		E8CD2DF22962B30900BE400B /* Permissions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Permissions.swift; sourceTree = "<group>"; };
 		E8CD2DF32962B30900BE400B /* ApiErrorModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ApiErrorModel.swift; sourceTree = "<group>"; };
 		E8CD2DF82962B6F700BE400B /* TapCreateTokenWithApplePayRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TapCreateTokenWithApplePayRequest.swift; sourceTree = "<group>"; };
+		E8CD2DFB2962C8A300BE400B /* TapApplePayButton.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TapApplePayButton.xib; sourceTree = "<group>"; };
 		E8CF1897244707B400E59772 /* FlurryLogger.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FlurryLogger.swift; sourceTree = "<group>"; };
 		EA4F8A30CBF862BF46BEA9A1 /* Pods-TapApplePayKit-iOS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TapApplePayKit-iOS.release.xcconfig"; path = "Target Support Files/Pods-TapApplePayKit-iOS/Pods-TapApplePayKit-iOS.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -197,6 +199,7 @@
 		E86450F82433BCFB00E3B4C9 /* Core */ = {
 			isa = PBXGroup;
 			children = (
+				E8CD2DFA2962C87B00BE400B /* Assets */,
 				E86450FA2434517F00E3B4C9 /* private */,
 				E86450F92434517600E3B4C9 /* public */,
 			);
@@ -305,6 +308,14 @@
 			path = Network;
 			sourceTree = "<group>";
 		};
+		E8CD2DFA2962C87B00BE400B /* Assets */ = {
+			isa = PBXGroup;
+			children = (
+				E8CD2DFB2962C8A300BE400B /* TapApplePayButton.xib */,
+			);
+			path = Assets;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
@@ -402,6 +413,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E8CD2DFC2962C8A300BE400B /* TapApplePayButton.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -15,10 +15,9 @@ class ViewController: UIViewController {
     
     @IBOutlet weak var featuresTableView: UITableView!
     
-    @IBOutlet weak var tapApplePayButtonHolder: UIView!
+    @IBOutlet weak var tapApplePayButton:TapApplePayButton!
     let myTapApplePayRequest:TapApplePayRequest = .init()
     let tapApplePay:TapApplePay = .init()
-    var tapApplePayButton:TapApplePayButton?
     
     let dataSource = [["Country Code","Currency Code","Payment Networks","Transaction Amount"],["Check Apple Pay Status","Try Apple Pay Setup","Authorize Payment"],["Tap Apple Pay Button Type","Tap Apple Pay Button Outline"]]
     
@@ -34,9 +33,7 @@ class ViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        tapApplePayButton = TapApplePayButton.init(frame: tapApplePayButtonHolder.bounds)
-        tapApplePayButton?.setup()
-        tapApplePayButtonHolder.addSubview(tapApplePayButton!)
+        tapApplePayButton.setup()
         
         tapApplePayButton?.dataSource = self
         tapApplePayButton?.delegate = self

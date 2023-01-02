@@ -7,13 +7,8 @@
 //
 
 import Foundation
-import class UIKit.UIView
-import class UIKit.UIButton
-import struct UIKit.CGFloat
-import class UIKit.UIViewController
-import struct UIKit.CGRect
-import  class PassKit.PKPaymentButton
-
+import UIKit
+import PassKit
 /// Data source to provide needed data for the apple pay button to start the apple authorization process
 @objc public protocol TapApplePayButtonDataSource {
     /// This s the Tap wrapper of Apple pay request and it is a must to be correctly filled before firing Apple pay request
@@ -31,6 +26,7 @@ import  class PassKit.PKPaymentButton
 /// Class represents the UIView that has Apple pay button wrapped inside Tap Kit
 @objcMembers public class TapApplePayButton: UIView {
     
+    @IBOutlet var conentView: UIView!
     /// Click handler block, if this is set, then the caller determines that he will handle the click on the Apple Pay button himself.
     var tapApplePayButtonClicked:((TapApplePayButton)->())?
     /// Apple pay button width
@@ -48,7 +44,9 @@ import  class PassKit.PKPaymentButton
     /// Button type, which will define the style of the Tap Apple Pay Button
     public var buttonStyle:TapApplePayButtonStyleOutline = .Black {
         didSet{
-            configureApplePayButton()
+            if oldValue != buttonStyle {
+                configureApplePayButton()
+            }
         }
     }
     /// The actaual apple pay button wrappd inside Tap Kit
@@ -60,11 +58,24 @@ import  class PassKit.PKPaymentButton
     /// The delegate to get action notifications from the Tap apple pay button
     public var dataSource:TapApplePayButtonDataSource?
     
-    @objc public override init(frame: CGRect) {
+    // Mark:- Init methods
+    override init(frame: CGRect) {
         super.init(frame: frame)
-        self.backgroundColor = .clear
-        //FlurryLogger.logEvent(with: "Apple_Pay_Button_Created")
+        commonInit()
     }
+    
+    required init?(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)
+        commonInit()
+    }
+    
+    
+    /// Used as a consolidated method to do all the needed steps upon creating the view
+    private func commonInit() {
+        self.conentView = setupXIB()
+        conentView.backgroundColor = .clear
+    }
+    
     
     /**
      Method to configure the tap apple pay button
@@ -76,11 +87,12 @@ import  class PassKit.PKPaymentButton
         self.tapApplePayButtonClicked = tapApplePayButtonClicked
         self.buttonStyle = buttonStyle
         // The minimum size accepted by Apple
-        self.buttonWidth = (frame.width >= 140) ? frame.width : 140
-        self.buttonHeight = (frame.height >= 40) ? frame.height : 40
-        self.buttonType = buttonType
-        configureApplePayButton()
-        
+        DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(0)) {
+            self.buttonWidth = (self.frame.width >= 140) ? self.frame.width : 140
+            self.buttonHeight = (self.frame.height >= 40) ? self.frame.height : 40
+            self.buttonType = buttonType
+            self.configureApplePayButton()
+        }
     }
     
     /// This holds the logic that will create the actual apple pay button, setting the size, the type, the color and the handler
@@ -93,6 +105,13 @@ import  class PassKit.PKPaymentButton
         applePayButton?.frame = CGRect(x: 0,y: 0,width: self.buttonWidth,height: self.buttonHeight)
         self.addSubview(applePayButton!)
         self.bringSubviewToFront(applePayButton!)
+        
+        applePayButton?.translatesAutoresizingMaskIntoConstraints = false
+        applePayButton?.centerXAnchor.constraint(equalTo: safeAreaLayoutGuide.centerXAnchor).isActive = true
+        applePayButton?.widthAnchor.constraint(equalToConstant: buttonWidth).isActive = true
+        applePayButton?.heightAnchor.constraint(equalToConstant: buttonHeight).isActive = true
+        
+        applePayButton?.layoutIfNeeded()
         applePayButton?.addTarget(self, action: #selector(applePayClicked), for: .touchUpInside)
         
         //FlurryLogger.logEvent(with: "Apple_Pay_Button_Configured", timed:false , params:["type":self.buttonType.rawValue,"style":buttonStyle.rawValue])
@@ -126,11 +145,6 @@ import  class PassKit.PKPaymentButton
         }
     }
     
-    required init?(coder: NSCoder) {
-        super.init(coder:coder)
-        //fatalError("init(coder:) has not been implemented")
-    }
-    
 }
 
 extension String: LocalizedError {
@@ -151,5 +165,41 @@ internal extension UIView {
         } else {
             return nil
         }
+    }
+}
+
+
+
+fileprivate extension UIView {
+    // MARK:- Loading a nib dynamically
+    /**
+     Load a XIB file into a UIView
+     - Parameter bundle: The bundle to load the XIB from, default is the XIB containing the UIView
+     - Parameter identefier: The name of the XIB, default is the name of the UIView
+     - Parameter addAsSubView: Indicates whether the method should add the loaded XIB into the UIView, default is true
+     */
+    func setupXIB(from bundle:Bundle? = nil, with identefier: String? = nil, then addAsSubView:Bool = true) -> UIView {
+        
+        // Whether we use the passed bundle if any, or by default we use the bundle that contains the caller UIView
+        let bundle = bundle ?? Bundle(for: Self.self)
+        // Whether we use the passed identefier if any, or by default we use the default identefier for self
+        let identefier = identefier ??  String(describing: type(of: self))
+        
+        // Load the XIB file
+        guard let nibs = bundle.loadNibNamed(identefier, owner: self, options: nil),
+              nibs.count > 0, let loadedView:UIView = nibs[0] as? UIView else { fatalError("Couldn't load Xib \(identefier)") }
+        
+        let newContainerView = loadedView
+        
+        //Set the bounds for the container view
+        newContainerView.frame = bounds
+        newContainerView.autoresizingMask = [.flexibleWidth,.flexibleHeight]
+        
+        // Check if needed to add it as subview
+        if addAsSubView {
+            addSubview(newContainerView)
+        }
+        //newContainerView.semanticContentAttribute = TapLocalisationManager.shared.localisationLocale == "ar" ? .forceRightToLeft : .forceLeftToRight
+        return newContainerView
     }
 }
