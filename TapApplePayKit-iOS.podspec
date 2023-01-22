@@ -16,7 +16,7 @@ Pod::Spec.new do |spec|
   #
 
   spec.name         = "TapApplePayKit-iOS"
-  spec.version      = "1.0.9"
+  spec.version      = "1.0.10"
   spec.summary      = "Provide an interface and an easy wrapper for Apple Pay functionalities."
 
   # This description is used to generate tags and improve search results.
@@ -114,7 +114,7 @@ Go all the way until Apple Pay tokenisation data."
   #
 
   # spec.resource  = "icon.png"
-  # spec.resources = "Resources/*.png"
+  spec.resources = "TapApplePayKit-iOS/Core/Assets/**/*.{json,xib,pdf,png,gif,storyboard}"
 
   # spec.preserve_paths = "FilesToSave", "MoreFilesToSave"
 
