@@ -88,8 +88,8 @@ import PassKit
         self.buttonStyle = buttonStyle
         // The minimum size accepted by Apple
         DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(0)) {
-            self.buttonWidth = (self.frame.width >= 140) ? self.frame.width : 140
-            self.buttonHeight = (self.frame.height >= 40) ? self.frame.height : 40
+            self.buttonWidth = self.frame.width//(self.frame.width >= 140) ? self.frame.width : 140
+            self.buttonHeight = self.frame.height//(self.frame.height >= 40) ? self.frame.height : 40
             self.buttonType = buttonType
             self.configureApplePayButton()
         }
@@ -156,7 +156,7 @@ internal extension UIView {
     /**
      An extension method to detect the viewcontroller which the current view is embedded in
      - Returns: UIViewcontroller that holds the current view or nil if not found for any case
- **/
+     **/
     func findViewController() -> UIViewController? {
         if let nextResponder = self.next as? UIViewController {
             return nextResponder
