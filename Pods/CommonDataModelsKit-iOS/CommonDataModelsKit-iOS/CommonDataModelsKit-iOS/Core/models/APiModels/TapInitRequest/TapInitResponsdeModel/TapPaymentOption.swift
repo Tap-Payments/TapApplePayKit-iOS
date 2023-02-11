@@ -45,7 +45,7 @@ public struct PaymentOption: IdentifiableWithString {
     public let backendImageURL: URL
     
     /// If the payment option is async or not
-    internal let isAsync: Bool
+    public let isAsync: Bool
     
     /// Payment type.
     public var paymentType: TapPaymentType

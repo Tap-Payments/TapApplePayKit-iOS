@@ -10,8 +10,22 @@
             "cardSaveForTapInfo":"Checkout everywhere in just one click.\nTap is a better and secure way to pay locally across 100k+ stores. Your details are encrypted and can only be accessed by you. You’ll receive an email to get started and manage your details.",
             "emailPlaceHolder": "email@email.com",
             "weSupport":"WE ACCEPT",
-            "cardSectionTitle": "CARD INFORMATION",
-            "savedCardSectionTitle": "SAVED CARD"
+            "cardSectionTitle": "ENTER CARD",
+            "cardSectionTitleOr": "OR ENTER CARD",
+            "savedCardSectionTitle": "SAVED CARD",
+            "flatPlaceHolder": "Flat or building number",
+            "additionalLinePlaceHolder": "Additional line",
+            "cityPlaceHolder": "City"
+        },
+        "TapAsyncSection": {
+            "paymentProgressLabel": "Payment in progress",
+            "paymentRecieptLabel": "An %@ has been sent to",
+            "paymentRecieptEmail": "email",
+            "paymentRecieptSms": "sms",
+            "paymentReferenceTitleLabel": "With your %@ reference",
+            "paymentCodeTitleLabel" : "Order code",
+            "paymentExpiryTitleLabel": "Code expires on",
+            "paymentVisitBranchesLabel" : "Please visit %@ branches using the link below to complete your order"
         },
         "TapMerchantSection": {
             "paymentFor" : "PAYMENT FOR"
@@ -147,7 +161,8 @@
             "resend": "Resend OTP",
             "next": "Next",
             "signin": "Signin",
-            "cancel":"Cancel"
+            "cancel":"Cancel",
+            "close":"Close"
         }
     },
     "ar": {
@@ -161,8 +176,22 @@
             "cardSaveForTapInfo":"يمكنك الدفع في كل مكان بنقرة واحدة فقط\n.يعد النقر طريقة أفضل وآمنة للدفع محليًا عبر أكثر من 100 ألف متجر. يتم تشفير بياناتك ولا يمكن الوصول إليها إلا بواسطتك. ستتلقى بريدًا إلكترونيًا للبدء وإدارة التفاصيل الخاصة بك.",
             "emailPlaceHolder": "email@email.com",
             "weSupport":"نحن ندعم",
-            "cardSectionTitle": "بيانات البطاقة",
-            "savedCardSectionTitle": "البطاقة المحفوظة"
+            "cardSectionTitle": "أدخل بيانات البطاقة",
+            "cardSectionTitleOr": "أو أدخل بيانات البطاقة",
+            "savedCardSectionTitle": "البطاقة المحفوظة",
+            "flatPlaceHolder": "رقم الشقة أو المبنى",
+            "additionalLinePlaceHolder": "بيانات إضافية",
+            "cityPlaceHolder": "المدينة"
+        },
+        "TapAsyncSection": {
+            "paymentProgressLabel": "العملية قد التنفيذ",
+            "paymentRecieptLabel": "تم إرسال %@",
+            "paymentRecieptEmail": "بريد إلكتروني",
+            "paymentRecieptSms": "رسالة نصية",
+            "paymentReferenceTitleLabel": "لكود العملية الخاصة بـ %@",
+            "paymentCodeTitleLabel" : "كود العملية",
+            "paymentExpiryTitleLabel": "ينتهي الكود في",
+            "paymentVisitBranchesLabel" : "برجاء زيارة أحد فروع %@ من خلال الرابط أدناه لاكمال العملية"
         },
         "TapMerchantSection": {
             "paymentFor" : "سأدفع لـ"
@@ -285,7 +314,9 @@
             "email": "البريد",
             "phone": "الهاتف",
             "password": "كلمة السر",
-            "change": "تعديل"
+            "change": "تعديل",
+            "cancel": "إلغاء",
+            "confirm": "تأكيد"
         },
         "GoPay": {
             "HintLabel": "يمكنك الدفع بالكروت المحفوظفة في جو باي من أي مكان"
@@ -296,7 +327,8 @@
             "resend": "إعادة إرسال",
             "next": "التالي",
             "signin": "دخول",
-            "cancel":"إلغاء"
+            "cancel":"إلغاء",
+            "close":"إنهاء الدفع",
         }
     }
 }

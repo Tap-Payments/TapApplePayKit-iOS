@@ -16,7 +16,7 @@ import TapCardVlidatorKit_iOS
     
     /// A generated title to be displayed in chips or alerts
     public var displayTitle:String {
-        return "•••• \(lastFourDigits)"
+        return "\(lastFourDigits)"
     }
     
     /// Identifier.

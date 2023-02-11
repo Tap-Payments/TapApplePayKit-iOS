@@ -31,7 +31,8 @@
     
     /// Computes the displayble symbol. If backend provides a Symbol we use it, otherwise we use the provided currency code
     public var displaybaleSymbol:String {
-        return currencySymbol.count == 1 ? currencySymbol : currency.appleRawValue
+        return currencySymbol
+        //return currencySymbol.count == 1 ? currencySymbol : currency.appleRawValue
     }
     // MARK: Methods
     

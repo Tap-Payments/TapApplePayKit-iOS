@@ -105,7 +105,7 @@ public struct TapPaymentOptionsRequestModel {
         // We will stop passing items in the payment options and pass it in order object only
         self.items = []
         // We will not be sending customr info in the payment types anymore
-        self.customer = nil
+        //self.customer = nil
         // We will not be sending shipping info in the payment types anymore
         self.shipping = nil
         // We will not be sending tax info in the payment types anymore
