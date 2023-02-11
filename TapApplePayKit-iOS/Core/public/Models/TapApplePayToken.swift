@@ -37,8 +37,10 @@ import class PassKit.PKPaymentToken
         if self.rawAppleToken == nil || self.rawAppleToken?.paymentData.count == 0 {
             convertTokenToString()
             convertTokenToJson()
+        }else {
+            convertTokenToString()
+            convertTokenToJson()
         }
-        
     }
     
     
