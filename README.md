@@ -306,7 +306,11 @@ import enum CommonDataModelsKit_iOS.TapCurrencyCode
 // Prepare the needed parameters, to adjust them once you need to start the process
 let myTapApplePayRequest:TapApplePayRequest = .init()
 let tapApplePay:TapApplePay = .init()
-
+// Set your tap keys if you need to generate TAP token for apple pay raw token
+TapApplePay.secretKey = .init(sandbox: "sk_test_cvSHaplrPNkJO7dhoUxDYjqA", production: "sk_live_QglH8V7Fw6NPAom4qRcynDK2")
+// Set your sdk environment if you need to generate TAP token for apple pay raw token
+TapApplePay.sdkMode = .sandbox
+	
 // Fill in the required data for your transaction to the TapApplePayRequest object
 myTapApplePayRequest.build(with: .US, paymentNetworks: [.Amex,.Visa,.MasterCard], paymentItems: [PKPaymentSummaryItem(label: "My Best Seller", amount: 10)], paymentAmount: 10, currencyCode: .USD, merchantID:"merchant.tap.gosell")
 // PS : you can use the default parameters and just pass the amount and merchant id as follows:
