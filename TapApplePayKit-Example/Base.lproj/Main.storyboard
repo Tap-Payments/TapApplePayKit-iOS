@@ -18,7 +18,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="vMj-7t-bll">
-                                <rect key="frame" x="0.0" y="92" width="414" height="722"/>
+                                <rect key="frame" x="0.0" y="92" width="414" height="717"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="featureCell" textLabel="LnO-D8-uH1" detailTextLabel="sWy-an-OdI" style="IBUITableViewCellStyleSubtitle" id="R7Y-Vq-LOp">
@@ -48,10 +48,10 @@
                                 </prototypes>
                             </tableView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="W0U-CF-1yV" customClass="TapApplePayButton" customModule="TapApplePayKit_iOS">
-                                <rect key="frame" x="20" y="822" width="374" height="40"/>
+                                <rect key="frame" x="60" y="817" width="294" height="45"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="40" id="g3d-E4-iUS"/>
+                                    <constraint firstAttribute="height" constant="45" id="g3d-E4-iUS"/>
                                 </constraints>
                             </view>
                         </subviews>
@@ -59,12 +59,12 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="W0U-CF-1yV" firstAttribute="bottom" secondItem="6Tk-OE-BBY" secondAttribute="bottom" id="0WM-2d-oNJ"/>
-                            <constraint firstItem="W0U-CF-1yV" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="H0G-AO-mVy"/>
+                            <constraint firstItem="W0U-CF-1yV" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="60" id="H0G-AO-mVy"/>
                             <constraint firstItem="W0U-CF-1yV" firstAttribute="top" secondItem="vMj-7t-bll" secondAttribute="bottom" constant="8" id="HJd-YK-s0g"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="vMj-7t-bll" secondAttribute="trailing" id="g37-2f-smZ"/>
                             <constraint firstItem="vMj-7t-bll" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="iM1-fi-FqE"/>
                             <constraint firstItem="W0U-CF-1yV" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="lbR-2O-JqO"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="W0U-CF-1yV" secondAttribute="trailing" constant="20" id="mRg-2D-7Q6"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="W0U-CF-1yV" secondAttribute="trailing" constant="60" id="mRg-2D-7Q6"/>
                             <constraint firstItem="vMj-7t-bll" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="uYS-Ib-JQc"/>
                         </constraints>
                     </view>

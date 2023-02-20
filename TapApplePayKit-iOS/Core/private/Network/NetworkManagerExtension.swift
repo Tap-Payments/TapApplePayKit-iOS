@@ -72,12 +72,12 @@ internal extension NetworkManager {
     /// A computed variable that generates at access time the required static headers by the server.
     static private func applicationStaticDetails() -> [String: String] {
         
-        /*guard let bundleID = TapApplicationPlistInfo.shared.bundleIdentifier, !bundleID.isEmpty else {
+        guard let bundleID = TapApplicationPlistInfo.shared.bundleIdentifier, !bundleID.isEmpty else {
          
          fatalError("Application must have bundle identifier in order to use goSellSDK.")
-         }*/
+         }
         
-        let bundleID = "company.tap.goSellSDKExamplee"
+        //let bundleID = "company.tap.goSellSDKExamplee"
         
         let sdkPlistInfo = TapBundlePlistInfo(bundle: Bundle(for: TapApplePay.self))
         
