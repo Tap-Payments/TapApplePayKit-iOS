@@ -141,7 +141,7 @@ import TapNetworkKit_iOS
         
         // Call the corresponding api based on the transaction mode
         // Perform the retrieve request with the computed data
-        NetworkManager.shared.makeApiCall(routing: TapNetworkPath.token, resultType: Token.self, body: .init(body: bodyDictionary),httpMethod: .POST, urlModel: .none) { (session, result, error) in
+        NetworkManager.shared.makeApiCall(routing: TapNetworkPath.tokens, resultType: Token.self, body: .init(body: bodyDictionary),httpMethod: .POST, urlModel: .none) { (session, result, error) in
             // Double check all went fine
             guard let parsedResponse:Token = result as? Token else {
                 onErrorOccured(session, result, "Unexpected error parsing into token")
