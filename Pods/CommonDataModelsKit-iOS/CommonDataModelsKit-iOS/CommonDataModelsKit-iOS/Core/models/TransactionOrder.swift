@@ -5,7 +5,8 @@
 //  Created by Osama Rabie on 06/02/2020.
 //
 
-@objcMembers public final class TransactionOrder: NSObject{
+@objcMembers
+@objc(CheckoutTransactionOrder) public final class TransactionOrder: NSObject{
     
     // MARK: - Public -
     // MARK: Properties

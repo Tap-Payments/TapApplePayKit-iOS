@@ -3,4 +3,101 @@
    uuid = "2368C06B-3624-4034-A490-F0A6F8667411"
    type = "0"
    version = "2.0">
+   <Breakpoints>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "97ECA57E-A6B1-420F-B445-A5CFC1B2F7A9"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "TapApplePayKit-iOS/Core/public/Controllers/TapApplePay.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "179"
+            endingLineNumber = "179"
+            landmarkName = "loadMerchantData(for:onResponeReady:onErrorOccured:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "B60E071F-868D-4B15-9EC4-62638B860C4F"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "TapApplePayKit-iOS/Core/private/Network/NetworkManager.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "72"
+            endingLineNumber = "72"
+            landmarkName = "makeApiCall(routing:resultType:body:httpMethod:urlModel:completion:onError:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "D22EF312-A135-44A9-BFCF-09BB341BA1A4"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "TapApplePayKit-iOS/Core/public/Controllers/TapApplePay.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "178"
+            endingLineNumber = "178"
+            landmarkName = "loadMerchantData(for:onResponeReady:onErrorOccured:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "D22EF312-A135-44A9-BFCF-09BB341BA1A4 - e845501f905b4ae6"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "TapApplePayKit_iOS.TapApplePay.loadMerchantData(for: TapApplePayKit_iOS.TapApplePayRequest, onResponeReady: (CommonDataModelsKit_iOS.TapInitResponseModel) -&gt; (), onErrorOccured: (Swift.Optional&lt;__C.NSURLSessionDataTask&gt;, Swift.Optional&lt;Any&gt;, Swift.Optional&lt;Swift.Error&gt;) -&gt; ()) -&gt; ()"
+                  moduleName = "TapApplePayKit_iOS"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/osamarabie/desktop/Tap/TapApplePayKit-iOS/TapApplePayKit-iOS/Core/public/Controllers/TapApplePay.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "178"
+                  endingLineNumber = "178"
+                  offsetFromSymbolStart = "1317">
+               </Location>
+               <Location
+                  uuid = "D22EF312-A135-44A9-BFCF-09BB341BA1A4 - 59f429d268c45cda"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #2 (Swift.Optional&lt;__C.NSURLSessionDataTask&gt;, Swift.Optional&lt;Any&gt;, Swift.Optional&lt;Swift.Error&gt;) -&gt; () in TapApplePayKit_iOS.TapApplePay.loadMerchantData(for: TapApplePayKit_iOS.TapApplePayRequest, onResponeReady: (CommonDataModelsKit_iOS.TapInitResponseModel) -&gt; (), onErrorOccured: (Swift.Optional&lt;__C.NSURLSessionDataTask&gt;, Swift.Optional&lt;Any&gt;, Swift.Optional&lt;Swift.Error&gt;) -&gt; ()) -&gt; ()"
+                  moduleName = "TapApplePayKit_iOS"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/osamarabie/desktop/Tap/TapApplePayKit-iOS/TapApplePayKit-iOS/Core/public/Controllers/TapApplePay.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "179"
+                  endingLineNumber = "179"
+                  offsetFromSymbolStart = "266">
+               </Location>
+               <Location
+                  uuid = "D22EF312-A135-44A9-BFCF-09BB341BA1A4 - e845501f905b4ae6"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "TapApplePayKit_iOS.TapApplePay.loadMerchantData(for: TapApplePayKit_iOS.TapApplePayRequest, onResponeReady: (CommonDataModelsKit_iOS.TapInitResponseModel) -&gt; (), onErrorOccured: (Swift.Optional&lt;__C.NSURLSessionDataTask&gt;, Swift.Optional&lt;Any&gt;, Swift.Optional&lt;Swift.Error&gt;) -&gt; ()) -&gt; ()"
+                  moduleName = "TapApplePayKit_iOS"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/osamarabie/desktop/Tap/TapApplePayKit-iOS/TapApplePayKit-iOS/Core/public/Controllers/TapApplePay.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "178"
+                  endingLineNumber = "178"
+                  offsetFromSymbolStart = "1315">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+   </Breakpoints>
 </Bucket>

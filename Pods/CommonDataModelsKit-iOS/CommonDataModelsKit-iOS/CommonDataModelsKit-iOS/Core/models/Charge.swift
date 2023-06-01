@@ -10,7 +10,8 @@
 /// You can retrieve and refund individual charges as well as list all charges.
 /// Charges are identified by a unique random ID.
 
-@objcMembers public final class Charge: NSObject, ChargeProtocol, IdentifiableWithString {
+@objcMembers
+@objc(CheckoutCharge) public final class Charge: NSObject, ChargeProtocol, IdentifiableWithString {
     
     
     

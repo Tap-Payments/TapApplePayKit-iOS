@@ -1,7 +1,8 @@
 
 
 /// Wallet Topup model.
-@objcMembers public final class Topup: NSObject {
+@objcMembers
+@objc(CheckoutTopUp) public final class Topup: NSObject {
     
     
     // MARK: - Public -

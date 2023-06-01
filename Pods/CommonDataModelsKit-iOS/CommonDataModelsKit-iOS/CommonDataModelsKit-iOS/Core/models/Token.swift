@@ -6,7 +6,8 @@
 //
 
 /// Token model.
-@objcMembers public final class Token: NSObject, IdentifiableWithString {
+@objcMembers
+@objc(CheckoutToken) public final class Token: NSObject, IdentifiableWithString {
     
     // MARK: - Public -
     // MARK: Properties

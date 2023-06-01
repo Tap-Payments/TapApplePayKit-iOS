@@ -8,7 +8,8 @@
 
 import Foundation
 /// Authorize action response class.
-@objcMembers public final class AuthorizeActionResponse: AuthorizeAction {
+@objcMembers
+@objc(CheckoutAuthorizeActionResponse) public final class AuthorizeActionResponse: AuthorizeAction {
     
     // MARK: - Public -
     // MARK: Properties

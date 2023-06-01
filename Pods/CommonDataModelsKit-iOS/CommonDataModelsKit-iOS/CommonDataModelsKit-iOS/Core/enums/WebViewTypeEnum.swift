@@ -14,4 +14,6 @@ public enum WebViewTypeEnum {
     case FullScreen
     /// The web view will be displayed within the given screen
     case InScreen
+    /// The web view will be displayed within the card view
+    case InCard
 }

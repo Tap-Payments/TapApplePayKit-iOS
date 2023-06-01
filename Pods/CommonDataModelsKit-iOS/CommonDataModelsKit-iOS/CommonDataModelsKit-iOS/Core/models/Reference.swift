@@ -7,7 +7,8 @@
 
 /// Transaction Reference object.
 /// - Tag: Reference
-@objcMembers public final class Reference: NSObject, Codable {
+@objcMembers
+@objc(CheckoutReference) public final class Reference: NSObject, Codable {
     
     // MARK: - Public -
     // MARK: Properties

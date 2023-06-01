@@ -9,7 +9,8 @@
 import TapCardVlidatorKit_iOS
 
 /// Source model.
-@objcMembers public final class Source: SourceRequest {
+@objcMembers
+@objc(CheckutSource) public final class Source: SourceRequest {
     
     // MARK: - Public -
     // MARK: Properties

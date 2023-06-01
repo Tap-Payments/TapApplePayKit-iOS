@@ -5,7 +5,8 @@
 //  Created by Osama Rabie on 06/02/2020.
 //
 
-@objcMembers public final class TransactionExpiry: NSObject{
+@objcMembers
+@objc(CheckoutTransactionExpiry) public final class TransactionExpiry: NSObject{
     
     // MARK: - Public -
     // MARK: Properties

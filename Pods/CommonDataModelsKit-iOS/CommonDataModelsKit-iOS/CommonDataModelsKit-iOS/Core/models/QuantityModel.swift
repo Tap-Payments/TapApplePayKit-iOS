@@ -6,7 +6,8 @@
 //
 
 /// Quantity model.
-@objcMembers public final class Quantity: NSObject, Encodable {
+@objcMembers
+@objc(CheckoutQuantity) public final class Quantity: NSObject, Encodable {
     
     // MARK: - Public -
     // MARK: Properties

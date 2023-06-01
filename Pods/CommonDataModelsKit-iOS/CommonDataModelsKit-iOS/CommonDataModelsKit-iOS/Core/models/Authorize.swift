@@ -7,7 +7,8 @@
 //
 
 /// Authorize object.
-@objcMembers public final class Authorize: NSObject, AuthorizeProtocol, IdentifiableWithString {
+@objcMembers
+@objc(CheckoutAuthorize) public final class Authorize: NSObject, AuthorizeProtocol, IdentifiableWithString {
     
     // MARK: - Public -
     // MARK: Properties

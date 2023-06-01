@@ -14,6 +14,8 @@ import TapAdditionsKitV2
     
     /// Error name.
     public private(set) var code: ErrorCode = .unknown
+    /// Error name.
+    public private(set) var errorTitleText: String = ""
     
     /// Error description.
     public private(set) var descriptionText: String = .tap_empty
@@ -21,7 +23,7 @@ import TapAdditionsKitV2
     /// Generated error title.
     public var title: String {
         
-        return "Error \(self.code)"
+        return "\(errorTitleText) \(self.code)"
     }
     
     /// Error description.
@@ -38,12 +40,13 @@ import TapAdditionsKitV2
         self.init(code: code, description: .tap_empty)
     }
     
-    internal init(code: ErrorCode, description: String) {
+    internal init(code: ErrorCode, description: String, errorTitle: String = "") {
         
         super.init()
         
         self.code = code
         self.descriptionText = description
+        self.errorTitleText  = errorTitle
     }
     
     // MARK: - Private -
@@ -52,6 +55,7 @@ import TapAdditionsKitV2
         
         case code               = "code"
         case descriptionText    = "description"
+        case error              = "error"
     }
 }
 
@@ -66,23 +70,25 @@ extension ErrorDetail: Decodable {
         let errorCode = ErrorCode(rawValue: code) ?? .unknown
         
         let descriptionText = try container.decode(String.self, forKey: .descriptionText)
+        let errorText       = try container.decodeIfPresent(String.self, forKey: .error) ?? ""
         
-        self.init(code: errorCode, description: descriptionText)
+        self.init(code: errorCode, description: descriptionText, errorTitle: errorText)
     }
 }
 
 // MARK: - Encodable
 extension ErrorDetail: Encodable {
-	
-	/// Encodes the contents of the receiver.
-	///
-	/// - Parameter encoder: Encoder.
-	/// - Throws: EncodingError
-	public func encode(to encoder: Encoder) throws {
-		
-		var container = encoder.container(keyedBy: CodingKeys.self)
-		
-		try container.encode(self.code, forKey: .code)
-		try container.encode(self.descriptionText, forKey: .descriptionText)
-	}
+    
+    /// Encodes the contents of the receiver.
+    ///
+    /// - Parameter encoder: Encoder.
+    /// - Throws: EncodingError
+    public func encode(to encoder: Encoder) throws {
+        
+        var container = encoder.container(keyedBy: CodingKeys.self)
+        
+        try container.encode(self.code, forKey: .code)
+        try container.encode(self.descriptionText, forKey: .descriptionText)
+        try container.encode(self.errorTitleText, forKey: .error)
+    }
 }

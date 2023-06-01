@@ -19,7 +19,7 @@ import TapNetworkKit_iOS
     /// Indicates the mode the merchant wants to run the sdk with. Default is sandbox mode
     @objc public static var sdkMode:SDKMode = .sandbox
     /// Inidcates the tap provided keys for this merchant to use for his transactions. If not set, any transaction will fail. Please if you didn't get a tap key yet, refer to https://www.tap.company/en/sell
-    @objc public static var secretKey:SecretKey = .init(sandbox: "sk_test_cvSHaplrPNkJO7dhoUxDYjqA",
+    @objc public static var secretKey:SecretKey = .init(sandbox: "pk_test_Vlk842B1EA7tDN5QbrfGjYzh",
                                                         production: "sk_live_QglH8V7Fw6NPAom4qRcynDK2")
     
     //MARK: Internal values
@@ -74,7 +74,13 @@ import TapNetworkKit_iOS
         
         
         //FlurryLogger.logEvent(with: "Apple_Pay_Authorize_Payment_Called", timed:false , params:tapApplePayRequest.asDictionary())
-        
+        // load merchant data to validate the passed data first
+        loadMerchantData(for: tapApplePayRequest) { checkoutProfileResponse in
+            
+        } onErrorOccured: { _, _, error in
+            
+        }
+
         self.tokenizedBlock = tokenized
         tapApplePayRequest.updateValues()
         
@@ -152,6 +158,31 @@ import TapNetworkKit_iOS
         } onError: { (session, result, errorr) in
             // In case of an error we execute the on error block
             onErrorOccured(session, result, errorr.debugDescription)
+        }
+    }
+    
+    /// Will fetch the merchant data from checkoutprofile api
+    /// - Parameter for tapApplePayRequest: The apple pay request passed by the merchant the includes the details of his required order
+    /// - Parameter onResponseReady: A block to call when getting the response
+    /// - Parameter onErrorOccured: A block to call when an error occured
+    ///
+    internal func loadMerchantData(for tapApplePayRequest:TapApplePayRequest,onResponeReady: @escaping (TapInitResponseModel) -> () = {_ in}, onErrorOccured: @escaping(TapNetworkManager.RequestCompletionClosure)) {
+        
+        let tapPaymentOptionsRequestModel:TapPaymentOptionsRequestModel = TapPaymentOptionsRequestModel(transactionMode: .purchase, amount: tapApplePayRequest.paymentAmount, items: [.init(title: "PAY", description: "APPLE PAY", price: tapApplePayRequest.paymentAmount, quantity: 1, discount: nil, currency: tapApplePayRequest.currencyCode)], shipping: nil, taxes: nil, currency: tapApplePayRequest.currencyCode, merchantID: nil, customer: .defaultCustomer(), destinationGroup: nil, paymentType: .Device, totalAmount: tapApplePayRequest.paymentAmount, topup: nil, reference: nil, supportedCurrencies:[tapApplePayRequest.currencyCode])
+        
+        // Change the model into a dictionary
+        guard let bodyDictionary = TapApplePay.convertModelToDictionary(tapPaymentOptionsRequestModel, callingCompletionOnFailure: { error in
+            return
+        }) else { return }
+        
+        NetworkManager.shared.makeApiCall(routing: .CheckoutProfileApi, resultType: TapInitResponseModel.self, body: .init(body: bodyDictionary), httpMethod: .POST) { (session, result, error) in
+            guard let initModel:TapInitResponseModel = result as? TapInitResponseModel else {
+                onErrorOccured(nil, nil, "Cannot load your data")
+                return
+            }
+            onResponeReady(initModel)
+        } onError: { (session, result, errorr) in
+            onErrorOccured(session, result, errorr)
         }
     }
     

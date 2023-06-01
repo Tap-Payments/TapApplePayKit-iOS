@@ -9,14 +9,15 @@
 import TapCardVlidatorKit_iOS
 
 /// Saved Card model.
-@objcMembers public final class SavedCard: NSObject, OptionallyIdentifiableWithString {
+@objcMembers
+@objc(CheckoutSavedCard) public final class SavedCard: NSObject, OptionallyIdentifiableWithString {
     
     // MARK: - Public -
     // MARK: Properties
     
     /// A generated title to be displayed in chips or alerts
     public var displayTitle:String {
-        return "\(lastFourDigits)"
+        return "••• \(lastFourDigits)"
     }
     
     /// Identifier.

@@ -6,7 +6,8 @@
 //
 
 /// Source request model for the charge.
-@objcMembers public class SourceRequest: NSObject, IdentifiableWithString, Encodable {
+@objcMembers
+@objc(CheckoutSourceRequest) public class SourceRequest: NSObject, IdentifiableWithString, Encodable {
     
     // MARK: - Public -
     // MARK: Properties

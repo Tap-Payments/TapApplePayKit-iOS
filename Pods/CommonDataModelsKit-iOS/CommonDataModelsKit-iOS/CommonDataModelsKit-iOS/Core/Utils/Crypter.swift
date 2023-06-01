@@ -18,7 +18,7 @@ public class Crypter {
     ///   - string: String to encrypt.
     ///   - key: Key to encrypt with.
     /// - Returns: String if the encryption succeed.
-    internal static func encrypt(_ string: String, using key: String) -> String? {
+    public static func encrypt(_ string: String, using key: String) -> String? {
         
         guard let publicKey = try? PublicKey(pemEncoded: key) else { return nil }
         guard let clear = try? ClearMessage(string: string, using: .utf8) else { return nil }

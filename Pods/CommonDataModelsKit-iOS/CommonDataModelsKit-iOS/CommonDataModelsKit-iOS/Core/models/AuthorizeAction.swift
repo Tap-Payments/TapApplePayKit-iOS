@@ -7,7 +7,8 @@
 
 /// Authorize action model to state what to do with the authorized amount after being authorized for a certain time interval
 /// - tag: AuthorizeAction
-@objcMembers public class AuthorizeAction: NSObject, Codable {
+@objcMembers
+@objc(CheckoutAuthorizeAction) public class AuthorizeAction: NSObject, Codable {
     
     // MARK: - Public -
     // MARK: Properties

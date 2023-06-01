@@ -10,7 +10,8 @@ import Foundation
 
 
 /// TopUpApplication model.
-@objcMembers public final class TopUpApplication: NSObject,Codable {
+@objcMembers
+@objc(CheckoutTopUpApplication) public final class TopUpApplication: NSObject,Codable {
     
     // MARK: - Public -
     // MARK: Properties

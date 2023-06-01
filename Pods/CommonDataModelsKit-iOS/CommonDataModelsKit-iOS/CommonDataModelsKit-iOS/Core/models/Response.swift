@@ -6,7 +6,8 @@
 //
 
 /// Response structure.
-@objcMembers public final class Response: NSObject {
+@objcMembers
+@objc(CheckoutResponse) public final class Response: NSObject {
     
     // MARK: - Public -
     // MARK: Properties

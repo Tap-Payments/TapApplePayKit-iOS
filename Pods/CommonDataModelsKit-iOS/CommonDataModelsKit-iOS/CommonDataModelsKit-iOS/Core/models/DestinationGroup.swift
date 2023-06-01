@@ -7,7 +7,8 @@
 
 /// Group of destinations.
 /// - Tag: DestinationGroup
-@objcMembers public final class DestinationGroup: NSObject, Codable {
+@objcMembers
+@objc(CheckoutDestinationGroup) public final class DestinationGroup: NSObject, Codable {
 	
 	// MARK: - Public -
 	// MARK: Properties

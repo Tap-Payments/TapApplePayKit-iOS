@@ -8,7 +8,7 @@
 
 
 /// Enum defining SDK mode.
-@objc public enum cardTypes: Int, CaseIterable {
+@objc(CheckoutCardTypes) public enum cardTypes: Int, CaseIterable {
     
     @objc(Credit)       case Credit
     @objc(Debit)        case Debit

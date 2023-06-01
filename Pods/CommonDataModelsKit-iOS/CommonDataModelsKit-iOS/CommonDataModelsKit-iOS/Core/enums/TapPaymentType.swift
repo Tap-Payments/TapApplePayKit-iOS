@@ -54,15 +54,15 @@ import Foundation
     public var stringValue: String {
         switch self {
         case .Web:
-            return "web"
+            return "WEB"
         case .Card:
-            return "card"
+            return "CARD"
         case .Telecom:
             return "telecom"
         case .ApplePay:
             return "apple_pay"
         case .Device:
-            return "device"
+            return "DEVICE"
         case .SavedCard:
             return "saved_card"
         default:

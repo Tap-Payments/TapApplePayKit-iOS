@@ -9,7 +9,8 @@ import Foundation
 
 /// The model that represents the Secret key providede to your app bunlde from TAP
 /// - tag: SecretKey
-@objcMembers public final class SecretKey: NSObject {
+@objcMembers
+@objc(CheckoutSecretKey) public final class SecretKey: NSObject {
     
     // MARK: - Public -
     // MARK: Properties

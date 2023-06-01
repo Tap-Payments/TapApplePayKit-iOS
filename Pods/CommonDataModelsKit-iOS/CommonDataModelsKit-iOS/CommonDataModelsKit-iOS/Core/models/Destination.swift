@@ -7,7 +7,8 @@
 
 /// Destination model.
 /// - Tag: Destination
-@objcMembers public final class Destination: NSObject, Codable {
+@objcMembers
+@objc(CheckoutDestination) public final class Destination: NSObject, Codable {
 	
 	// MARK: - Public -
 	// MARK: Properties

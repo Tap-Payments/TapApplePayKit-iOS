@@ -59,7 +59,7 @@ internal enum TapNetworkPath : String {
                 return Date(timeIntervalSince1970: double / 1000.0)
             }
             
-        case .token, .tokens:
+        case .tokens:
             
             decoder.dateDecodingStrategy = .secondsSince1970
             

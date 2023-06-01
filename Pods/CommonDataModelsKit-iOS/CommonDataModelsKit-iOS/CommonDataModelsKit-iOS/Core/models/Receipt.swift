@@ -7,7 +7,8 @@
 
 /// Receipt notfication dispatch settings.
 /// - Tag: Receipt
-@objcMembers public final class Receipt: NSObject, Codable {
+@objcMembers
+@objc(CheckoutReceipt) public final class Receipt: NSObject, Codable {
     
     // MARK: - Public -
     // MARK: Properties

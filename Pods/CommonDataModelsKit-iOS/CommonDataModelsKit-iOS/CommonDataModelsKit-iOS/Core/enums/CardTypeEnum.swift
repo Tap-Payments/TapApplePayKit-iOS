@@ -8,7 +8,8 @@
 
 import Foundation
 /// Card Types the merchanty will use to define what types of cards he wants his clients to use
-@objcMembers public class CardType:NSObject {
+@objcMembers
+@objc(CheckoutCardType) public class CardType:NSObject {
     
     
     public var cardType:cardTypes = .All

@@ -8,7 +8,8 @@
 
 import Foundation
 /// Base abstract class for errors.
-@objcMembers public class TapSDKError: NSObject, Encodable {
+@objcMembers
+@objc(CheckoutTapSDKError) public class TapSDKError: NSObject, Encodable {
     
     // MARK: - Public -
     // MARK: Properties

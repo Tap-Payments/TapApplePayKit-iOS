@@ -6,7 +6,7 @@
 //
 
 /// Measurement class.
-@objc(Measurement) public final class _ObjCMeasurement: NSObject {
+@objc(CheckoutMeasurement) public final class _ObjCMeasurement: NSObject {
 
     // MARK: - Public -
     // MARK: Methods

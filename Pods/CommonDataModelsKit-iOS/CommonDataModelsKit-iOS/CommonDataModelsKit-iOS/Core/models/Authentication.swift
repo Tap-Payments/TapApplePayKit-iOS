@@ -6,7 +6,8 @@
 //
 
 /// Authentication class.
-@objcMembers public final class Authentication: NSObject, IdentifiableWithString {
+@objcMembers
+@objc(CheckoutAuthentication) public final class Authentication: NSObject, IdentifiableWithString {
     
     // MARK: - Public -
     // MARK: Properties

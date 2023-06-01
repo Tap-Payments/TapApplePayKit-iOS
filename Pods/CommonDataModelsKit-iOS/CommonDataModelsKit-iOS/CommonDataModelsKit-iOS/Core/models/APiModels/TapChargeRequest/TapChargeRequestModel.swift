@@ -128,17 +128,17 @@ public class TapChargeRequestModel: Encodable {
         receipt:                Receipt?) {
             
             self.amount                 = amount
-            self.selectedAmount        = selectedAmount
+            self.selectedAmount         = selectedAmount
             self.currency               = currency
-            self.selectedCurrency      = selectedCurrency
+            self.selectedCurrency       = selectedCurrency
             self.customer               = customer
-            self.merchant                = merchant
+            self.merchant               = merchant
             self.fee                    = fee
             self.order                  = order
             self.redirect               = redirect
             self.post                   = post
             self.source                 = source
-            self.destinationGroup        = destinationGroup
+            self.destinationGroup       = destinationGroup
             self.descriptionText        = descriptionText
             self.metadata               = metadata
             self.reference              = reference
@@ -153,17 +153,17 @@ public class TapChargeRequestModel: Encodable {
     private enum CodingKeys: String, CodingKey {
         
         case amount                 = "amount"
-        case selectedAmount          = "selected_amount"
+        case selectedAmount         = "selected_amount"
         case currency               = "currency"
-        case selectedCurrency          = "selected_currency"
+        case selectedCurrency       = "selected_currency"
         case customer               = "customer"
-        case merchant                = "merchant"
+        case merchant               = "merchant"
         case fee                    = "fee"
         case order                  = "order"
         case redirect               = "redirect"
         case post                   = "post"
         case source                 = "source"
-        case destinationGroup            = "destinations"
+        case destinationGroup       = "destinations"
         case descriptionText        = "description"
         case metadata               = "metadata"
         case reference              = "reference"

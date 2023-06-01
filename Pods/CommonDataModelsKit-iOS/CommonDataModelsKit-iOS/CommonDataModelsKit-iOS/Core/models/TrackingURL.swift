@@ -6,7 +6,8 @@
 //
 
 /// Redirect model.
-@objcMembers public final class TrackingURL: NSObject {
+@objcMembers
+@objc(CheckoutTrackingURL) public final class TrackingURL: NSObject {
     
     // MARK: - Public -
     // MARK: Properties

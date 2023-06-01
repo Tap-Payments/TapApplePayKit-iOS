@@ -8,7 +8,8 @@
 
 import Foundation
 /// Tax data model to be added to the payment items
-@objcMembers public final class Tax: NSObject, Codable {
+@objcMembers 
+@objc(CheckoutTax) public final class Tax: NSObject, Codable {
     
     // MARK: - Public -
     // MARK: Properties
