@@ -46,12 +46,12 @@ SZhWp4Mnd6wjVgXAsQIDAQAB
         /*if let sessionToken = TapCheckout.sharedCheckoutManager().dataHolder.transactionData.intitModelResponse?.data.sessionToken, !sessionToken.isEmpty {
             
             result[Constants.HTTPHeaderKey.sessionToken] = sessionToken
-        }
+        }*/
         
-        if let middleWareToken = TapCheckout.sharedCheckoutManager().dataHolder.transactionData.intitModelResponse?.session {
+        if let middleWareToken = TapApplePay.intitModelResponse?.session {
             
             result[Constants.HTTPHeaderKey.token] = "\(middleWareToken)"
-        }*/
+        }
         
         return result
     }

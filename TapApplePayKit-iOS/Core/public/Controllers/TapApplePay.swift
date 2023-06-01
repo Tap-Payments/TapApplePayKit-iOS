@@ -27,6 +27,10 @@ import TapNetworkKit_iOS
     /// The apple pay tokenization block. it will be called once we get an apple pay token from the apple pay system itself.
     internal var tokenizedBlock:((TapApplePayToken)->())?
     
+    
+    /// The latest checkout profile api response
+    internal static var intitModelResponse: TapInitResponseModel?
+    
 //    var paymentController = PKPaymentAuthorizationController.init()
     
     
