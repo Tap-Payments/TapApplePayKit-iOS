@@ -20,6 +20,9 @@ public struct Merchant: Codable {
     /// Merchant logo URL
     public private(set) var logoURL: String?
     
+    /// Merchant Country code
+    public private(set) var countryCode: String?
+    
     // MARK: Methods
     
     /// Initializes merchant with the identifier.
@@ -35,18 +38,21 @@ public struct Merchant: Codable {
     ///
     /// - Parameter logoURL: Merchant logo url.
     /// - Parameter name: Merchant name
-    internal init(logoURL: String, name: String) {
+    /// - Parameter countryCode: Merchant country code
+    internal init(logoURL: String, name: String, countryCode:String? = nil) {
         
-        self.name       = name
-        self.logoURL    = logoURL
+        self.name           = name
+        self.logoURL        = logoURL
+        self.countryCode    = countryCode
     }
     
     // MARK: - Private -
     
     private enum CodingKeys: String, CodingKey {
         
-        case identifier    = "id"
-        case name       = "name"
-        case logoURL    = "logo"
+        case identifier     = "id"
+        case name           = "name"
+        case logoURL        = "logo"
+        case countryCode    = "country_code"
     }
 }
