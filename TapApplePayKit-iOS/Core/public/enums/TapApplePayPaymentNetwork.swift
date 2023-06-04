@@ -8,7 +8,7 @@
 
 import Foundation
 import struct PassKit.PKPaymentNetwork
-
+import TapCardVlidatorKit_iOS
 /// Enum to define  a payment network to be provided into Apple Pay request
 @objc public enum TapApplePayPaymentNetwork: Int, RawRepresentable, CaseIterable {
    
@@ -191,7 +191,7 @@ import struct PassKit.PKPaymentNetwork
         }
     }
     
-    public var applePayNetwork : PKPaymentNetwork? {
+    internal var applePayNetwork : PKPaymentNetwork? {
         switch self {
             case .Amex:
                 return .amex
@@ -234,6 +234,38 @@ import struct PassKit.PKPaymentNetwork
                             return nil
                     }
             }else {return nil}
+        }
+    }
+    
+    
+    /// Converts the tap apple pay network to the cardbrand validator
+    internal var tapCardBrand : CardBrand {
+        switch self {
+        case .Amex:
+            return .americanExpress
+        case .Discover:
+            return .discover
+        case .Electron:
+            return .visaElectron
+        case .Interac:
+            return .interPayment
+        case .JCB:
+            return .jcb
+        case .Maestro:
+            return .maestro
+        case .MasterCard:
+            return .masterCard
+        case .Visa:
+            return .visa
+        default:
+            if #available(iOS 12.1.1, *) {
+                switch self {
+                case .Mada:
+                    return .mada
+                default:
+                    return .unknown
+                }
+            }else {return .unknown}
         }
     }
 }

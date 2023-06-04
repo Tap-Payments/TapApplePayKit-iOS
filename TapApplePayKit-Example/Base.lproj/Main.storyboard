@@ -12,7 +12,7 @@
         <!--Configure your transaction-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="TapApplePayKit_Example" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="ViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="BYZ-38-t0r" customClass="ViewController" customModule="TapApplePayKit_Example" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -76,7 +76,85 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1047.8260869565217" y="137.94642857142856"/>
+            <point key="canvasLocation" x="1787" y="138"/>
+        </scene>
+        <!--Essential-->
+        <scene sceneID="lmo-Ok-bpI">
+            <objects>
+                <viewController id="6YF-7w-gAK" customClass="EssentialSetupViewController" customModule="TapApplePayKit_Example" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="SH6-wW-4Cs">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="The setup step, that is required before using our Tap Apple Pay SDK/Button" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bOr-Rp-k6u">
+                                <rect key="frame" x="20" y="112" width="374" height="41"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="pk_test_Vlk842B1EA7tDN5QbrfGjYzh" borderStyle="roundedRect" placeholder="Sandbox key" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Ak8-BU-5On">
+                                <rect key="frame" x="20" y="173" width="374" height="34"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="sk_live_QglH8V7Fw6NPAom4qRcynDK2" borderStyle="roundedRect" placeholder="Production key" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="I8J-Xk-fnC">
+                                <rect key="frame" x="20" y="227" width="374" height="34"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nJ2-gi-iUN">
+                                <rect key="frame" x="110" y="281" width="194" height="35"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="filled" title="Setup and use the sdk"/>
+                                <connections>
+                                    <action selector="setupButtonClicked:" destination="6YF-7w-gAK" eventType="touchUpInside" id="BF2-ro-vBl"/>
+                                </connections>
+                            </button>
+                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" animating="YES" style="large" translatesAutoresizingMaskIntoConstraints="NO" id="kjQ-t1-lZt">
+                                <rect key="frame" x="188.5" y="429.5" width="37" height="37"/>
+                            </activityIndicatorView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="DyC-gQ-pHq"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="DyC-gQ-pHq" firstAttribute="trailing" secondItem="Ak8-BU-5On" secondAttribute="trailing" constant="20" id="0Lf-Fd-fYu"/>
+                            <constraint firstItem="I8J-Xk-fnC" firstAttribute="leading" secondItem="Ak8-BU-5On" secondAttribute="leading" id="PBB-W3-AtK"/>
+                            <constraint firstItem="kjQ-t1-lZt" firstAttribute="centerX" secondItem="SH6-wW-4Cs" secondAttribute="centerX" id="UU8-jL-gAs"/>
+                            <constraint firstItem="bOr-Rp-k6u" firstAttribute="leading" secondItem="DyC-gQ-pHq" secondAttribute="leading" constant="20" id="UiV-Xl-ykO"/>
+                            <constraint firstItem="Ak8-BU-5On" firstAttribute="leading" secondItem="DyC-gQ-pHq" secondAttribute="leading" constant="20" id="VMZ-rv-hpV"/>
+                            <constraint firstItem="I8J-Xk-fnC" firstAttribute="trailing" secondItem="Ak8-BU-5On" secondAttribute="trailing" id="W3z-Be-fNk"/>
+                            <constraint firstItem="kjQ-t1-lZt" firstAttribute="centerY" secondItem="SH6-wW-4Cs" secondAttribute="centerY" id="WFU-J4-OEz"/>
+                            <constraint firstItem="I8J-Xk-fnC" firstAttribute="top" secondItem="Ak8-BU-5On" secondAttribute="bottom" constant="20" id="cVp-sK-mra"/>
+                            <constraint firstItem="DyC-gQ-pHq" firstAttribute="trailing" secondItem="bOr-Rp-k6u" secondAttribute="trailing" constant="20" id="hAX-X4-HPK"/>
+                            <constraint firstItem="nJ2-gi-iUN" firstAttribute="centerX" secondItem="SH6-wW-4Cs" secondAttribute="centerX" id="pK3-iE-hZm"/>
+                            <constraint firstItem="bOr-Rp-k6u" firstAttribute="top" secondItem="DyC-gQ-pHq" secondAttribute="top" constant="20" id="wO8-Yv-FeJ"/>
+                            <constraint firstItem="Ak8-BU-5On" firstAttribute="top" secondItem="bOr-Rp-k6u" secondAttribute="bottom" constant="20" id="xjU-ER-rzB"/>
+                            <constraint firstItem="nJ2-gi-iUN" firstAttribute="top" secondItem="I8J-Xk-fnC" secondAttribute="bottom" constant="20" id="z0G-4s-auE"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" title="Essential" id="bmf-Jp-xnH">
+                        <barButtonItem key="rightBarButtonItem" style="plain" id="2cj-pI-SRt">
+                            <button key="customView" opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" id="0fu-Jp-6sE">
+                                <rect key="frame" x="302" y="5" width="92" height="34.5"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" title="Reset"/>
+                                <connections>
+                                    <action selector="resetDataClicked:" destination="6YF-7w-gAK" eventType="touchUpInside" id="iEG-au-t0b"/>
+                                </connections>
+                            </button>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="loadingIndicator" destination="kjQ-t1-lZt" id="cuV-DF-9vh"/>
+                        <outlet property="productionKeyTextFied" destination="I8J-Xk-fnC" id="aPh-uD-hXs"/>
+                        <outlet property="sandboxKeyTextField" destination="Ak8-BU-5On" id="gob-L2-mVf"/>
+                        <segue destination="BYZ-38-t0r" kind="show" identifier="tapApplePaySeg" id="yjD-sk-vLB"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="WsX-kj-yrz" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="965" y="138"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="xkf-31-Kjs">
@@ -89,7 +167,7 @@
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
-                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="LxE-rm-eXZ"/>
+                        <segue destination="6YF-7w-gAK" kind="relationship" relationship="rootViewController" id="dje-1p-oYZ"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Mfe-eg-QsR" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

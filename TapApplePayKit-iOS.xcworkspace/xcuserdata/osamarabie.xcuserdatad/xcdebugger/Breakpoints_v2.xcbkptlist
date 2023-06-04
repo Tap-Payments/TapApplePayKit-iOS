@@ -3,4 +3,70 @@
    uuid = "2368C06B-3624-4034-A490-F0A6F8667411"
    type = "0"
    version = "2.0">
+   <Breakpoints>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "671DB2F3-7016-4DB3-A92F-7041D9063A5E"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "TapApplePayKit-Example/ViewController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "166"
+            endingLineNumber = "166"
+            landmarkName = "authorisePayment()"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "671DB2F3-7016-4DB3-A92F-7041D9063A5E - 39991f186e103f5f"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "TapApplePayKit_Example.ViewController.authorisePayment() -&gt; ()"
+                  moduleName = "TapApplePayKit-Example"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/osamarabie/desktop/Tap/TapApplePayKit-iOS/TapApplePayKit-Example/ViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "166"
+                  endingLineNumber = "166"
+                  offsetFromSymbolStart = "26">
+               </Location>
+               <Location
+                  uuid = "671DB2F3-7016-4DB3-A92F-7041D9063A5E - 34d6c157a712fca4"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (TapApplePayKit_iOS.TapApplePayToken) -&gt; () in TapApplePayKit_Example.ViewController.authorisePayment() -&gt; ()"
+                  moduleName = "TapApplePayKit-Example"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/osamarabie/desktop/Tap/TapApplePayKit-iOS/TapApplePayKit-Example/ViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "166"
+                  endingLineNumber = "166"
+                  offsetFromSymbolStart = "62">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "260A6AC4-1538-4FBA-819E-1991EDB35CDB"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "TapApplePayKit-iOS/Core/public/Controllers/TapApplePay.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "132"
+            endingLineNumber = "132"
+            landmarkName = "setupTapMerchantApplePay(merchantKey:onSuccess:onErrorOccured:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+   </Breakpoints>
 </Bucket>

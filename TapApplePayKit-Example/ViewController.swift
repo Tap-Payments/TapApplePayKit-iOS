@@ -19,14 +19,14 @@ class ViewController: UIViewController {
     let myTapApplePayRequest:TapApplePayRequest = .init()
     let tapApplePay:TapApplePay = .init()
     
-    let dataSource = [["Country Code","Currency Code","Payment Networks","Transaction Amount"],["Check Apple Pay Status","Try Apple Pay Setup","Authorize Payment"],["Tap Apple Pay Button Type","Tap Apple Pay Button Outline"]]
+    let dataSource = [["Currency Code","Payment Networks","Transaction Amount"],["Check Apple Pay Status","Try Apple Pay Setup","Authorize Payment"],["Tap Apple Pay Button Type","Tap Apple Pay Button Outline"]]
     
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
         
         myTapApplePayRequest.build(paymentAmount: 10, merchantID: "merchant.tap.gosell")
-        myTapApplePayRequest.build(with: .US, paymentNetworks: [.Amex,.Visa,.MasterCard], paymentItems: [], paymentAmount:10, currencyCode: .USD,merchantID:"merchant.tap.gosell", merchantCapabilities: [.capability3DS,.capabilityCredit,.capabilityDebit,.capabilityEMV])
+        myTapApplePayRequest.build(paymentNetworks: [.Amex,.Visa,.MasterCard], paymentItems: [], paymentAmount:10, currencyCode: .USD,merchantID:"merchant.tap.gosell", merchantCapabilities: [.capability3DS,.capabilityCredit,.capabilityDebit,.capabilityEMV])
         featuresTableView.dataSource = self
         featuresTableView.delegate = self
     }
@@ -42,14 +42,6 @@ class ViewController: UIViewController {
     
     func selectCountryCode() {
         
-        showPicker(with: "Select country", placeHolder: "Search country", dataSource: TapCountryCode.allCases.map{$0.rawValue},preselect: [myTapApplePayRequest.countryCode.rawValue],onSelected:{
-            [weak self] (selectedValues,selectedIndices) in
-            
-            DispatchQueue.main.async {
-                self?.myTapApplePayRequest.countryCode =  TapCountryCode.allCases[selectedIndices[0]]
-                self?.featuresTableView.reloadData()
-            }
-        })
     }
     
     
@@ -171,13 +163,12 @@ class ViewController: UIViewController {
     
     func authorisePayment() {
         
-        /*if let paymentController = PKPaymentAuthorizationViewController.init(paymentRequest: tapApplePayRequest.appleRequest) {
-            paymentController.delegate = self
-            present(paymentController, animated: true, completion: nil)
-        }*/
-        
         tapApplePay.authorizePayment(in: self, for: myTapApplePayRequest) { [weak self] (token) in
             self?.showTokenizedData(with: token)
+        } onErrorOccured: { error in
+            let alertControl = UIAlertController(title: "Invalid data passed", message: error.TapApplePayRequestValidationErrorRawValue(), preferredStyle: .alert)
+            alertControl.addAction(.init(title: "OK", style: .cancel))
+            self.present(alertControl, animated: true)
         }
     }
     
@@ -244,15 +235,12 @@ extension ViewController:UITableViewDelegate,UITableViewDataSource {
         if indexPath.section == 0 {
             switch indexPath.row {
             case 0:
-                cell.detailTextLabel?.text = "Selected \(myTapApplePayRequest.countryCode.rawValue)"
-                break
-            case 1:
                 cell.detailTextLabel?.text = "Selected \(myTapApplePayRequest.currencyCode.appleRawValue)"
                 break
-            case 2:
+            case 1:
                 cell.detailTextLabel?.text = "Selected \(myTapApplePayRequest.paymentNetworks.map{ $0.rawValue }.joined(separator:" , "))"
                 break
-            case 3:
+            case 2:
                 cell.detailTextLabel?.text = "Selected \(myTapApplePayRequest.paymentAmount)"
                 break
             default:
@@ -283,10 +271,8 @@ extension ViewController:UITableViewDelegate,UITableViewDataSource {
         if indexPath.section == 0 {
             switch indexPath.row {
             case 0:
-                selectCountryCode()
-            case 1:
                 selectCurrencyCode()
-            case 2:
+            case 1:
                 selectPaymentNetworks()
             default:
                 return
@@ -317,6 +303,12 @@ extension ViewController:UITableViewDelegate,UITableViewDataSource {
 
 
 extension ViewController:TapApplePayButtonDataSource,TapApplePayButtonDelegate {
+    func tapApplePayValidationError(error: TapApplePayKit_iOS.TapApplePayRequestValidationError) {
+        let alertControl = UIAlertController(title: "Invalid data passed", message: error.TapApplePayRequestValidationErrorRawValue(), preferredStyle: .alert)
+        alertControl.addAction(.init(title: "OK", style: .cancel))
+        self.present(alertControl, animated: true)
+    }
+    
     var tapApplePayRequest: TapApplePayRequest {
         return myTapApplePayRequest
     }

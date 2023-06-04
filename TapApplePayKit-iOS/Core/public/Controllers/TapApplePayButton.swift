@@ -22,6 +22,13 @@ import PassKit
      - Parameter appleToken: The correctly and authorized tokenized payment data from Apple Pay kit
      */
     func tapApplePayFinished(with tapAppleToken:TapApplePayToken)->()
+    
+    
+    /**
+     This method will be called if you passed invalid data while creating apple pay request
+     - Parameter appleToken: The correctly and authorized tokenized payment data from Apple Pay kit
+     */
+    func tapApplePayValidationError(error:TapApplePayRequestValidationError)->()
 }
 /// Class represents the UIView that has Apple pay button wrapped inside Tap Kit
 @objcMembers public class TapApplePayButton: UIView {
@@ -139,7 +146,10 @@ import PassKit
                     // If there is alistener, let him know that the authorization is done with the provided tokem
                     nonNullDelegate.tapApplePayFinished(with: token)
                 }
-            })
+            }) { error in
+                self.delegate?.tapApplePayValidationError(error: error)
+                return
+            }
         }else {
             fatalError("Tap Apple Pay Button must have a valid data source that pass a valid TapApplePayRequest")
         }
