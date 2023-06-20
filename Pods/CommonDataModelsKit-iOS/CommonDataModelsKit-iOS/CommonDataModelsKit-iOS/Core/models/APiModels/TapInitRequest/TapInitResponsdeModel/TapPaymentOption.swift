@@ -300,6 +300,7 @@ extension PaymentOption: Decodable {
                   brand: brand,
                   title: title,
                   titleAr: titleAr,
+                  displayableTitle: displayableTitle,
                   backendImageURL: imageURL,
                   isAsync: isAsync, paymentType: paymentType,
                   sourceIdentifier: sourceIdentifier,

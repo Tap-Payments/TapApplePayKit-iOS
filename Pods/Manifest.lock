@@ -1,5 +1,5 @@
 PODS:
-  - CommonDataModelsKit-iOS (1.0.126):
+  - CommonDataModelsKit-iOS (1.0.129):
     - SwiftyRSA
     - TapAdditionsKitV2
     - TapCardVlidatorKit-iOS
@@ -44,7 +44,7 @@ SPEC REPOS:
     - TapSwiftFixesV2
 
 SPEC CHECKSUMS:
-  CommonDataModelsKit-iOS: 1a510cba9201f04caf1f9abe0031e56fb96bff47
+  CommonDataModelsKit-iOS: 550734999681b1762ddf2ff39c743f4771d482d4
   SwiftyRSA: 8c6dd1ea7db1b8dc4fb517a202f88bb1354bc2c6
   TapAdditionsKitV2: 9846381c32b150303cbeff355550d3500a98f77d
   TapApplicationV2: aee3d046c4272778431e1535de6cab34e1269f8c
@@ -55,4 +55,4 @@ SPEC CHECKSUMS:
 
 PODFILE CHECKSUM: 935dd229edc1b7123b5c3ce92f5f56043f3cd456
 
-COCOAPODS: 1.11.2
+COCOAPODS: 1.12.1
