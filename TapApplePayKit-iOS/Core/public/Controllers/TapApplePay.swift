@@ -29,7 +29,7 @@ import TapNetworkKit_iOS
     
     
     /// The latest checkout profile api response
-    internal static var intitModelResponse: TapInitResponseModel?
+    public static var intitModelResponse: TapInitResponseModel?
     
 //    var paymentController = PKPaymentAuthorizationController.init()
     
