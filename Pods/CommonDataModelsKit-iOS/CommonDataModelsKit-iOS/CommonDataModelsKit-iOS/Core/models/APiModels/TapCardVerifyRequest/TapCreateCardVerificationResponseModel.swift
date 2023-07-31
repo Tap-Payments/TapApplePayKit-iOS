@@ -77,6 +77,26 @@ import Foundation
     }
 }
 
+extension TapCreateCardVerificationResponseModel: Encodable {
+    public func encode(to encoder: Encoder) throws {
+        var container = encoder.container(keyedBy: CodingKeys.self)
+        try container.encodeIfPresent(identifier, forKey: .identifier)
+        try container.encodeIfPresent(object, forKey: .object)
+        try container.encodeIfPresent(isLiveMode, forKey: .isLiveMode)
+        try container.encodeIfPresent(status, forKey: .status)
+        try container.encodeIfPresent(currency, forKey: .currency)
+        try container.encodeIfPresent(is3DSecureRequired, forKey: .is3DSecureRequired)
+        try container.encodeIfPresent(shouldSaveCard, forKey: .shouldSaveCard)
+        try container.encodeIfPresent(metadata, forKey: .metadata)
+        try container.encodeIfPresent(transactionDetails, forKey: .transactionDetails)
+        try container.encodeIfPresent(customer, forKey: .customer)
+        try container.encodeIfPresent(source, forKey: .source)
+        try container.encodeIfPresent(redirect, forKey: .redirect)
+        try container.encodeIfPresent(card, forKey: .card)
+        try container.encodeIfPresent(response, forKey: .response)
+    }
+}
+
 // MARK: - Retrievable
 extension TapCreateCardVerificationResponseModel: Retrievable {
     
@@ -114,5 +134,16 @@ public protocol Retrievable: IdentifiableWithString, Decodable {
         
         case message                = "message"
         case code                   = "code"
+    }
+
+}
+
+
+// MARK: - Encodable
+extension SaveCardResponse: Encodable {
+    public func encode(to encoder: Encoder) throws {
+        var container = encoder.container(keyedBy: CodingKeys.self)
+        try container.encodeIfPresent(message, forKey: .message)
+        try container.encodeIfPresent(code, forKey: .code)
     }
 }

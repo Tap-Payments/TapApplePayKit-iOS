@@ -22,6 +22,10 @@ public struct CardScheme {
     }
 }
 
+// MARK: - Encodable
+extension CardScheme: Encodable {
+}
+
 // MARK: - Decodable
 extension CardScheme: Decodable {
     

@@ -85,6 +85,25 @@ import TapCardVlidatorKit_iOS
     }
 }
 
+// MARK: - Encodable
+extension TokenizedCard: Encodable {
+    public func encode(to encoder: Encoder) throws {
+        var container = encoder.container(keyedBy: CodingKeys.self)
+        try container.encodeIfPresent(identifier, forKey: .identifier)
+        try container.encodeIfPresent(object, forKey: .object)
+        try container.encodeIfPresent(lastFourDigits, forKey: .lastFourDigits)
+        try container.encodeIfPresent(expirationMonth, forKey: .expirationMonth)
+        try container.encodeIfPresent(expirationYear, forKey: .expirationYear)
+        try container.encodeIfPresent(binNumber, forKey: .binNumber)
+        try container.encodeIfPresent(brand, forKey: .brand)
+        try container.encodeIfPresent(funding, forKey: .funding)
+        try container.encodeIfPresent(cardholderName, forKey: .cardholderName)
+        try container.encodeIfPresent(customerIdentifier, forKey: .customerIdentifier)
+        try container.encodeIfPresent(fingerprint, forKey: .fingerprint)
+        try container.encodeIfPresent(address, forKey: .address)
+    }
+}
+
 // MARK: - Decodable
 extension TokenizedCard: Decodable {
     
@@ -119,3 +138,5 @@ extension TokenizedCard: Decodable {
                   address:              address)
     }
 }
+
+

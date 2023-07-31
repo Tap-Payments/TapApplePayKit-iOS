@@ -90,6 +90,23 @@
     }
 }
 
+// MARK: - Encodable
+extension Authentication: Encodable {
+    public func encode(to encoder: Encoder) throws {
+        var container = encoder.container(keyedBy: CodingKeys.self)
+        try container.encodeIfPresent(identifier, forKey: .identifier)
+        try container.encodeIfPresent(object, forKey: .object)
+        try container.encodeIfPresent(type, forKey: .type)
+        try container.encodeIfPresent(requirer, forKey: .requirer)
+        try container.encodeIfPresent(status, forKey: .status)
+        try container.encodeIfPresent(retryAttemptsCount, forKey: .retryAttemptsCount)
+        try container.encodeIfPresent(url, forKey: .url)
+        try container.encodeIfPresent(creationDate, forKey: .creationDate)
+        try container.encodeIfPresent(authenticationDate, forKey: .authenticationDate)
+        try container.encodeIfPresent(count, forKey: .count)
+        try container.encodeIfPresent(value, forKey: .value)
+    }
+}
 // MARK: - Decodable
 extension Authentication: Decodable {
     

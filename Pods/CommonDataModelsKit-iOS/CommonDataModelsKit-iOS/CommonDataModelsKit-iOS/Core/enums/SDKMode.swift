@@ -16,6 +16,11 @@
     @objc(Production)   case production
 }
 
+extension SDKMode: Codable {
+    
+}
+
+
 // MARK: - CustomStringConvertible
 extension SDKMode: CustomStringConvertible {
     

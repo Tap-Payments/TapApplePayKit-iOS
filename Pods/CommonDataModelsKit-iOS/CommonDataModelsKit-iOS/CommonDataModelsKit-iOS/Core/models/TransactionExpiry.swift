@@ -54,6 +54,16 @@ extension TransactionExpiry: Decodable {
     }
 }
 
+// MARK: - Encodable
+extension TransactionExpiry: Encodable {
+    public func encode(to encoder: Encoder) throws {
+        var container = encoder.container(keyedBy: CodingKeys.self)
+        try container.encodeIfPresent(type, forKey: .type)
+        try container.encodeIfPresent(period, forKey: .period)
+    }
+}
+
+
 extension TransactionExpiry {
     
     /// transfers the expiration type to an understandable swift calendar component
@@ -76,5 +86,3 @@ extension TransactionExpiry {
         return nil
     }
 }
-
-

@@ -55,6 +55,15 @@ public struct ExpirationDate {
     }
 }
 
+// MARK: - Encodable
+extension ExpirationDate: Encodable {
+    public func encode(to encoder: Encoder) throws {
+        var container = encoder.container(keyedBy: CodingKeys.self)
+        try container.encodeIfPresent(month, forKey: .month)
+        try container.encodeIfPresent(year, forKey: .year)
+    }
+}
+
 // MARK: - Decodable
 extension ExpirationDate: Decodable {
     

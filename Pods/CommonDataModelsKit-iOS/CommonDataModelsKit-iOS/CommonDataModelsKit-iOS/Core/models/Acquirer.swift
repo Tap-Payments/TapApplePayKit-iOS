@@ -22,3 +22,7 @@
         case response = "response"
     }
 }
+
+extension Acquirer: Encodable {
+    
+}

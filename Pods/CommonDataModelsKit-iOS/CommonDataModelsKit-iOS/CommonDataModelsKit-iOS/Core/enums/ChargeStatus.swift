@@ -109,3 +109,8 @@ extension ChargeStatus: Decodable {
         try self.init(stringValue)
     }
 }
+
+// MARK: - Encodable
+extension ChargeStatus: Encodable {
+}
+

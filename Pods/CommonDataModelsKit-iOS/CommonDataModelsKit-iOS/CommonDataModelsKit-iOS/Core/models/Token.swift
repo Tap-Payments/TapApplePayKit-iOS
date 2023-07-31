@@ -94,6 +94,23 @@ extension Token: Decodable {
 
 
 
+// MARK: - Encodable
+extension Token: Encodable {
+    public func encode(to encoder: Encoder) throws {
+        var container = encoder.container(keyedBy: CodingKeys.self)
+        try container.encodeIfPresent(identifier, forKey: .identifier)
+        try container.encodeIfPresent(object, forKey: .object)
+        try container.encodeIfPresent(card, forKey: .card)
+        try container.encodeIfPresent(type.rawValue, forKey: .type)
+        try container.encodeIfPresent(creationDate, forKey: .creationDate)
+        try container.encodeIfPresent(clientIPAddress, forKey: .clientIPAddress)
+        try container.encodeIfPresent(isLiveMode, forKey: .isLiveMode)
+        try container.encodeIfPresent(isUsed, forKey: .isUsed)
+    }
+}
+
+
+
 /// All models that have identifier are conforming to this protocol.
 public protocol IdentifiableWithString {
     

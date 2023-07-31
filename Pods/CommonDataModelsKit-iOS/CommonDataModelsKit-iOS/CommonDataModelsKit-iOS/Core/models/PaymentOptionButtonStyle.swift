@@ -49,30 +49,38 @@ extension PaymentOptionButtonStyle {
     
     /// Returns and computes the list of colors for the ingredients passed to this style.
     /// Also, it auto computes whether we need to display the dark or light colors based on the device interface
-    public func backgroundColors() -> [UIColor] {
+    /// - Parameter showMonoForLightMode: Indicates whether to show the light or the light mono
+    /// - Parameter showColoredForDarkMode: Indicates whether to show the dark or the dark colored
+    public func backgroundColors(showMonoForLightMode:Bool = false, showColoredForDarkMode:Bool) -> [UIColor] {
         guard let lightBackgroundColors:[String] = background?.light?.backgroundColors,
-              let darkBackgroundColors:[String] = background?.dark?.backgroundColors else { return [.black] }
+              let darkBackgroundColors:[String] = background?.dark?.backgroundColors,
+              let lightMonoBackgroundColors:[String] = background?.lightMono?.backgroundColors,
+              let darkColoredBackgroundColors:[String] = background?.darkColored?.backgroundColors else { return [.black] }
         
         // We decide which theme object to user based on the current userInterfaceStyle
         if #available(iOS 12.0, *) {
-            return (UIView().traitCollection.userInterfaceStyle == .dark) ? darkBackgroundColors.compactMap{ UIColor(tap_hex: $0) } : lightBackgroundColors.compactMap{ UIColor(tap_hex: $0) }
+            return (UIView().traitCollection.userInterfaceStyle == .dark) ? showColoredForDarkMode ? darkColoredBackgroundColors.compactMap{ UIColor(tap_hex: $0) } : darkBackgroundColors.compactMap{ UIColor(tap_hex: $0) } : showMonoForLightMode ? lightMonoBackgroundColors.compactMap{ UIColor(tap_hex: $0) } : lightBackgroundColors.compactMap{ UIColor(tap_hex: $0) }
         } else {
             // Fallback on earlier versions
-            return lightBackgroundColors.compactMap{ UIColor(tap_hex: $0) }
+            return showMonoForLightMode ? lightMonoBackgroundColors.compactMap{ UIColor(tap_hex: $0) } : lightBackgroundColors.compactMap{ UIColor(tap_hex: $0) }
         }
     }
     
     /// Returns and computes the loading base solid color
-    public func loadingBasebackgroundColor() -> UIColor? {
-        guard let lightBackgroundColor:String = background?.light?.baseColor,
-              let darkBackgroundColor:String = background?.dark?.baseColor else { return nil }
+    /// - Parameter showMonoForLightMode: Indicates whether to show the light or the light mono
+    /// - Parameter showColoredForDarkMode: Indicates whether to show the dark or the dark colored
+    public func loadingBasebackgroundColor(showMonoForLightMode:Bool = false, showColoredForDarkMode:Bool) -> UIColor? {
+        guard let lightBackgroundColor:String       = background?.light?.baseColor,
+              let darkBackgroundColor:String        = background?.dark?.baseColor,
+              let lightMonoBackgroundColor:String   = background?.lightMono?.baseColor,
+              let darkColoredBackgroundColor:String   = background?.darkColored?.baseColor else { return nil }
         
         // We decide which theme object to user based on the current userInterfaceStyle
         if #available(iOS 12.0, *) {
-            return (UIView().traitCollection.userInterfaceStyle == .dark) ?  UIColor(tap_hex: darkBackgroundColor) : UIColor(tap_hex: lightBackgroundColor)
+            return (UIView().traitCollection.userInterfaceStyle == .dark) ?  showColoredForDarkMode ? UIColor(tap_hex: darkColoredBackgroundColor) : UIColor(tap_hex: darkBackgroundColor) : showMonoForLightMode ? UIColor(tap_hex: lightMonoBackgroundColor) : UIColor(tap_hex: lightBackgroundColor)
         } else {
             // Fallback on earlier versions
-            return UIColor(tap_hex: lightBackgroundColor)
+            return showMonoForLightMode ? UIColor(tap_hex: lightMonoBackgroundColor) : UIColor(tap_hex: lightBackgroundColor)
         }
     }
     
@@ -96,13 +104,17 @@ extension PaymentOptionButtonStyle {
     
     /// Returns the solid color the button should show after shrinking while loading
     /// Also, it auto computes whether we need to display the dark or light colors based on the device interface
-    func baseColor() -> UIColor {
+    /// - Parameter showMonoForLightMode: Indicates whether to show the light or the light mono
+    /// - Parameter showColoredForDarkMode: Indicates whether to show the dark or the dark colored
+    func baseColor(showMonoForLightMode:Bool = false, showColoredForDarkMode:Bool) -> UIColor {
         guard let lightBackgroundColor:String = background?.light?.baseColor,
-              let darkBackgroundColor:String = background?.dark?.baseColor else { return .black }
+              let darkBackgroundColor:String = background?.dark?.baseColor,
+              let lightMonoBackgroundColor:String = background?.lightMono?.baseColor,
+              let darkColoredBackgroundColor:String = background?.darkColored?.baseColor else { return .black }
         
         // We decide which theme object to user based on the current userInterfaceStyle
         if #available(iOS 12.0, *) {
-            return (UIView().traitCollection.userInterfaceStyle == .dark) ? UIColor(tap_hex: lightBackgroundColor)! : UIColor(tap_hex: darkBackgroundColor)!
+            return (UIView().traitCollection.userInterfaceStyle == .dark) ? showColoredForDarkMode ? UIColor(tap_hex: darkColoredBackgroundColor)! : UIColor(tap_hex: darkBackgroundColor)! : showMonoForLightMode ? UIColor(tap_hex: lightMonoBackgroundColor)! : UIColor(tap_hex: lightBackgroundColor)!
         } else {
             // Fallback on earlier versions
             return UIColor(tap_hex: lightBackgroundColor)!
@@ -130,7 +142,12 @@ extension PaymentOptionButtonStyle {
 
 // MARK: - Background
 public struct Background: Codable {
-    var light, dark: BackgroundDark?
+    var light, dark, lightMono, darkColored: BackgroundDark?
+    // MARK: - Private -
+    
+    private enum CodingKeys : String, CodingKey {
+        case light, lightMono = "light_mono", dark, darkColored = "dark_colored"
+    }
 }
 
 // MARK: Background convenience initializers and mutators
@@ -153,11 +170,13 @@ extension Background {
     
     func with(
         light: BackgroundDark?? = nil,
-        dark: BackgroundDark?? = nil
+        dark: BackgroundDark?? = nil,
+        lightMono: BackgroundDark?? = nil
     ) -> Background {
         return Background(
             light: light ?? self.light,
-            dark: dark ?? self.dark
+            dark: dark ?? self.dark,
+            lightMono: lightMono ?? self.lightMono
         )
     }
     

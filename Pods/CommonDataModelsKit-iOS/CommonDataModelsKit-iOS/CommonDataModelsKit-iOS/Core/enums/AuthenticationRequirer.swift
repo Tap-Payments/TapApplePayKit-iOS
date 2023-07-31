@@ -59,3 +59,7 @@ extension AuthenticationRequirer: Decodable {
         try self.init(stringValue)
     }
 }
+
+// MARK: - Encodable
+extension AuthenticationRequirer: Encodable {
+}

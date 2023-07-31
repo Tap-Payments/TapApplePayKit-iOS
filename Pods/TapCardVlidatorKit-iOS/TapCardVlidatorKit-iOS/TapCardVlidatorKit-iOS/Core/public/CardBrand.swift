@@ -140,6 +140,23 @@ import Foundation
             }
         }
     }
+    
+    /// Generates a string representation for the enum value
+    public var toString:String {
+        return RawValues.table[self]?.first ?? ""
+    }
+    
+    /// Generates a string representation for the enum value
+    public static func from(string:String) -> CardBrand {
+        var detectedBrand:CardBrand = .unknown
+        CardBrand.allCases.forEach { brand in
+            if let x = RawValues.table[brand],
+               x.contains(string.uppercased()) {
+                detectedBrand = brand
+            }
+        }
+        return detectedBrand
+    }
 }
 
 // MARK: - Encodable

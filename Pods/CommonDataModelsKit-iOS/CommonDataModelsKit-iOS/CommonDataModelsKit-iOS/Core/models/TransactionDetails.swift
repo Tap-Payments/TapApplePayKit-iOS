@@ -77,3 +77,17 @@ extension TransactionDetails: Decodable {
         self.init(authorizationID: authorizationID, creationDate: creationDate, timeZone: timeZone, url: url, expiry: expiry, asynchronous:asynchronous, order:order)
     }
 }
+
+// MARK: - Encodable
+extension TransactionDetails: Encodable {
+    public func encode(to encoder: Encoder) throws {
+        var container = encoder.container(keyedBy: CodingKeys.self)
+        try container.encodeIfPresent(authorizationID, forKey: .authorizationID)
+        try container.encodeIfPresent(creationDate, forKey: .creationDate)
+        try container.encodeIfPresent(timeZone, forKey: .timeZone)
+        try container.encodeIfPresent(url, forKey: .url)
+        try container.encodeIfPresent(expiry, forKey: .expiry)
+        try container.encodeIfPresent(order, forKey: .order)
+        try container.encodeIfPresent(asynchronous, forKey: .asynchronous)
+    }
+}

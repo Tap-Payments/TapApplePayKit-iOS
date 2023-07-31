@@ -74,3 +74,6 @@ extension TokenType: Decodable {
 		try self.init(string: string)
 	}
 }
+// MARK: - Encodable
+extension TokenType: Encodable {
+}

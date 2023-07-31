@@ -132,7 +132,7 @@ import TapCardVlidatorKit_iOS
         case supportedCurrencies        = "supported_currencies"
         case orderBy                    = "order_by"
         case expirationMonth            = "exp_month"
-        case expirationYear                = "exp_year"
+        case expirationYear             = "exp_year"
         case cardType                   = "funding"
         case image                      = "image"
     }
@@ -217,6 +217,31 @@ extension SavedCard: Decodable {
                   image:                    image)
     }
 }
+
+// MARK: - Encodable
+extension SavedCard: Encodable {
+    public func encode(to encoder: Encoder) throws {
+        var container = encoder.container(keyedBy: CodingKeys.self)
+        try container.encodeIfPresent(identifier, forKey: .identifier)
+        try container.encodeIfPresent(object, forKey: .object)
+        try container.encodeIfPresent(lastFourDigits, forKey: .lastFourDigits)
+        try container.encodeIfPresent(paymentOptionIdentifier, forKey: .paymentOptionIdentifier)
+        try container.encodeIfPresent(expiry, forKey: .expiry)
+        try container.encodeIfPresent(brand, forKey: .brand)
+        try container.encodeIfPresent(fingerprint, forKey: .fingerprint)
+        try container.encodeIfPresent(cardholderName, forKey: .cardholderName)
+        try container.encodeIfPresent(firstSixDigits, forKey: .firstSixDigits)
+        try container.encodeIfPresent(currency, forKey: .currency)
+        try container.encodeIfPresent(scheme, forKey: .scheme)
+        try container.encodeIfPresent(supportedCurrencies, forKey: .supportedCurrencies)
+        try container.encodeIfPresent(orderBy, forKey: .orderBy)
+        try container.encodeIfPresent(expirationMonth, forKey: .expirationMonth)
+        try container.encodeIfPresent(expirationYear, forKey: .expirationYear)
+        try container.encodeIfPresent(cardType, forKey: .cardType)
+        try container.encodeIfPresent(backendImage, forKey: .image)
+    }
+}
+
 
 // MARK: - FilterableByCurrency
 extension SavedCard: FilterableByCurrency {}

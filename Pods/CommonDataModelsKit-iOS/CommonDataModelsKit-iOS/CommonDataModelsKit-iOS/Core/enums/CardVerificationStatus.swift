@@ -62,3 +62,10 @@ extension CardVerificationStatus: Decodable {
         try self.init(stringValue)
     }
 }
+
+// MARK: - Encodable
+extension CardVerificationStatus: Encodable {
+    
+    
+}
+

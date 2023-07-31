@@ -31,12 +31,12 @@ import TapNetworkKit_iOS
     /// The latest checkout profile api response
     public static var intitModelResponse: TapInitResponseModel?
     
-//    var paymentController = PKPaymentAuthorizationController.init()
+    //    var paymentController = PKPaymentAuthorizationController.init()
     
     
     //MARK: Public methods
     /**
-        This static interface is used if Pay is available as per the device capability!
+     This static interface is used if Pay is available as per the device capability!
      - Parameter tapPaymentNetworks: If the payment should be done through certain payment networks, please pass them here to check if the current user has valid cards added to his wallet belongs to at least one of the needed payment networks. Default is Empty
      - Parameter shouldOpenSetupDirectly: If set, then if the user is eligble for Apple pay but he didn't add a valid card that belongs to the given payment networks, the wallet will show up for him to add valid cards. PLEASE note, it is the not the responsibility for the interface to check again when the user comes back after adding a card. Default is false
      */
@@ -215,7 +215,7 @@ import TapNetworkKit_iOS
     ///
     internal static func loadMerchantData(for tapApplePayRequest:TapApplePayRequest?,onResponeReady: @escaping (TapInitResponseModel) -> () = {_ in}, onErrorOccured: @escaping(TapNetworkManager.RequestCompletionClosure)) {
         
-        let tapPaymentOptionsRequestModel:TapPaymentOptionsRequestModel = TapPaymentOptionsRequestModel(transactionMode: .purchase, amount: tapApplePayRequest?.paymentAmount ?? 1, items: [.init(title: "PAY", description: "APPLE PAY", price: tapApplePayRequest?.paymentAmount ?? 1, quantity: 1, discount: nil, currency: tapApplePayRequest?.currencyCode ?? .USD)], shipping: nil, taxes: nil, currency: tapApplePayRequest?.currencyCode ?? .USD, merchantID: nil, customer: .defaultCustomer(), destinationGroup: nil, paymentType: .Device, totalAmount: tapApplePayRequest?.paymentAmount ?? 1, topup: nil, reference: nil, supportedCurrencies:nil)
+        let tapPaymentOptionsRequestModel:TapPaymentOptionsRequestModel = TapPaymentOptionsRequestModel(transactionMode: .purchase, amount: tapApplePayRequest?.paymentAmount ?? 1, items: [.init(title: "PAY", description: "APPLE PAY", price: tapApplePayRequest?.paymentAmount ?? 1, quantity: 1, discount: nil, currency: tapApplePayRequest?.currencyCode ?? .USD)], shipping: nil, taxes: nil, currency: tapApplePayRequest?.currencyCode ?? .USD, merchantID: nil, customer: .defaultCustomer(), destinationGroup: nil, paymentType: .Device, totalAmount: tapApplePayRequest?.paymentAmount ?? 1, topup: nil, reference: nil, supportedCurrencies:nil, supportedPaymentMethods: nil)
         
         // Change the model into a dictionary
         guard let bodyDictionary = TapApplePay.convertModelToDictionary(tapPaymentOptionsRequestModel, callingCompletionOnFailure: { error in
@@ -236,7 +236,7 @@ import TapNetworkKit_iOS
 }
 
 extension TapApplePay:PKPaymentAuthorizationControllerDelegate {
-   
+    
     public func paymentAuthorizationControllerDidFinish(_ controller: PKPaymentAuthorizationController) {
         controller.dismiss {
             //FlurryLogger.logEvent(with: "Apple_Pay_Sheet_Dismissed")
@@ -249,13 +249,13 @@ extension TapApplePay:PKPaymentAuthorizationControllerDelegate {
         
         let tapAppleToken = TapApplePayToken.init(with:payment.token)
         
-       /* if let jsonToken:[String:String] = tapAppleToken.jsonAppleToken as? [String:String] {
-            //FlurryLogger.logEvent(with: "Apple_Pay_Sheet_Authorized", timed:false , params:jsonToken)
-        }else if let stringToken:String = tapAppleToken.stringAppleToken {
-            //FlurryLogger.logEvent(with: "Apple_Pay_Sheet_Authorized", timed:false , params:["AppleStringToken":stringToken])
-        }else {
-            //FlurryLogger.logEvent(with: "Apple_Pay_Sheet_Authorized", timed:false , params:["AppleStringToken":""])
-        }*/
+        /* if let jsonToken:[String:String] = tapAppleToken.jsonAppleToken as? [String:String] {
+         //FlurryLogger.logEvent(with: "Apple_Pay_Sheet_Authorized", timed:false , params:jsonToken)
+         }else if let stringToken:String = tapAppleToken.stringAppleToken {
+         //FlurryLogger.logEvent(with: "Apple_Pay_Sheet_Authorized", timed:false , params:["AppleStringToken":stringToken])
+         }else {
+         //FlurryLogger.logEvent(with: "Apple_Pay_Sheet_Authorized", timed:false , params:["AppleStringToken":""])
+         }*/
         
         completion(PKPaymentAuthorizationResult(status: .success,errors: nil))
         

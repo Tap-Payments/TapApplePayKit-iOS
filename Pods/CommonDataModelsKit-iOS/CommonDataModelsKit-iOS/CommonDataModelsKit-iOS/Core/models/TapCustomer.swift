@@ -72,6 +72,12 @@ import Foundation
     
     /// Customer's locale.
     public var locale: String?
+    
+    /// If we want to preload a name valye in the card holder name field
+    public var nameOnCard:String = ""
+    /// If we want to make the card holder name field editable
+    public var editable:Bool = true
+    
     // MARK: Methods
     
     
@@ -80,7 +86,7 @@ import Foundation
      - Returns: A default tap customer for testing with the email of "taptestingemail@gmail.com"
      */
     public static func defaultCustomer() -> TapCustomer {
-        return try! .init(emailAddress: TapEmailAddress(emailAddressString: "taptestingemail@gmail.com"), phoneNumber: nil, name: "Tap Testing Default",address: nil)
+        return try! .init(emailAddress: TapEmailAddress(emailAddressString: "taptestingemail@gmail.com"), phoneNumber: .init(isdNumber: "965", phoneNumber: "90064542"), name: "Tap Testing Default",address: nil)
     }
     
     
@@ -90,9 +96,11 @@ import Foundation
     ///   - emailAddress: Email address. Please check [TapEmailAddress](x-source-tag://TapEmailAddress)
     ///   - phoneNumber: Phone number. Please check [TapPhone](x-source-tag://TapPhone)
     ///   - name: Name.
+    ///   - nameOnCard: If we want to preload a name valye in the card holder name field
+    ///   - editable: If we want to make the card holder name field editable
     /// - Throws: Invalid customer info error.
-    public convenience init(emailAddress: TapEmailAddress?, phoneNumber: TapPhone?, name: String,address:Address?) throws {
-        try self.init(emailAddress: emailAddress, phoneNumber: phoneNumber, firstName: name, middleName: nil, lastName: nil,address:address)
+    public convenience init(emailAddress: TapEmailAddress?, phoneNumber: TapPhone?, name: String,address:Address?, nameOnCard:String = "", editable:Bool = true) throws {
+        try self.init(emailAddress: emailAddress, phoneNumber: phoneNumber, firstName: name, middleName: nil, lastName: nil,address:address, nameOnCard: nameOnCard, editable: editable)
     }
     
     /// Initializes the customer with email address, phone number and a name.
@@ -101,12 +109,14 @@ import Foundation
     ///   - emailAddress: Email address. Please check [TapEmailAddress](x-source-tag://TapEmailAddress)
     ///   - phoneNumber: Phone number. Please check [TapPhone](x-source-tag://TapPhone)
     ///   - name: Name.
+    ///   - nameOnCard: If we want to preload a name valye in the card holder name field
+    ///   - editable: If we want to make the card holder name field editable
     /// - Warning: This method returns `nil` if you pass invalid customer data.
     @available(swift, obsoleted: 1.0)
-    @objc(initWithEmailAddress:phoneNumber:name:address:)
-    public convenience init?(with emailAddress: TapEmailAddress, phoneNumber: TapPhone, name: String,address:Address?) {
+    @objc(initWithEmailAddress:phoneNumber:name:address:nameOnCard:editable:)
+    public convenience init?(with emailAddress: TapEmailAddress, phoneNumber: TapPhone, name: String,address:Address?, nameOnCard:String = "", editable:Bool = true) {
         
-        try? self.init(emailAddress: emailAddress, phoneNumber: phoneNumber, name: name, address: address)
+        try? self.init(emailAddress: emailAddress, phoneNumber: phoneNumber, name: name, address: address, nameOnCard: nameOnCard, editable: editable)
     }
     
     /// Initializes the customer with email address, phone number, first name, middle name and last name.
@@ -117,12 +127,14 @@ import Foundation
     ///   - firstName: First name.
     ///   - middleName: Middle name.
     ///   - lastName: Last name.
+    ///   - nameOnCard: If we want to preload a name valye in the card holder name field
+    ///   - editable: If we want to make the card holder name field editable
     /// - Throws: Invalid customer info error.
-    public convenience init(emailAddress: TapEmailAddress?, phoneNumber: TapPhone?, firstName: String, middleName: String?, lastName: String?, address:Address?) throws {
+    public convenience init(emailAddress: TapEmailAddress?, phoneNumber: TapPhone?, firstName: String, middleName: String?, lastName: String?, address:Address?, nameOnCard:String = "", editable:Bool = true) throws {
         if emailAddress == nil && phoneNumber == nil {
             throw("A customer must have at least an email or a phone number")
         }
-        try self.init(identifier: nil, emailAddress: emailAddress, phoneNumber: phoneNumber, firstName: firstName, middleName: middleName, lastName: lastName, address: address)
+        try self.init(identifier: nil, emailAddress: emailAddress, phoneNumber: phoneNumber, firstName: firstName, middleName: middleName, lastName: lastName, address: address, nameOnCard: nameOnCard, editable: editable)
     }
     
     /// Initializes the customer with email address, phone number, first name, middle name and last name.
@@ -133,21 +145,27 @@ import Foundation
     ///   - firstName: First name.
     ///   - middleName: Middle name.
     ///   - lastName: Last name.
+    ///   - nameOnCard: If we want to preload a name valye in the card holder name field
+    ///   - editable: If we want to make the card holder name field editable
     /// - Warning: This method returns `nil` if you pass invalid customer data.
     @available(swift, obsoleted: 1.0)
-    @objc(initWithEmailAddress:phoneNumber:firstName:middleName:lastName:address:)
-    public convenience init?(with emailAddress: TapEmailAddress, phoneNumber: TapPhone, firstName: String, middleName: String?, lastName: String?, address:Address?) {
+    @objc(initWithEmailAddress:phoneNumber:firstName:middleName:lastName:address:nameOnCard:editable:)
+    public convenience init?(with emailAddress: TapEmailAddress, phoneNumber: TapPhone, firstName: String, middleName: String?, lastName: String?, address:Address?, nameOnCard:String = "", editable:Bool = true) {
         
-        try? self.init(emailAddress: emailAddress, phoneNumber: phoneNumber, firstName: firstName, middleName: middleName, lastName: lastName, address: address)
+        try? self.init(emailAddress: emailAddress, phoneNumber: phoneNumber, firstName: firstName, middleName: middleName, lastName: lastName, address: address, nameOnCard: nameOnCard, editable: editable)
     }
     
     /// Initializes the customer with the customer identifier.
     ///
-    /// - Parameter identifier: Customer identifier.
+    /// - Parameters:
+    ///    - identifier: Customer identifier.
+    ///   - nameOnCard: If we want to preload a name valye in the card holder name field
+    ///   - editable: If we want to make the card holder name field editable
+    /// 
     /// - Throws: Invalid customer info error.
-    public convenience init(identifier: String) throws {
+    public convenience init(identifier: String,  nameOnCard:String = "", editable:Bool = true) throws {
         
-        try self.init(identifier: identifier, emailAddress: nil, phoneNumber: nil, firstName: nil, middleName: nil, lastName: nil, address: nil)
+        try self.init(identifier: identifier, emailAddress: nil, phoneNumber: nil, firstName: nil, middleName: nil, lastName: nil, address: nil, nameOnCard: nameOnCard, editable: editable)
     }
     
     /// Initializes the customer with the customer identifier.
@@ -210,6 +228,7 @@ import Foundation
         self.descriptionText        = self.descriptionText?.tap_trimWhitespacesAndNewlines(nullifyIfResultIsEmpty: true)
         self.title                  = self.title?.tap_trimWhitespacesAndNewlines(nullifyIfResultIsEmpty: true)
         self.nationality            = self.nationality?.tap_trimWhitespacesAndNewlines(nullifyIfResultIsEmpty: true)
+        self.nameOnCard             = self.nameOnCard.tap_trimWhitespacesAndNewlines(nullifyIfResultIsEmpty: true) ?? ""
         self.locale                 = "ar"
     }
     
@@ -230,13 +249,15 @@ import Foundation
         case currency           = "currency"
         case address            = "address"
         case locale             = "locale"
+        case nameOnCard         = "name_on_card"
+        case editable           = "editable"
     }
     
     // MARK: Methods
     
     @available(*, unavailable) private override init() { super.init() }
     
-    private init(identifier: String?, emailAddress: TapEmailAddress?, phoneNumber: TapPhone?, firstName: String?, middleName: String?, lastName: String?, address:Address?) throws {
+    private init(identifier: String?, emailAddress: TapEmailAddress?, phoneNumber: TapPhone?, firstName: String?, middleName: String?, lastName: String?, address:Address?, nameOnCard:String = "", editable:Bool = true) throws {
         
         self.identifier         = identifier
         self.emailAddress       = emailAddress
@@ -246,7 +267,8 @@ import Foundation
         self.lastName           = lastName
         self.address            = address
         self.locale             = "ar"
-        
+        self.nameOnCard         = nameOnCard
+        self.editable           = editable
         super.init()
         
         self.validateFields()
@@ -267,20 +289,24 @@ extension TapCustomer: NSCopying {
         let currencyCopy        = self.currency
         let addressCopy         = self.address?.copy() as? Address
         
-        let result = try! TapCustomer(identifier:        self.identifier,
-                                      emailAddress:    emailAddressCopy,
-                                      phoneNumber:        phoneNumberCopy,
-                                      firstName:        self.firstName,
-                                      middleName:        self.middleName,
-                                      lastName:        self.lastName,
-                                      address: addressCopy)
+        let result = try! TapCustomer(identifier:   self.identifier,
+                                      emailAddress: emailAddressCopy,
+                                      phoneNumber:  phoneNumberCopy,
+                                      firstName:    self.firstName,
+                                      middleName:   self.middleName,
+                                      lastName:     self.lastName,
+                                      address:      addressCopy,
+                                      nameOnCard:   self.nameOnCard,
+                                      editable:     self.editable)
         
-        result.descriptionText    = self.descriptionText
-        result.metadata            = self.metadata
+        result.descriptionText  = self.descriptionText
+        result.metadata         = self.metadata
         result.title            = self.title
-        result.nationality        = self.nationality
-        result.currency            = currencyCopy
+        result.nationality      = self.nationality
+        result.currency         = currencyCopy
         result.locale           = self.locale
+        result.nameOnCard       = self.nameOnCard
+        result.editable         = self.editable
         return result
     }
 }
@@ -311,6 +337,8 @@ extension TapCustomer: Encodable {
         try container.encodeIfPresent(self.currency,        forKey: .currency)
         try container.encodeIfPresent(self.address,         forKey: .address)
         try container.encodeIfPresent(self.locale,          forKey: .locale)
+        try container.encodeIfPresent(self.nameOnCard,      forKey: .nameOnCard)
+        try container.encodeIfPresent(self.editable,        forKey: .editable)
         
         
     }
