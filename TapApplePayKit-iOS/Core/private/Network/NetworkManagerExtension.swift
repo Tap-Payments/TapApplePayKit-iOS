@@ -15,7 +15,9 @@ import CommonDataModelsKit_iOS
 internal extension NetworkManager {
     
     
-    static var headersEncryptionPublicKey:String = """
+    static var headersEncryptionPublicKey:String {
+        if TapApplePay.sdkMode == .sandbox {
+            return """
 -----BEGIN PUBLIC KEY-----
 MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQC8AX++RtxPZFtns4XzXFlDIxPB
 h0umN4qRXZaKDIlb6a3MknaB7psJWmf2l+e4Cfh9b5tey/+rZqpQ065eXTZfGCAu
@@ -23,6 +25,18 @@ BLt+fYLQBhLfjRpk8S6hlIzc1Kdjg65uqzMwcTd0p7I4KLwHk1I0oXzuEu53fU1L
 SZhWp4Mnd6wjVgXAsQIDAQAB
 -----END PUBLIC KEY-----
 """
+        }else{
+            return  """
+-----BEGIN PUBLIC KEY-----
+MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQC9hSRms7Ir1HmzdZxGXFYgmpi3
+ez7VBFje0f8wwrxYS9oVoBtN4iAt0DOs3DbeuqtueI31wtpFVUMGg8W7R0SbtkZd
+GzszQNqt/wyqxpDC9q+97XdXwkWQFA72s76ud7eMXQlsWKsvgwhY+Ywzt0KlpNC3
+Hj+N6UWFOYK98Xi+sQIDAQAB
+-----END PUBLIC KEY-----
+"""
+        }
+    }
+    
     /// Static HTTP headers sent with each request. including device info, language and SDK secret keys
     static var staticHTTPHeaders: [String: String] {
         

@@ -20,7 +20,7 @@ import TapNetworkKit_iOS
     @objc public static var sdkMode:SDKMode = .sandbox
     /// Inidcates the tap provided keys for this merchant to use for his transactions. If not set, any transaction will fail. Please if you didn't get a tap key yet, refer to https://www.tap.company/en/sell
     @objc public static var secretKey:SecretKey = .init(sandbox: "pk_test_Vlk842B1EA7tDN5QbrfGjYzh",
-                                                        production: "sk_live_QglH8V7Fw6NPAom4qRcynDK2")
+                                                        production: "pk_live_UYnihb8dtBXm9fDSw1kFlPQA")
     
     //MARK: Internal values
     

@@ -25,23 +25,13 @@ class EssentialSetupViewController: UIViewController {
     
     @IBAction func setupButtonClicked(_ sender: Any) {
         loadingIndicator.isHidden = false
+        TapApplePay.sdkMode = .production
+        
         TapApplePay.setupTapMerchantApplePay(merchantKey: .init(sandbox: sandboxKeyTextField.text ?? "", production: productionKeyTextFied.text ?? "")) {
-            let alertView:UIAlertController = .init(title: "DONE", message: "Start testing Apple pay sdk", preferredStyle: .alert)
-            alertView.addAction(.init(title: "Sandbox", style: .destructive,handler: { _ in
-                DispatchQueue.main.async {
-                    TapApplePay.sdkMode = .sandbox
-                    self.navigationController?.pushViewController((self.storyboard?.instantiateViewController(withIdentifier: "ViewController"))!, animated: true)
-                }
-            }))
-            
-            alertView.addAction(.init(title: "Production", style: .destructive,handler: { _ in
-                DispatchQueue.main.async {
-                    TapApplePay.sdkMode = .production
-                    self.navigationController?.pushViewController((self.storyboard?.instantiateViewController(withIdentifier: "ViewController"))!, animated: true)
-                }
-            }))
-            self.present(alertView, animated: true)
-            self.loadingIndicator.isHidden = true
+            DispatchQueue.main.async {
+                self.loadingIndicator.isHidden = true
+                self.navigationController?.pushViewController((self.storyboard?.instantiateViewController(withIdentifier: "ViewController"))!, animated: true)
+            }
         } onErrorOccured: { error in
             let alertView:UIAlertController = .init(title: "Error occured", message: "We couldn't process your request. \(error ?? "")", preferredStyle: .alert)
             alertView.addAction(.init(title: "Cancel", style: .cancel))
@@ -53,7 +43,7 @@ class EssentialSetupViewController: UIViewController {
     
     @IBAction func resetDataClicked(_ sender: Any) {
         sandboxKeyTextField.text    = "pk_test_Vlk842B1EA7tDN5QbrfGjYzh"
-        productionKeyTextFied.text  = "sk_live_QglH8V7Fw6NPAom4qRcynDK2"
+        productionKeyTextFied.text  = "pk_live_UYnihb8dtBXm9fDSw1kFlPQA"
     }
     
     

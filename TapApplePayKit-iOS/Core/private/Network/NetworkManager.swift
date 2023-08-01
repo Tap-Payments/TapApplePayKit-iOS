@@ -32,7 +32,7 @@ internal class NetworkManager: NSObject {
     /// Defines if loging api calls to server
     public var enableLogging = false
     /// Defines if logging apu calls to console
-    public var consoleLogging = false
+    public var consoleLogging = true
     
     internal var loggedApis:[TapLogStackTraceEntryModel] {
         return networkManager.loggedInApiCalls
