@@ -5,7 +5,8 @@
 //  Copyright © 2019 Tap Payments. All rights reserved.
 //
 
-public struct Order: IdentifiableWithString, Encodable, Decodable {
+@objcMembers
+@objc(CheckoutOrder) public final class Order:NSObject, IdentifiableWithString, Codable {
     
     // MARK: - Internal -
     // MARK: Properties

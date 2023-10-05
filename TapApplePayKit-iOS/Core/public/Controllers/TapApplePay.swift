@@ -97,6 +97,8 @@ import TapNetworkKit_iOS
         
     }
     
+    
+    
     /**
      Create a  tap token wrapper for the raw apple pay token. This tap token can be used in further tap api calls (e.g. charge)
      - Parameter for applePayToken: The native iOS Apple Pay token

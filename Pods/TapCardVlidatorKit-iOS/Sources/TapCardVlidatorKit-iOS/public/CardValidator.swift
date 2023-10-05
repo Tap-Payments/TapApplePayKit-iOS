@@ -4,6 +4,8 @@
 //
 //  Copyright © 2018 Tap Payments. All rights reserved.
 //
+
+import Foundation
 /// Card validator.
 public final class CardValidator {
     

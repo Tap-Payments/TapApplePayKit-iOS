@@ -100,11 +100,11 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 
 
-## TapKeychain
+## TapKeychainV2
 
 MIT License
 
-Copyright (c) 2018 Tap-Payments
+Copyright (c) 2023 Tap Payments
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal

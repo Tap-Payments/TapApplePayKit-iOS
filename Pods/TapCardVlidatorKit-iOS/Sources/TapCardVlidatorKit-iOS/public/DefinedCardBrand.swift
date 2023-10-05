@@ -6,6 +6,7 @@
 //
 
 /// Struct of recognized card brand and validation state.
+import Foundation
 @objc public class DefinedCardBrand: NSObject {
     
     /// Validation state.

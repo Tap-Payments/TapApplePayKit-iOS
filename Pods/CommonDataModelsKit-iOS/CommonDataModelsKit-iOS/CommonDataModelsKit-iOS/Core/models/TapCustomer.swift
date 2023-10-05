@@ -161,7 +161,7 @@ import Foundation
     ///    - identifier: Customer identifier.
     ///   - nameOnCard: If we want to preload a name valye in the card holder name field
     ///   - editable: If we want to make the card holder name field editable
-    /// 
+    ///
     /// - Throws: Invalid customer info error.
     public convenience init(identifier: String,  nameOnCard:String = "", editable:Bool = true) throws {
         

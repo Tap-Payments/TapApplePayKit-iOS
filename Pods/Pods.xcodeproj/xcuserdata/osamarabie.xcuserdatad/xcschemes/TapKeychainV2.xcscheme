@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Scheme
-   LastUpgradeVersion = "1420"
+   LastUpgradeVersion = "1240"
    version = "1.3">
    <BuildAction
       parallelizeBuildables = "YES"
@@ -14,9 +14,9 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "87D01FBA5C9E03D06F499B22E3F19026"
-               BuildableName = "TapKeychain.framework"
-               BlueprintName = "TapKeychain"
+               BlueprintIdentifier = "7D7CA289C7EAC480E1D88A58624285ED"
+               BuildableName = "TapKeychainV2.framework"
+               BlueprintName = "TapKeychainV2"
                ReferencedContainer = "container:Pods.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>

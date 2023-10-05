@@ -10,6 +10,7 @@ import UIKit
 import TapApplePayKit_iOS
 import enum CommonDataModelsKit_iOS.TapCountryCode
 import enum CommonDataModelsKit_iOS.TapCurrencyCode
+import PassKit
 
 class ViewController: UIViewController {
     
@@ -29,6 +30,22 @@ class ViewController: UIViewController {
         myTapApplePayRequest.build(paymentNetworks: [.Amex,.Visa,.MasterCard], paymentItems: [], paymentAmount:10, currencyCode: .USD,merchantID:"merchant.tap.gosell", merchantCapabilities: [.capability3DS,.capabilityCredit,.capabilityDebit,.capabilityEMV])
         featuresTableView.dataSource = self
         featuresTableView.delegate = self
+        
+        var _args:[String:Any] = [:]
+        
+        var allowedCapabilities:PKMerchantCapability = []
+        
+        if let passedCapabilities:[String] = _args[""] as? [String] {
+            passedCapabilities.forEach({ capabilityString in
+                if capabilityString.lowercased() == "threeds" {
+                    allowedCapabilities.insert(.threeDSecure)
+                }else if capabilityString.lowercased() == "credit" {
+                    allowedCapabilities.insert(.credit)
+                }else if capabilityString.lowercased() == "debit" {
+                    allowedCapabilities.insert(.debit)
+                }
+            })
+        }
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -159,6 +176,8 @@ class ViewController: UIViewController {
     
     func startApplePaySetup() {
         TapApplePay.startApplePaySetupProcess()
+        
+
     }
     
     func authorisePayment() {
@@ -187,6 +206,7 @@ class ViewController: UIViewController {
                     alert.addAction(.init(title: "OK", style: .cancel))
                     self?.present(alert, animated: true)
                 }, onErrorOccured: { (session, result, error) in
+                    
                     let alert:UIAlertController = .init(title: "Tap Token Failed", message: error.debugDescription, preferredStyle: .alert)
                     alert.addAction(.init(title: "OK", style: .cancel))
                     self?.present(alert, animated: true)

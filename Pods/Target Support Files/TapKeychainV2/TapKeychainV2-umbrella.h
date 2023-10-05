@@ -11,6 +11,6 @@
 #endif
 
 
-FOUNDATION_EXPORT double TapKeychainVersionNumber;
-FOUNDATION_EXPORT const unsigned char TapKeychainVersionString[];
+FOUNDATION_EXPORT double TapKeychainV2VersionNumber;
+FOUNDATION_EXPORT const unsigned char TapKeychainV2VersionString[];
 
