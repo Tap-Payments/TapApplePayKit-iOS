@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 51;
+	objectVersion = 54;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -45,6 +45,8 @@
 		E8CD2DF92962B6F700BE400B /* TapCreateTokenWithApplePayRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8CD2DF82962B6F700BE400B /* TapCreateTokenWithApplePayRequest.swift */; };
 		E8CD2DFC2962C8A300BE400B /* TapApplePayButton.xib in Resources */ = {isa = PBXBuildFile; fileRef = E8CD2DFB2962C8A300BE400B /* TapApplePayButton.xib */; };
 		E8CF1898244707B400E59772 /* FlurryLogger.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8CF1897244707B400E59772 /* FlurryLogger.swift */; };
+		E8E7D0682AFA28CD002B5E90 /* Eureka in Frameworks */ = {isa = PBXBuildFile; productRef = E8E7D0672AFA28CD002B5E90 /* Eureka */; };
+		E8E7D06A2AFA28E7002B5E90 /* RecurringSettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8E7D0692AFA28E7002B5E90 /* RecurringSettingsViewController.swift */; };
 		F89894382CF2786EB3A5912A /* Pods_TapApplePayKit_Example.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BB2861F7261D7F563795F280 /* Pods_TapApplePayKit_Example.framework */; };
 /* End PBXBuildFile section */
 
@@ -118,6 +120,7 @@
 		E8CD2DF82962B6F700BE400B /* TapCreateTokenWithApplePayRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TapCreateTokenWithApplePayRequest.swift; sourceTree = "<group>"; };
 		E8CD2DFB2962C8A300BE400B /* TapApplePayButton.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TapApplePayButton.xib; sourceTree = "<group>"; };
 		E8CF1897244707B400E59772 /* FlurryLogger.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FlurryLogger.swift; sourceTree = "<group>"; };
+		E8E7D0692AFA28E7002B5E90 /* RecurringSettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecurringSettingsViewController.swift; sourceTree = "<group>"; };
 		EA4F8A30CBF862BF46BEA9A1 /* Pods-TapApplePayKit-iOS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TapApplePayKit-iOS.release.xcconfig"; path = "Target Support Files/Pods-TapApplePayKit-iOS/Pods-TapApplePayKit-iOS.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -136,6 +139,7 @@
 			files = (
 				E86451292435ED3800E3B4C9 /* TapApplePayKit_iOS.framework in Frameworks */,
 				F89894382CF2786EB3A5912A /* Pods_TapApplePayKit_Example.framework in Frameworks */,
+				E8E7D0682AFA28CD002B5E90 /* Eureka in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -197,6 +201,7 @@
 				E86450F12433BC6400E3B4C9 /* LaunchScreen.storyboard */,
 				E86450F42433BC6400E3B4C9 /* Info.plist */,
 				E881A7942A28F96200C1BDEC /* EssentialSetupViewController.swift */,
+				E8E7D0692AFA28E7002B5E90 /* RecurringSettingsViewController.swift */,
 			);
 			path = "TapApplePayKit-Example";
 			sourceTree = "<group>";
@@ -372,6 +377,9 @@
 				E864512C2435ED3800E3B4C9 /* PBXTargetDependency */,
 			);
 			name = "TapApplePayKit-Example";
+			packageProductDependencies = (
+				E8E7D0672AFA28CD002B5E90 /* Eureka */,
+			);
 			productName = "TapApplePayKit-Example";
 			productReference = E86450E42433BC6300E3B4C9 /* TapApplePayKit-Example.app */;
 			productType = "com.apple.product-type.application";
@@ -404,6 +412,9 @@
 				Base,
 			);
 			mainGroup = E86450CB2433BC2E00E3B4C9;
+			packageReferences = (
+				E8E7D0662AFA28CD002B5E90 /* XCRemoteSwiftPackageReference "Eureka" */,
+			);
 			productRefGroup = E86450D62433BC2E00E3B4C9 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -535,6 +546,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				E86450EB2433BC6300E3B4C9 /* ViewController.swift in Sources */,
+				E8E7D06A2AFA28E7002B5E90 /* RecurringSettingsViewController.swift in Sources */,
 				E86450E72433BC6300E3B4C9 /* AppDelegate.swift in Sources */,
 				E881A7952A28F96200C1BDEC /* EssentialSetupViewController.swift in Sources */,
 				E864511F2435C5FC00E3B4C9 /* YBTextPickerCell.swift in Sources */,
@@ -758,15 +770,15 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = "TapApplePayKit-Example/TapApplePayKit-Example.entitlements";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 2;
+				CURRENT_PROJECT_VERSION = 9;
 				DEVELOPMENT_TEAM = G46S76PUH4;
 				INFOPLIST_FILE = "TapApplePayKit-Example/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 2.0;
+				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = tap.ApplePayKitExampleApp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
@@ -781,15 +793,15 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = "TapApplePayKit-Example/TapApplePayKit-Example.entitlements";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 2;
+				CURRENT_PROJECT_VERSION = 9;
 				DEVELOPMENT_TEAM = G46S76PUH4;
 				INFOPLIST_FILE = "TapApplePayKit-Example/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 2.0;
+				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = tap.ApplePayKitExampleApp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
@@ -828,6 +840,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		E8E7D0662AFA28CD002B5E90 /* XCRemoteSwiftPackageReference "Eureka" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/xmartlabs/Eureka.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.4.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		E8E7D0672AFA28CD002B5E90 /* Eureka */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = E8E7D0662AFA28CD002B5E90 /* XCRemoteSwiftPackageReference "Eureka" */;
+			productName = Eureka;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = E86450CC2433BC2E00E3B4C9 /* Project object */;
 }

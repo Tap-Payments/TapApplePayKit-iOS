@@ -19,6 +19,7 @@ class ViewController: UIViewController {
     @IBOutlet weak var tapApplePayButton:TapApplePayButton!
     let myTapApplePayRequest:TapApplePayRequest = .init()
     let tapApplePay:TapApplePay = .init()
+    var showRecurring:Bool = false
     
     let dataSource = [["Currency Code","Payment Networks","Transaction Amount"],["Check Apple Pay Status","Try Apple Pay Setup","Authorize Payment"],["Tap Apple Pay Button Type","Tap Apple Pay Button Outline"]]
     
@@ -26,8 +27,32 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
         
-        myTapApplePayRequest.build(paymentAmount: 10, merchantID: "merchant.tap.gosell")
-        myTapApplePayRequest.build(paymentNetworks: [.Amex,.Visa,.MasterCard], paymentItems: [], paymentAmount:10, currencyCode: .USD,merchantID:"merchant.tap.gosell", merchantCapabilities: [.capability3DS,.capabilityCredit,.capabilityDebit,.capabilityEMV])
+        myTapApplePayRequest.build(paymentAmount: 1, merchantID: "merchant.tap.gosell")
+        if showRecurring {
+            let recurringPaymenty = PKRecurringPaymentSummaryItem(label: "Total Payment", amount: NSDecimalNumber(string: "1"))
+
+
+            // Payment starts today.
+            recurringPaymenty.startDate = nil
+
+
+            // Pay once a month.
+            recurringPaymenty.intervalUnit = .month
+            recurringPaymenty.intervalCount = 1
+
+
+            // Make 5 more payments for a total of 6 payments.
+            var dateComponent = DateComponents()
+            dateComponent.month = 5
+            recurringPaymenty.endDate = Calendar.current.date(byAdding: dateComponent, to: Date())
+            var recurring = PKRecurringPaymentRequest(paymentDescription: "Please recur billing me", regularBilling: recurringPaymenty, managementURL: URL(string: "https://manageMySubscription.com")!)
+            recurring.billingAgreement = "Custom billing agreement"
+            recurring.tokenNotificationURL = URL(string: "https://notiicationUrlWebHook.com")
+            
+            myTapApplePayRequest.build(paymentNetworks: [.Amex,.Visa,.MasterCard], paymentItems: [], paymentAmount:1, currencyCode: .USD,merchantID:"merchant.tap.gosell", merchantCapabilities: [.capability3DS,.capabilityCredit,.capabilityDebit,.capabilityEMV], recurringPaymentRequest: recurring)
+        } else {
+            // Fallback on earlier versions
+        }
         featuresTableView.dataSource = self
         featuresTableView.delegate = self
         
@@ -182,6 +207,18 @@ class ViewController: UIViewController {
     
     func authorisePayment() {
         
+        let alert:UIAlertController = .init(title: "Recurring?", message: "Want to add a sample recurring", preferredStyle: .alert)
+        alert.addAction(.init(title: "No", style: .default, handler: { _ in
+            self.performPayment()
+        }))
+        
+        alert.addAction(.init(title: "Yes", style: .default, handler: { _ in
+            
+            self.performPayment()
+        }))
+    }
+    
+    func performPayment(recurring:PKRecurringPaymentRequest? = nil) {
         tapApplePay.authorizePayment(in: self, for: myTapApplePayRequest) { [weak self] (token) in
             self?.showTokenizedData(with: token)
         } onErrorOccured: { error in

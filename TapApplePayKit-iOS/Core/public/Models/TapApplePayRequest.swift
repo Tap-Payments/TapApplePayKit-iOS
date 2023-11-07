@@ -69,6 +69,7 @@ import enum CommonDataModelsKit_iOS.TapCurrencyCode
         if let countryCode:String = TapApplePay.intitModelResponse?.data.merchant?.countryCode {
             appleRequest.countryCode = countryCode.uppercased()
         }
+        
         appleRequest.currencyCode = currencyCode.appleRawValue
         appleRequest.paymentSummaryItems = paymentItems
         appleRequest.paymentSummaryItems.append(.init(label: "\(TapApplePay.intitModelResponse?.data.merchant?.name ?? "")", amount: NSDecimalNumber(value: paymentAmount)))

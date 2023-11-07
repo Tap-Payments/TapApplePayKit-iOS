@@ -30,7 +30,20 @@ class EssentialSetupViewController: UIViewController {
         TapApplePay.setupTapMerchantApplePay(merchantKey: .init(sandbox: sandboxKeyTextField.text ?? "", production: productionKeyTextFied.text ?? "")) {
             DispatchQueue.main.async {
                 self.loadingIndicator.isHidden = true
-                self.navigationController?.pushViewController((self.storyboard?.instantiateViewController(withIdentifier: "ViewController"))!, animated: true)
+                let viewController:ViewController = self.storyboard?.instantiateViewController(withIdentifier: "ViewController") as! ViewController
+                
+                let alert:UIAlertController = .init(title: "Recurring?", message: "Want to add a sample recurring", preferredStyle: .alert)
+                alert.addAction(.init(title: "No", style: .default, handler: { _ in
+                    viewController.showRecurring = false
+                    self.navigationController?.pushViewController(viewController,animated: true)
+                }))
+                
+                alert.addAction(.init(title: "Yes", style: .default, handler: { _ in
+                    viewController.showRecurring = true
+                    self.navigationController?.pushViewController(viewController, animated: true)
+                }))
+                
+                self.present(alert, animated: true)
             }
         } onErrorOccured: { error in
             let alertView:UIAlertController = .init(title: "Error occured", message: "We couldn't process your request. \(error ?? "")", preferredStyle: .alert)
