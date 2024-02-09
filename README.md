@@ -54,7 +54,11 @@ Then, run the following command:
 $ pod update
 ```
 
+## iOS 17.0+
 
+---------
+
+You may face the build error `error while build iOS app in Xcode : Sandbox: rsync.samba (13105) deny(1) file-write-create` . to solve it please disable the field `ENABLE_USER_SCRIPT_SANDBOXING` in project's build settings.
 
 ## Features
 
