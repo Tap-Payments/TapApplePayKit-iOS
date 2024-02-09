@@ -300,6 +300,7 @@ To start the payment process with one line call as follows:
 
 ```swift
 import TapApplePayKit_iOS
+import PassKit
 import enum CommonDataModelsKit_iOS.TapCountryCode
 import enum CommonDataModelsKit_iOS.TapCurrencyCode
 
