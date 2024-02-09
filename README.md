@@ -298,6 +298,24 @@ To start the payment process with one line call as follows:
 
 ## Examples
 
+### Setup the Apple Pay kit with your merchant data
+
+This is a mandatory step for the SDK to work. You have to make sure you call this function with the correct details and only proceed with the SDK onSuccess. This function connects your app to Tap payments and verify all the provided details.
+
+```swift
+/**
+     Call this method before showing the controller that will use the Apple pay. Without correctly setupping the SDK, it will not work afterwards
+     - Parameter merchantKey : The public keys you get for sandbox and production from Tap integration team
+     - Parameter onSuccess : A callback whenever it is correctly setupped, meaning the backend responded with session token and this merchant has apple pay enabled
+     - Parameter onErrorOccured: A callback to indicate what error did we face while trying to setup the SDK
+     */
+	TapApplePay.setupTapMerchantApplePay(merchantKey: .init(sandbox: "pk_test_Vlk842B1EA7tDN5QbrfGjYzh", production: "pk_live_UYnihb8dtBXm9fDSw1kFlPQA")) {
+            // Now let us setup our tap apple pay button where all data is correctly fetched from the tap gateway
+        } onErrorOccured: { error in
+            print(error ?? "")
+        }
+```
+
 ### Starting the KIT from within your UI
 
 *Swift*:
