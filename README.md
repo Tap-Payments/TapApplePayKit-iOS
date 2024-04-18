@@ -304,16 +304,32 @@ This is a mandatory step for the SDK to work. You have to make sure you call thi
 
 ```swift
 /**
+    /// The apple pay request that holds the merchant and the transaction details
+     var myTapApplePayRequest:TapApplePayRequest = .init()
+
+    // First define your environment
+    TapApplePay.sdkMode = .production
+    // Second define your transaction & merchant details
+    myTapApplePayRequest.build(paymentAmount: 10, merchantID: "merchant.tap.gosell")
+        myTapApplePayRequest.build(paymentNetworks: [.Mada,.Visa,.MasterCard], paymentItems: [], paymentAmount:10, currencyCode: .SAR,merchantID:"merchant.tap.gosell",     merchantCapabilities: [.capability3DS,.capabilityCredit,.capabilityDebit,.capabilityEMV])
+
      Call this method before showing the controller that will use the Apple pay. Without correctly setupping the SDK, it will not work afterwards
      - Parameter merchantKey : The public keys you get for sandbox and production from Tap integration team
      - Parameter onSuccess : A callback whenever it is correctly setupped, meaning the backend responded with session token and this merchant has apple pay enabled
      - Parameter onErrorOccured: A callback to indicate what error did we face while trying to setup the SDK
+     - Parameter tapApplePayRequest: The apple pay request passed by the merchant the includes the details of his required order
      */
-	TapApplePay.setupTapMerchantApplePay(merchantKey: .init(sandbox: "pk_test_Vlk842B1EA7tDN5QbrfGjYzh", production: "pk_live_UYnihb8dtBXm9fDSw1kFlPQA")) {
-            // Now let us setup our tap apple pay button where all data is correctly fetched from the tap gateway
-        } onErrorOccured: { error in
-            print(error ?? "")
-        }
+	TapApplePay.setupTapMerchantApplePay(merchantKey: .init(sandbox: "pk_test_xxxx", production: "pk_live_xxxx"), onSuccess:  {
+            DispatchQueue.main.async {
+                //self.loadingIndicator.isHidden = true
+                //self.navigationController?.pushViewController((self.storyboard?.instantiateViewController(withIdentifier: "ViewController"))!, animated: true)
+            }
+        }, onErrorOccured: { error in
+            let alertView:UIAlertController = .init(title: "Error occured", message: "We couldn't process your request. \(error ?? "")", preferredStyle: .alert)
+            alertView.addAction(.init(title: "Cancel", style: .cancel))
+            self.present(alertView, animated: true)
+            self.loadingIndicator.isHidden = true
+        }, tapApplePayRequest: myTapApplePayRequest)
 ```
 
 ### Starting the KIT from within your UI
