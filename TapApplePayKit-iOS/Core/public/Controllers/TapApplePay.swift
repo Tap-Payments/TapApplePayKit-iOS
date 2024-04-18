@@ -127,14 +127,15 @@ import TapNetworkKit_iOS
      - Parameter merchantKey : The public keys you get for sandbox and production from Tap integration team
      - Parameter onSuccess : A callback whenever it is correctly setupped, meaning the backend responded with session token and this merchant has apple pay enabled
      - Parameter onErrorOccured: A callback to indicate what error did we face while trying to setup the SDK
+     - Parameter tapApplePayRequest: The apple pay request passed by the merchant the includes the details of his required order
      */
-    @objc public static func setupTapMerchantApplePay(merchantKey: SecretKey, onSuccess: @escaping ()->(), onErrorOccured: @escaping (String?)->() ) {
+    @objc public static func setupTapMerchantApplePay(merchantKey: SecretKey, onSuccess: @escaping ()->(), onErrorOccured: @escaping (String?)->() , tapApplePayRequest:TapApplePayRequest? = nil) {
         // Reset data
         TapApplePay.secretKey = merchantKey
         TapApplePay.intitModelResponse = nil
         
         // Call the checkoutprofile api
-        loadMerchantData(for: nil) { response in
+        loadMerchantData(for: tapApplePayRequest) { response in
             TapApplePay.intitModelResponse = response
             onSuccess()
         } onErrorOccured: { _, _, error in

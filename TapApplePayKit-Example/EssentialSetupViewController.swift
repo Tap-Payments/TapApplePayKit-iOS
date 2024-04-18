@@ -14,36 +14,46 @@ class EssentialSetupViewController: UIViewController {
     @IBOutlet weak var productionKeyTextFied: UITextField!
     @IBOutlet weak var sandboxKeyTextField: UITextField!
     @IBOutlet weak var loadingIndicator: UIActivityIndicatorView!
+    var myTapApplePayRequest:TapApplePayRequest = .init()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         loadingIndicator.isHidden = true
+        // First define your environment
+        TapApplePay.sdkMode = .production
+        // Second define your transaction & merchant details
+        setupApplePayRequest()
         // Do any additional setup after loading the view.
     }
    
+    /// Call this to first define your transaction & merchant details
+    func setupApplePayRequest() {
+        myTapApplePayRequest.build(paymentAmount: 10, merchantID: "merchant.tap.gosell")
+        myTapApplePayRequest.build(paymentNetworks: [.Mada,.Visa,.MasterCard], paymentItems: [], paymentAmount:10, currencyCode: .SAR,merchantID:"merchant.tap.gosell", merchantCapabilities: [.capability3DS,.capabilityCredit,.capabilityDebit,.capabilityEMV])
+    }
+    
     
     
     @IBAction func setupButtonClicked(_ sender: Any) {
         loadingIndicator.isHidden = false
-        TapApplePay.sdkMode = .production
         
-        TapApplePay.setupTapMerchantApplePay(merchantKey: .init(sandbox: sandboxKeyTextField.text ?? "", production: productionKeyTextFied.text ?? "")) {
+        TapApplePay.setupTapMerchantApplePay(merchantKey: .init(sandbox: sandboxKeyTextField.text ?? "", production: productionKeyTextFied.text ?? ""), onSuccess:  {
             DispatchQueue.main.async {
                 self.loadingIndicator.isHidden = true
                 self.navigationController?.pushViewController((self.storyboard?.instantiateViewController(withIdentifier: "ViewController"))!, animated: true)
             }
-        } onErrorOccured: { error in
+        }, onErrorOccured: { error in
             let alertView:UIAlertController = .init(title: "Error occured", message: "We couldn't process your request. \(error ?? "")", preferredStyle: .alert)
             alertView.addAction(.init(title: "Cancel", style: .cancel))
             self.present(alertView, animated: true)
             self.loadingIndicator.isHidden = true
-        }
+        }, tapApplePayRequest: myTapApplePayRequest)
 
     }
     
     @IBAction func resetDataClicked(_ sender: Any) {
-        sandboxKeyTextField.text    = "pk_test_Vlk842B1EA7tDN5QbrfGjYzh"
-        productionKeyTextFied.text  = "pk_live_UYnihb8dtBXm9fDSw1kFlPQA"
+        sandboxKeyTextField.text    = "pk_test_dfkZCtJr1BFxHU4AueihX0M9"
+        productionKeyTextFied.text  = "pk_live_QonqtcJ8HPOapDwTdkLfWEIu"
     }
     
     
