@@ -176,22 +176,22 @@ code_sign_if_enabled() {
 }
 
 if [[ "$CONFIGURATION" == "Debug" ]]; then
-  install_framework "${BUILT_PRODUCTS_DIR}/CommonDataModelsKit-iOS/CommonDataModelsKit_iOS.framework"
-  install_framework "${BUILT_PRODUCTS_DIR}/SwiftyRSA/SwiftyRSA.framework"
-  install_framework "${BUILT_PRODUCTS_DIR}/TapAdditionsKitV2/TapAdditionsKitV2.framework"
-  install_framework "${BUILT_PRODUCTS_DIR}/TapCardVlidatorKit-iOS/TapCardVlidatorKit_iOS.framework"
-  install_framework "${BUILT_PRODUCTS_DIR}/TapKeychainV2/TapKeychainV2.framework"
-  install_framework "${BUILT_PRODUCTS_DIR}/TapSwiftFixesV2/TapSwiftFixesV2.framework"
+  install_framework "${BUILT_PRODUCTS_DIR}/CommonDataModelsKit-iOS-iOS13.0/CommonDataModelsKit_iOS.framework"
+  install_framework "${BUILT_PRODUCTS_DIR}/SwiftyRSA-iOS13.0/SwiftyRSA.framework"
+  install_framework "${BUILT_PRODUCTS_DIR}/TapAdditionsKitV2-iOS13.0/TapAdditionsKitV2.framework"
+  install_framework "${BUILT_PRODUCTS_DIR}/TapCardVlidatorKit-iOS-iOS13.0/TapCardVlidatorKit_iOS.framework"
+  install_framework "${BUILT_PRODUCTS_DIR}/TapKeychainV2-iOS13.0/TapKeychainV2.framework"
+  install_framework "${BUILT_PRODUCTS_DIR}/TapSwiftFixesV2-iOS13.0/TapSwiftFixesV2.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/TapApplicationV2/TapApplicationV2.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/TapNetworkKit-iOS/TapNetworkKit_iOS.framework"
 fi
 if [[ "$CONFIGURATION" == "Release" ]]; then
-  install_framework "${BUILT_PRODUCTS_DIR}/CommonDataModelsKit-iOS/CommonDataModelsKit_iOS.framework"
-  install_framework "${BUILT_PRODUCTS_DIR}/SwiftyRSA/SwiftyRSA.framework"
-  install_framework "${BUILT_PRODUCTS_DIR}/TapAdditionsKitV2/TapAdditionsKitV2.framework"
-  install_framework "${BUILT_PRODUCTS_DIR}/TapCardVlidatorKit-iOS/TapCardVlidatorKit_iOS.framework"
-  install_framework "${BUILT_PRODUCTS_DIR}/TapKeychainV2/TapKeychainV2.framework"
-  install_framework "${BUILT_PRODUCTS_DIR}/TapSwiftFixesV2/TapSwiftFixesV2.framework"
+  install_framework "${BUILT_PRODUCTS_DIR}/CommonDataModelsKit-iOS-iOS13.0/CommonDataModelsKit_iOS.framework"
+  install_framework "${BUILT_PRODUCTS_DIR}/SwiftyRSA-iOS13.0/SwiftyRSA.framework"
+  install_framework "${BUILT_PRODUCTS_DIR}/TapAdditionsKitV2-iOS13.0/TapAdditionsKitV2.framework"
+  install_framework "${BUILT_PRODUCTS_DIR}/TapCardVlidatorKit-iOS-iOS13.0/TapCardVlidatorKit_iOS.framework"
+  install_framework "${BUILT_PRODUCTS_DIR}/TapKeychainV2-iOS13.0/TapKeychainV2.framework"
+  install_framework "${BUILT_PRODUCTS_DIR}/TapSwiftFixesV2-iOS13.0/TapSwiftFixesV2.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/TapApplicationV2/TapApplicationV2.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/TapNetworkKit-iOS/TapNetworkKit_iOS.framework"
 fi

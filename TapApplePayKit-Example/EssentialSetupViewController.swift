@@ -52,8 +52,8 @@ class EssentialSetupViewController: UIViewController {
     }
     
     @IBAction func resetDataClicked(_ sender: Any) {
-        sandboxKeyTextField.text    = "pk_test_dfkZCtJr1BFxHU4AueihX0M9"
-        productionKeyTextFied.text  = "pk_live_QonqtcJ8HPOapDwTdkLfWEIu"
+        sandboxKeyTextField.text    = "pk_test_Vlk842B1EA7tDN5QbrfGjYzh"
+        productionKeyTextFied.text  = "pk_live_UYnihb8dtBXm9fDSw1kFlPQA"
     }
     
     

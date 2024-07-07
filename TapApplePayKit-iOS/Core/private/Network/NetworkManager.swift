@@ -28,7 +28,7 @@ internal class NetworkManager: NSObject {
     }
     private var networkManager: TapNetworkManager
     /// The server base url
-    private let baseURL = (TapApplePay.sdkMode == .sandbox) ? "https://mw-sdk.dev.tap.company/v2/checkout/" : "https://mw-sdk.beta.tap.company/v2/checkout/"
+    private let baseURL = "https://mw-sdk.tap.company/v2/checkout/" //(TapApplePay.sdkMode == .sandbox) ? "https://mw-sdk.dev.tap.company/v2/checkout/" : "https://mw-sdk.tap.company/v2/checkout/"
     /// Defines if loging api calls to server
     public var enableLogging = false
     /// Defines if logging apu calls to console

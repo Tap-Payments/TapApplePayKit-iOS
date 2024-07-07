@@ -4,75 +4,117 @@
 <dict>
 	<key>SchemeUserState</key>
 	<dict>
-		<key>CommonDataModelsKit-iOS.xcscheme</key>
+		<key>CommonDataModelsKit-iOS-iOS12.0.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
 			<key>orderHint</key>
 			<integer>0</integer>
 		</dict>
-		<key>Pods-TapApplePayKit-Example.xcscheme</key>
+		<key>CommonDataModelsKit-iOS-iOS13.0.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
 			<key>orderHint</key>
 			<integer>1</integer>
 		</dict>
-		<key>Pods-TapApplePayKit-iOS.xcscheme</key>
+		<key>Pods-TapApplePayKit-Example.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
 			<key>orderHint</key>
 			<integer>2</integer>
 		</dict>
-		<key>SwiftyRSA.xcscheme</key>
+		<key>Pods-TapApplePayKit-iOS.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
 			<key>orderHint</key>
 			<integer>3</integer>
 		</dict>
-		<key>TapAdditionsKitV2.xcscheme</key>
+		<key>SwiftyRSA-iOS12.0.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
 			<key>orderHint</key>
 			<integer>4</integer>
 		</dict>
-		<key>TapApplicationV2.xcscheme</key>
+		<key>SwiftyRSA-iOS13.0.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
 			<key>orderHint</key>
 			<integer>5</integer>
 		</dict>
-		<key>TapCardVlidatorKit-iOS.xcscheme</key>
+		<key>TapAdditionsKitV2-iOS12.0.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
 			<key>orderHint</key>
 			<integer>6</integer>
 		</dict>
-		<key>TapKeychainV2.xcscheme</key>
+		<key>TapAdditionsKitV2-iOS13.0.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
 			<key>orderHint</key>
 			<integer>7</integer>
 		</dict>
-		<key>TapNetworkKit-iOS.xcscheme</key>
+		<key>TapApplicationV2.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
 			<key>orderHint</key>
 			<integer>8</integer>
 		</dict>
-		<key>TapSwiftFixesV2.xcscheme</key>
+		<key>TapCardVlidatorKit-iOS-iOS12.0.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
 			<key>orderHint</key>
 			<integer>9</integer>
+		</dict>
+		<key>TapCardVlidatorKit-iOS-iOS13.0.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+			<key>orderHint</key>
+			<integer>10</integer>
+		</dict>
+		<key>TapKeychainV2-iOS12.0.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+			<key>orderHint</key>
+			<integer>11</integer>
+		</dict>
+		<key>TapKeychainV2-iOS13.0.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+			<key>orderHint</key>
+			<integer>12</integer>
+		</dict>
+		<key>TapNetworkKit-iOS.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+			<key>orderHint</key>
+			<integer>13</integer>
+		</dict>
+		<key>TapSwiftFixesV2-iOS12.0.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+			<key>orderHint</key>
+			<integer>14</integer>
+		</dict>
+		<key>TapSwiftFixesV2-iOS13.0.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+			<key>orderHint</key>
+			<integer>15</integer>
 		</dict>
 	</dict>
 	<key>SuppressBuildableAutocreation</key>

@@ -1,6 +1,0 @@
-framework module TapKeychainV2 {
-  umbrella header "TapKeychainV2-umbrella.h"
-
-  export *
-  module * { export * }
-}
