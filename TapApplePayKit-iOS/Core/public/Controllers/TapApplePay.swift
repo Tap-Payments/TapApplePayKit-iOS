@@ -75,7 +75,7 @@ import TapNetworkKit_iOS
      - Parameter tokenized: The block to be called once the user successfully authorize the payment
      - Parameter onErrorOccured: The block to call whenever there's an issue showing apple pay sheet
      */
-    @objc public func authorizePayment(in presenter:UIViewController, for tapApplePayRequest:TapApplePayRequest, tokenized:@escaping ((TapApplePayToken)->()), onErrorOccured: @escaping((TapApplePayRequestValidationError)->())) {
+    @objc public func authorizePayment(for tapApplePayRequest:TapApplePayRequest, tokenized:@escaping ((TapApplePayToken)->()), onErrorOccured: @escaping((TapApplePayRequestValidationError)->())) {
         
         // let us make sure the passed data are valid and allowed as merchant configuration
         guard validate(tapApplePayRequest: tapApplePayRequest) == .Valid else {

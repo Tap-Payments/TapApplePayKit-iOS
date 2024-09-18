@@ -29,6 +29,9 @@ import PassKit
      - Parameter appleToken: The correctly and authorized tokenized payment data from Apple Pay kit
      */
     func tapApplePayValidationError(error:TapApplePayRequestValidationError)->()
+    
+    
+    
 }
 /// Class represents the UIView that has Apple pay button wrapped inside Tap Kit
 @objcMembers public class TapApplePayButton: UIView {
@@ -139,9 +142,8 @@ import PassKit
     internal func startApplePaymentAuthorization() {
         // It is a must to have a data source, henc the payment request itself
         if let nonNullDataSource = dataSource {
-            
             // Initiate the authorization and wait for the feedback from Apple
-            tapApplePay.authorizePayment(in: self.findViewController()!, for: nonNullDataSource.tapApplePayRequest , tokenized: { [weak self] (token) in
+            tapApplePay.authorizePayment(for: nonNullDataSource.tapApplePayRequest , tokenized: { [weak self] (token) in
                 if let nonNullDelegate = self?.delegate {
                     // If there is alistener, let him know that the authorization is done with the provided tokem
                     nonNullDelegate.tapApplePayFinished(with: token)
@@ -161,22 +163,6 @@ extension String: LocalizedError {
     public var errorDescription: String? { return self }
 }
 
-
-internal extension UIView {
-    /**
-     An extension method to detect the viewcontroller which the current view is embedded in
-     - Returns: UIViewcontroller that holds the current view or nil if not found for any case
-     **/
-    func findViewController() -> UIViewController? {
-        if let nextResponder = self.next as? UIViewController {
-            return nextResponder
-        } else if let nextResponder = self.next as? UIView {
-            return nextResponder.findViewController()
-        } else {
-            return nil
-        }
-    }
-}
 
 
 
