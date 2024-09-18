@@ -336,4 +336,6 @@ extension ViewController:TapApplePayButtonDataSource,TapApplePayButtonDelegate {
     func tapApplePayFinished(with tapAppleToken: TapApplePayToken) {
         showTokenizedData(with: tapAppleToken)
     }
+    
+    var hostViewController: UIViewController { self }
 }
