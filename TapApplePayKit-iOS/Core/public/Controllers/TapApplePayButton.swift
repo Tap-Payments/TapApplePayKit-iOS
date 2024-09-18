@@ -13,9 +13,6 @@ import PassKit
 @objc public protocol TapApplePayButtonDataSource {
     /// This s the Tap wrapper of Apple pay request and it is a must to be correctly filled before firing Apple pay request
     var tapApplePayRequest:TapApplePayRequest { get }
-    
-    /// This to get view controller to show the apple pay sheet
-    var hostViewController: UIViewController { get }
 }
 
 /// Delegate of methods Tap Apple Pay will use to pass back the results of the authorization process
@@ -146,7 +143,7 @@ import PassKit
         // It is a must to have a data source, henc the payment request itself
         if let nonNullDataSource = dataSource {
             // Initiate the authorization and wait for the feedback from Apple
-            tapApplePay.authorizePayment(in: nonNullDataSource.hostViewController, for: nonNullDataSource.tapApplePayRequest , tokenized: { [weak self] (token) in
+            tapApplePay.authorizePayment(for: nonNullDataSource.tapApplePayRequest , tokenized: { [weak self] (token) in
                 if let nonNullDelegate = self?.delegate {
                     // If there is alistener, let him know that the authorization is done with the provided tokem
                     nonNullDelegate.tapApplePayFinished(with: token)

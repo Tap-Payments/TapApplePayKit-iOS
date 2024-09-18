@@ -182,7 +182,7 @@ class ViewController: UIViewController {
     
     func authorisePayment() {
         
-        tapApplePay.authorizePayment(in: self, for: myTapApplePayRequest) { [weak self] (token) in
+        tapApplePay.authorizePayment(for: myTapApplePayRequest) { [weak self] (token) in
             self?.showTokenizedData(with: token)
         } onErrorOccured: { error in
             let alertControl = UIAlertController(title: "Invalid data passed", message: error.TapApplePayRequestValidationErrorRawValue(), preferredStyle: .alert)
@@ -336,6 +336,4 @@ extension ViewController:TapApplePayButtonDataSource,TapApplePayButtonDelegate {
     func tapApplePayFinished(with tapAppleToken: TapApplePayToken) {
         showTokenizedData(with: tapAppleToken)
     }
-    
-    var hostViewController: UIViewController { self }
 }
