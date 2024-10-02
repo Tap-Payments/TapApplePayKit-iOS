@@ -103,7 +103,7 @@
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nJ2-gi-iUN">
-                                <rect key="frame" x="110" y="281" width="194" height="40.5"/>
+                                <rect key="frame" x="110" y="335" width="194" height="40.5"/>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="filled" title="Setup and use the sdk"/>
                                 <connections>
@@ -113,23 +113,31 @@
                             <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" animating="YES" style="large" translatesAutoresizingMaskIntoConstraints="NO" id="kjQ-t1-lZt">
                                 <rect key="frame" x="188.5" y="429.5" width="37" height="37"/>
                             </activityIndicatorView>
+                            <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="1124340" borderStyle="roundedRect" placeholder="Production key" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="mpl-kG-Wgt">
+                                <rect key="frame" x="20" y="281" width="374" height="34"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="DyC-gQ-pHq"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="DyC-gQ-pHq" firstAttribute="trailing" secondItem="Ak8-BU-5On" secondAttribute="trailing" constant="20" id="0Lf-Fd-fYu"/>
+                            <constraint firstItem="mpl-kG-Wgt" firstAttribute="top" secondItem="I8J-Xk-fnC" secondAttribute="bottom" constant="20" id="0Za-rg-Yf3"/>
+                            <constraint firstItem="DyC-gQ-pHq" firstAttribute="trailing" secondItem="mpl-kG-Wgt" secondAttribute="trailing" constant="20" id="8Xi-ry-3Xb"/>
                             <constraint firstItem="I8J-Xk-fnC" firstAttribute="leading" secondItem="Ak8-BU-5On" secondAttribute="leading" id="PBB-W3-AtK"/>
                             <constraint firstItem="kjQ-t1-lZt" firstAttribute="centerX" secondItem="SH6-wW-4Cs" secondAttribute="centerX" id="UU8-jL-gAs"/>
                             <constraint firstItem="bOr-Rp-k6u" firstAttribute="leading" secondItem="DyC-gQ-pHq" secondAttribute="leading" constant="20" id="UiV-Xl-ykO"/>
                             <constraint firstItem="Ak8-BU-5On" firstAttribute="leading" secondItem="DyC-gQ-pHq" secondAttribute="leading" constant="20" id="VMZ-rv-hpV"/>
                             <constraint firstItem="I8J-Xk-fnC" firstAttribute="trailing" secondItem="Ak8-BU-5On" secondAttribute="trailing" id="W3z-Be-fNk"/>
                             <constraint firstItem="kjQ-t1-lZt" firstAttribute="centerY" secondItem="SH6-wW-4Cs" secondAttribute="centerY" id="WFU-J4-OEz"/>
+                            <constraint firstItem="mpl-kG-Wgt" firstAttribute="leading" secondItem="DyC-gQ-pHq" secondAttribute="leading" constant="20" id="YNJ-UR-Hrw"/>
                             <constraint firstItem="I8J-Xk-fnC" firstAttribute="top" secondItem="Ak8-BU-5On" secondAttribute="bottom" constant="20" id="cVp-sK-mra"/>
                             <constraint firstItem="DyC-gQ-pHq" firstAttribute="trailing" secondItem="bOr-Rp-k6u" secondAttribute="trailing" constant="20" id="hAX-X4-HPK"/>
                             <constraint firstItem="nJ2-gi-iUN" firstAttribute="centerX" secondItem="SH6-wW-4Cs" secondAttribute="centerX" id="pK3-iE-hZm"/>
                             <constraint firstItem="bOr-Rp-k6u" firstAttribute="top" secondItem="DyC-gQ-pHq" secondAttribute="top" constant="20" id="wO8-Yv-FeJ"/>
+                            <constraint firstItem="nJ2-gi-iUN" firstAttribute="top" secondItem="mpl-kG-Wgt" secondAttribute="bottom" constant="20" id="wQ9-jM-5J8"/>
                             <constraint firstItem="Ak8-BU-5On" firstAttribute="top" secondItem="bOr-Rp-k6u" secondAttribute="bottom" constant="20" id="xjU-ER-rzB"/>
-                            <constraint firstItem="nJ2-gi-iUN" firstAttribute="top" secondItem="I8J-Xk-fnC" secondAttribute="bottom" constant="20" id="z0G-4s-auE"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Essential" id="bmf-Jp-xnH">
@@ -147,6 +155,7 @@
                     </navigationItem>
                     <connections>
                         <outlet property="loadingIndicator" destination="kjQ-t1-lZt" id="cuV-DF-9vh"/>
+                        <outlet property="merchantIDTextField" destination="mpl-kG-Wgt" id="Hpl-ip-EBE"/>
                         <outlet property="productionKeyTextFied" destination="I8J-Xk-fnC" id="aPh-uD-hXs"/>
                         <outlet property="sandboxKeyTextField" destination="Ak8-BU-5On" id="gob-L2-mVf"/>
                         <segue destination="BYZ-38-t0r" kind="show" identifier="tapApplePaySeg" id="yjD-sk-vLB"/>

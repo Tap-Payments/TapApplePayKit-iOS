@@ -11,6 +11,7 @@ import TapApplePayKit_iOS
 
 class EssentialSetupViewController: UIViewController {
 
+    @IBOutlet weak var merchantIDTextField: UITextField!
     @IBOutlet weak var productionKeyTextFied: UITextField!
     @IBOutlet weak var sandboxKeyTextField: UITextField!
     @IBOutlet weak var loadingIndicator: UIActivityIndicatorView!
@@ -28,8 +29,8 @@ class EssentialSetupViewController: UIViewController {
    
     /// Call this to first define your transaction & merchant details
     func setupApplePayRequest() {
-        myTapApplePayRequest.build(paymentAmount: 10, merchantID: "merchant.tap.gosell")
-        myTapApplePayRequest.build(paymentNetworks: [.Mada,.Visa,.MasterCard], paymentItems: [], paymentAmount:10, currencyCode: .SAR,merchantID:"merchant.tap.gosell", merchantCapabilities: [.capability3DS,.capabilityCredit,.capabilityDebit,.capabilityEMV])
+        myTapApplePayRequest.build(paymentAmount: 10, applePayMerchantID: "merchant.tap.gosell")
+        myTapApplePayRequest.build(paymentNetworks: [.Mada,.Visa,.MasterCard], paymentItems: [], paymentAmount:10, currencyCode: .SAR,applePayMerchantID:"merchant.tap.gosell", merchantCapabilities: [.capability3DS,.capabilityCredit,.capabilityDebit,.capabilityEMV])
     }
     
     
@@ -37,16 +38,18 @@ class EssentialSetupViewController: UIViewController {
     @IBAction func setupButtonClicked(_ sender: Any) {
         loadingIndicator.isHidden = false
         
-        TapApplePay.setupTapMerchantApplePay(merchantKey: .init(sandbox: sandboxKeyTextField.text ?? "", production: productionKeyTextFied.text ?? ""), onSuccess:  {
+        TapApplePay.setupTapMerchantApplePay(merchantKey: .init(sandbox: sandboxKeyTextField.text ?? "", production: productionKeyTextFied.text ?? ""), merchantID: merchantIDTextField.text ?? "", onSuccess:  {
             DispatchQueue.main.async {
                 self.loadingIndicator.isHidden = true
                 self.navigationController?.pushViewController((self.storyboard?.instantiateViewController(withIdentifier: "ViewController"))!, animated: true)
             }
         }, onErrorOccured: { error in
-            let alertView:UIAlertController = .init(title: "Error occured", message: "We couldn't process your request. \(error ?? "")", preferredStyle: .alert)
-            alertView.addAction(.init(title: "Cancel", style: .cancel))
-            self.present(alertView, animated: true)
-            self.loadingIndicator.isHidden = true
+            DispatchQueue.main.async {
+                let alertView:UIAlertController = .init(title: "Error occured", message: "We couldn't process your request. \(error ?? "")", preferredStyle: .alert)
+                alertView.addAction(.init(title: "Cancel", style: .cancel))
+                self.present(alertView, animated: true)
+                self.loadingIndicator.isHidden = true
+            }
         }, tapApplePayRequest: myTapApplePayRequest)
 
     }

@@ -23,7 +23,7 @@ import enum CommonDataModelsKit_iOS.TapCurrencyCode
     /// The total amount you want to collect
     public lazy var paymentAmount:Double = 0
     /// The apple pay merchant identefier
-    public lazy var merchantID:String = ""
+    public lazy var applePayMerchantID:String = ""
     
     /// The actual apple pay request
     public lazy var appleRequest:PKPaymentRequest = .init()
@@ -37,15 +37,15 @@ import enum CommonDataModelsKit_iOS.TapCurrencyCode
      - Parameter paymentNetworks:  The payment networks you  want to limit the payment to default [.Amex,.Visa,.Mada,.MasterCard]
      - Parameter var paymentItems: What are the items you want to show in the apple pay sheet default  []
      - Parameter paymentAmount: The total amount you want to collect
-     - Parameter merchantID: The apple pay merchant identefier default ""
+     - Parameter applePayMerchantID: The apple pay merchant identefier default ""
      - Parameter recurringPaymentRequest: Defines the recurring payment request Please check [Apple Pay docs](https://developer.apple.com/documentation/passkit/pkrecurringpaymentrequest). NOTE: This will only be availble for iOS 16+ and subscripion parameter is on.
      **/
-    public func build(paymentNetworks:[TapApplePayPaymentNetwork] = [.Amex,.Visa,.MasterCard], paymentItems:[PKPaymentSummaryItem] = [], paymentAmount:Double,currencyCode:TapCurrencyCode = .USD,merchantID:String,merchantCapabilities:PKMerchantCapability = [.capability3DS,.capabilityCredit,.capabilityDebit,.capabilityEMV], recurringPaymentRequest:Any? = nil) {
+    public func build(paymentNetworks:[TapApplePayPaymentNetwork] = [.Amex,.Visa,.MasterCard], paymentItems:[PKPaymentSummaryItem] = [], paymentAmount:Double,currencyCode:TapCurrencyCode = .USD,applePayMerchantID:String,merchantCapabilities:PKMerchantCapability = [.capability3DS,.capabilityCredit,.capabilityDebit,.capabilityEMV], recurringPaymentRequest:Any? = nil) {
         self.paymentNetworks = paymentNetworks
         self.paymentItems = paymentItems
         self.paymentAmount = paymentAmount
         self.currencyCode = currencyCode
-        self.merchantID = merchantID
+        self.applePayMerchantID = applePayMerchantID
         
         // Correctly define the recurring request
         if #available(iOS 16.0, *),
@@ -73,7 +73,7 @@ import enum CommonDataModelsKit_iOS.TapCurrencyCode
         appleRequest.paymentSummaryItems = paymentItems
         appleRequest.paymentSummaryItems.append(.init(label: "\(TapApplePay.intitModelResponse?.data.merchant?.name ?? "")", amount: NSDecimalNumber(value: paymentAmount)))
         appleRequest.supportedNetworks = paymentNetworks.map{ $0.applePayNetwork! }
-        appleRequest.merchantIdentifier = merchantID
+        appleRequest.merchantIdentifier = applePayMerchantID
         appleRequest.merchantCapabilities = [.capability3DS]
         // Check subscription details
         if #available(iOS 16.0, *),
@@ -92,7 +92,7 @@ import enum CommonDataModelsKit_iOS.TapCurrencyCode
          "paymentNetworks":self.paymentNetworks.map{$0.rawValue}.joined(separator: " , "),
          "paymentItems":self.paymentItems.map{$0.label}.joined(separator: " , "),
          "currencyCode":self.currencyCode.appleRawValue,
-         "merchantID":self.merchantID,
+         "merchantID":self.applePayMerchantID,
          "paymentAmount":String(self.paymentAmount),
         ]
         
