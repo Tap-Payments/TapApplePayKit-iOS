@@ -315,11 +315,12 @@ This is a mandatory step for the SDK to work. You have to make sure you call thi
 
      Call this method before showing the controller that will use the Apple pay. Without correctly setupping the SDK, it will not work afterwards
      - Parameter merchantKey : The public keys you get for sandbox and production from Tap integration team
+     - Parameter merchantID: The tap merchant identefier default ""
      - Parameter onSuccess : A callback whenever it is correctly setupped, meaning the backend responded with session token and this merchant has apple pay enabled
      - Parameter onErrorOccured: A callback to indicate what error did we face while trying to setup the SDK
      - Parameter tapApplePayRequest: The apple pay request passed by the merchant the includes the details of his required order
      */
-	TapApplePay.setupTapMerchantApplePay(merchantKey: .init(sandbox: "pk_test_xxxx", production: "pk_live_xxxx"), onSuccess:  {
+	TapApplePay.setupTapMerchantApplePay(merchantKey: .init(sandbox: "pk_test_xxxx", production: "pk_live_xxxx"), merchantID:"XXX", onSuccess:  {
             DispatchQueue.main.async {
                 //self.loadingIndicator.isHidden = true
                 //self.navigationController?.pushViewController((self.storyboard?.instantiateViewController(withIdentifier: "ViewController"))!, animated: true)
