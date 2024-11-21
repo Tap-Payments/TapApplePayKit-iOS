@@ -17,7 +17,7 @@ import TapNetworkKit_iOS
     
     //MARK: Global shared values
     /// Indicates the mode the merchant wants to run the sdk with. Default is sandbox mode
-    @objc public static var sdkMode:SDKMode = .sandbox
+    @objc public static var sdkMode:SDKMode = .production
     /// Tap merchant id
     @objc public static var merchantID:String = ""
     /// Inidcates the tap provided keys for this merchant to use for his transactions. If not set, any transaction will fail. Please if you didn't get a tap key yet, refer to https://www.tap.company/en/sell
@@ -121,7 +121,6 @@ import TapNetworkKit_iOS
             // Inform the caller abou the error for his own convience
             onErrorOccured(session, result, error)
         }
-        
     }
     
     /**
@@ -157,12 +156,15 @@ import TapNetworkKit_iOS
      */
     internal func createApplePayTokenRequestModel(for applePayToken:TapApplePayToken) -> TapCreateTokenRequest? {
         do {
-            return TapCreateTokenWithApplePayRequest.init(appleToken: try TapApplePayTokenModel.init(dictionary: applePayToken.jsonAppleToken))
+            var appleTokenModel = try TapApplePayTokenModel.init(dictionary: applePayToken.jsonAppleToken)
+            appleTokenModel.transactionIdentifier = applePayToken.rawAppleToken?.transactionIdentifier
+            appleTokenModel.paymentMethod = PaymentMethod.init(displayName: applePayToken.rawAppleToken?.paymentMethod.displayName, network: applePayToken.rawAppleToken?.paymentMethod.network?.rawValue, type: applePayToken.rawAppleToken?.paymentMethod.type.toString())
+            return TapCreateTokenWithApplePayRequest.init(appleToken: appleTokenModel)
+            
         }catch{
             return nil
         }
     }
-    
     
     /**
      Validate the provided tapApplePayRequest to make sure it matches the tap's merchant data
@@ -310,4 +312,26 @@ extension TapApplePay {
     
     typealias CompletionOnFailure = (TapSDKError?) -> Void
     
+}
+
+
+internal extension PKPaymentMethodType {
+    func toString() -> String {
+        switch self {
+        case .unknown:
+            return "unknown"
+        case .debit:
+            return "debit"
+        case .credit:
+            return "credit"
+        case .prepaid:
+            return "prepaid"
+        case .store:
+            return "store"
+        case .eMoney:
+            return "eMoney"
+        @unknown default:
+            return "unknown"
+        }
+    }
 }

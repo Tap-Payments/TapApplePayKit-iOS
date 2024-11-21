@@ -29,8 +29,8 @@ class EssentialSetupViewController: UIViewController {
    
     /// Call this to first define your transaction & merchant details
     func setupApplePayRequest() {
-        myTapApplePayRequest.build(paymentAmount: 10, applePayMerchantID: "merchant.tap.gosell")
-        myTapApplePayRequest.build(paymentNetworks: [.Mada,.Visa,.MasterCard], paymentItems: [], paymentAmount:10, currencyCode: .SAR,applePayMerchantID:"merchant.tap.gosell", merchantCapabilities: [.capability3DS,.capabilityCredit,.capabilityDebit,.capabilityEMV])
+        myTapApplePayRequest.build(paymentAmount: 0.1, applePayMerchantID: "merchant.tap.gosell")
+        myTapApplePayRequest.build(paymentNetworks: [.Mada,.Visa,.MasterCard], paymentItems: [], paymentAmount:0.1, currencyCode: .KWD,applePayMerchantID:"merchant.tap.gosell", merchantCapabilities: [.capability3DS,.capabilityCredit,.capabilityDebit,.capabilityEMV])
     }
     
     

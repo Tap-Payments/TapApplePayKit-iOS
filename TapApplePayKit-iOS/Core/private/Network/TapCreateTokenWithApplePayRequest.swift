@@ -27,7 +27,6 @@ internal struct TapCreateTokenWithApplePayRequest:TapCreateTokenRequest, Encodab
     /// - Parameters:
     ///   - appleToken: The apple pay token data to be shared with the tokenize request
     internal init(appleToken: TapApplePayTokenModel) {
-        
         self.appleToken = appleToken
         self.paymentType = "applepay"
     }
@@ -58,6 +57,10 @@ internal struct TapApplePayTokenModel: Encodable,Decodable {
     internal let signature: String
     /// The apple pay iOS token header data info
     internal let header: AppleTokenHeaderModel
+    /// The transaction identifier
+    internal var transactionIdentifier: String? = ""
+    /// The payment method
+    internal var paymentMethod: PaymentMethod? = nil
     // MARK: Methods
     
     /// Initializes the model with decoded apple pay token
@@ -67,24 +70,41 @@ internal struct TapApplePayTokenModel: Encodable,Decodable {
     ///     - data: The apple pay iOS token data
     ///     - signature: The apple pay iOS token signature
     ///     - header: The apple pay iOS token header data info
-    internal init(version: String,data: String,signature: String,header: AppleTokenHeaderModel) {
+    internal init(version: String,data: String,signature: String,header: AppleTokenHeaderModel, transactionIdentifier:String? = "", paymentMethod: PaymentMethod? = nil) {
         
         self.version = version
         self.data = data
         self.signature = signature
         self.header = header
+        self.transactionIdentifier = transactionIdentifier
+        self.paymentMethod = paymentMethod
     }
     
     // MARK: - Private -
     
     private enum CodingKeys: String, CodingKey {
-        
-        case version    = "version"
-        case data       = "data"
-        case signature  = "signature"
-        case header     = "header"
+        case version               = "version"
+        case data                  = "data"
+        case signature             = "signature"
+        case header                = "header"
+        case transactionIdentifier = "transactionIdentifier"
+        case paymentMethod         = "paymentMethod"
     }
 }
+
+// MARK: - PaymentMethod
+internal class PaymentMethod: Codable {
+    var displayName, network, type: String?
+
+    init(displayName: String?, network: String?, type: String?) {
+        self.displayName = displayName
+        self.network = network
+        self.type = type
+    }
+}
+
+
+
 
 
 
