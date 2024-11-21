@@ -17,7 +17,7 @@ import TapNetworkKit_iOS
     
     //MARK: Global shared values
     /// Indicates the mode the merchant wants to run the sdk with. Default is sandbox mode
-    @objc public static var sdkMode:SDKMode = .production
+    @objc public static var sdkMode:SDKMode = .sandbox
     /// Tap merchant id
     @objc public static var merchantID:String = ""
     /// Inidcates the tap provided keys for this merchant to use for his transactions. If not set, any transaction will fail. Please if you didn't get a tap key yet, refer to https://www.tap.company/en/sell
