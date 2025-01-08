@@ -217,9 +217,9 @@ The class that represents the request details that identefies the transaction an
      - Parameter paymentNetworks:  The payment networks you  want to limit the payment to default [.Amex,.Visa,.Mada,.MasterCard]
      - Parameter var paymentItems: What are the items you want to show in the apple pay sheet default  []
      - Parameter paymentAmount: The total amount you want to collect
-     - Parameter merchantID: The apple pay merchant identefier default ""
+     - Parameter applePayMerchantID: The apple pay merchant identefier default ""
      **/
-    public func build(with countryCode:TapCountryCode = .US, paymentNetworks:[TapApplePayPaymentNetwork] = [.Amex,.Visa,.MasterCard], paymentItems:[PKPaymentSummaryItem] = [], paymentAmount:Double,currencyCode:TapCurrencyCode = .USD,merchantID:String)
+    public func build(paymentNetworks:[TapApplePayPaymentNetwork] = [.Amex,.Visa,.MasterCard], paymentItems:[PKPaymentSummaryItem] = [], paymentAmount:Double,currencyCode:TapCurrencyCode = .USD,applePayMerchantID:String,merchantCapabilities:PKMerchantCapability = [.credit,.debit,.emv,.threeDSecure])
 ```
 
 
