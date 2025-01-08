@@ -27,7 +27,7 @@ class ViewController: UIViewController {
         // Do any additional setup after loading the view.
         
         myTapApplePayRequest.build(paymentAmount: 0.1, applePayMerchantID: "merchant.tap.gosell")
-        myTapApplePayRequest.build(paymentNetworks: [.Mada,.Visa,.MasterCard], paymentItems: [], paymentAmount:0.1, currencyCode: .KWD,applePayMerchantID:"merchant.tap.gosell", merchantCapabilities: [.capability3DS,.capabilityCredit,.capabilityDebit,.capabilityEMV])
+        myTapApplePayRequest.build(paymentNetworks: [.Visa,.MasterCard], paymentItems: [], paymentAmount:0.1, currencyCode: .KWD,applePayMerchantID:"merchant.tap.gosell", merchantCapabilities: [.threeDSecure,.credit,.debit,.emv])
         featuresTableView.dataSource = self
         featuresTableView.delegate = self
         

@@ -21,7 +21,7 @@ class EssentialSetupViewController: UIViewController {
         super.viewDidLoad()
         loadingIndicator.isHidden = true
         // First define your environment
-        TapApplePay.sdkMode = .production
+        TapApplePay.sdkMode = .sandbox
         // Second define your transaction & merchant details
         setupApplePayRequest()
         // Do any additional setup after loading the view.
@@ -30,7 +30,7 @@ class EssentialSetupViewController: UIViewController {
     /// Call this to first define your transaction & merchant details
     func setupApplePayRequest() {
         myTapApplePayRequest.build(paymentAmount: 0.1, applePayMerchantID: "merchant.tap.gosell")
-        myTapApplePayRequest.build(paymentNetworks: [.Mada,.Visa,.MasterCard], paymentItems: [], paymentAmount:0.1, currencyCode: .KWD,applePayMerchantID:"merchant.tap.gosell", merchantCapabilities: [.capability3DS,.capabilityCredit,.capabilityDebit,.capabilityEMV])
+        myTapApplePayRequest.build(paymentNetworks: [.Visa,.MasterCard], paymentItems: [], paymentAmount:0.1, currencyCode: .KWD,applePayMerchantID:"merchant.tap.gosell", merchantCapabilities: [.threeDSecure,.credit,.debit,.emv])
     }
     
     

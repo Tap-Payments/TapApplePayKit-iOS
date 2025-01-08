@@ -139,6 +139,19 @@ Hj+N6UWFOYK98Xi+sQIDAQAB
             simCountryISO = carrier.isoCountryCode
         }
         
+        let result2: [String: String] = [
+            Constants.HTTPHeaderValueKey.appID: bundleID,
+            Constants.HTTPHeaderValueKey.requirer:Constants.HTTPHeaderValueKey.requirerValue,
+            Constants.HTTPHeaderValueKey.requirerVersion:requirerVersion,
+            Constants.HTTPHeaderValueKey.requirerOS: osName,
+            Constants.HTTPHeaderValueKey.requirerOSVersion: osVersion,
+            Constants.HTTPHeaderValueKey.requirerDeviceName: deviceNameFiltered,
+            Constants.HTTPHeaderValueKey.requirerDeviceType: deviceType,
+            Constants.HTTPHeaderValueKey.requirerDeviceModel: deviceModel,
+            Constants.HTTPHeaderValueKey.requirerSimNetworkName: simNetWorkName ?? "",
+            Constants.HTTPHeaderValueKey.requirerSimCountryIso: simCountryISO ?? ""
+        ]
+        
         
         let result: [String: String] = [
             Constants.HTTPHeaderValueKey.appID: Crypter.encrypt(bundleID, using: NetworkManager.headersEncryptionPublicKey) ?? "",
