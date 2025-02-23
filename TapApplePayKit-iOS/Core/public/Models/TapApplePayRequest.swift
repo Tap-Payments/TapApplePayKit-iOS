@@ -42,7 +42,7 @@ import enum CommonDataModelsKit_iOS.TapCurrencyCode
      - Parameter applePayMerchantID: The apple pay merchant identefier default ""
      - Parameter recurringPaymentRequest: Defines the recurring payment request Please check [Apple Pay docs](https://developer.apple.com/documentation/passkit/pkrecurringpaymentrequest). NOTE: This will only be availble for iOS 16+ and subscripion parameter is on.
      **/
-    public func build(paymentNetworks:[TapApplePayPaymentNetwork] = [.Amex,.Visa,.MasterCard], paymentItems:[PKPaymentSummaryItem] = [], paymentAmount:Double,currencyCode:TapCurrencyCode = .USD,applePayMerchantID:String,merchantCapabilities:PKMerchantCapability = [.credit,.debit,.emv,.threeDSecure], recurringPaymentRequest:Any? = nil) {
+    public func build(paymentNetworks:[TapApplePayPaymentNetwork] = [.Amex,.Visa,.MasterCard], paymentItems:[PKPaymentSummaryItem] = [], paymentAmount:Double,currencyCode:TapCurrencyCode = .USD,applePayMerchantID:String,merchantCapabilities:PKMerchantCapability = [.credit,.debit,.threeDSecure], recurringPaymentRequest:Any? = nil) {
         self.paymentNetworks = paymentNetworks
         self.paymentItems = paymentItems
         self.paymentAmount = paymentAmount
