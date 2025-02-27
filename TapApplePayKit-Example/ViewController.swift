@@ -188,6 +188,10 @@ class ViewController: UIViewController {
             let alertControl = UIAlertController(title: "Invalid data passed", message: error.TapApplePayRequestValidationErrorRawValue(), preferredStyle: .alert)
             alertControl.addAction(.init(title: "OK", style: .cancel))
             self.present(alertControl, animated: true)
+        } onCancelled: {
+            let alertControl = UIAlertController(title: "Cancelled", message: "Cancelled", preferredStyle: .alert)
+            alertControl.addAction(.init(title: "OK", style: .cancel))
+            self.present(alertControl, animated: true)
         }
     }
     
@@ -323,6 +327,12 @@ extension ViewController:UITableViewDelegate,UITableViewDataSource {
 
 
 extension ViewController:TapApplePayButtonDataSource,TapApplePayButtonDelegate {
+    func tapApplePayCancelled() {
+        let alertControl = UIAlertController(title: "Cancelled", message: "Cancelled", preferredStyle: .alert)
+        alertControl.addAction(.init(title: "OK", style: .cancel))
+        self.present(alertControl, animated: true)
+    }
+    
     func tapApplePayValidationError(error: TapApplePayKit_iOS.TapApplePayRequestValidationError) {
         let alertControl = UIAlertController(title: "Invalid data passed", message: error.TapApplePayRequestValidationErrorRawValue(), preferredStyle: .alert)
         alertControl.addAction(.init(title: "OK", style: .cancel))

@@ -30,6 +30,9 @@ import TapNetworkKit_iOS
     internal var tokenizedBlock:((TapApplePayToken)->())?
     
     
+    /// The apple pay cancel block. it will called when the sheet dismissed
+    internal var cancelBlock: (() -> Void)?
+    
     /// The latest checkout profile api response
     public static var intitModelResponse: TapInitResponseModel?
     
@@ -77,7 +80,7 @@ import TapNetworkKit_iOS
      - Parameter tokenized: The block to be called once the user successfully authorize the payment
      - Parameter onErrorOccured: The block to call whenever there's an issue showing apple pay sheet
      */
-    @objc public func authorizePayment(for tapApplePayRequest:TapApplePayRequest, tokenized:@escaping ((TapApplePayToken)->()), onErrorOccured: @escaping((TapApplePayRequestValidationError)->())) {
+    @objc public func authorizePayment(for tapApplePayRequest:TapApplePayRequest, tokenized:@escaping ((TapApplePayToken)->()), onErrorOccured: @escaping((TapApplePayRequestValidationError)->()), onCancelled: @escaping () -> ()) {
         
         // let us make sure the passed data are valid and allowed as merchant configuration
         guard validate(tapApplePayRequest: tapApplePayRequest) == .Valid else {
@@ -88,6 +91,7 @@ import TapNetworkKit_iOS
         // Now we are ok to start, let us do it
         
         self.tokenizedBlock = tokenized
+        self.cancelBlock = onCancelled
         tapApplePayRequest.updateValues()
         
         let paymentController = PKPaymentAuthorizationController.init(paymentRequest: tapApplePayRequest.appleRequest)
@@ -249,6 +253,11 @@ extension TapApplePay:PKPaymentAuthorizationControllerDelegate {
     public func paymentAuthorizationControllerDidFinish(_ controller: PKPaymentAuthorizationController) {
         controller.dismiss {
             //FlurryLogger.logEvent(with: "Apple_Pay_Sheet_Dismissed")
+            if let nonNullCancelBlock = self.cancelBlock {
+                DispatchQueue.main.async{
+                    nonNullCancelBlock()
+                }
+            }
             print("DISMISSED")
         }
     }

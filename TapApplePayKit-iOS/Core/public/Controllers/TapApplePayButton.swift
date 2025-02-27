@@ -31,7 +31,11 @@ import PassKit
     func tapApplePayValidationError(error:TapApplePayRequestValidationError)->()
     
     
-    
+    /**
+     This method will be called if you passed if user cancel apple pay sheet
+     */
+    func tapApplePayCancelled()->()
+
 }
 /// Class represents the UIView that has Apple pay button wrapped inside Tap Kit
 @objcMembers public class TapApplePayButton: UIView {
@@ -151,6 +155,8 @@ import PassKit
             }) { error in
                 self.delegate?.tapApplePayValidationError(error: error)
                 return
+            } onCancelled: {
+                self.delegate?.tapApplePayCancelled()
             }
         }else {
             fatalError("Tap Apple Pay Button must have a valid data source that pass a valid TapApplePayRequest")
