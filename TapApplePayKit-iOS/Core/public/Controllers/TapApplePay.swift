@@ -162,6 +162,7 @@ import TapNetworkKit_iOS
         do {
             var appleTokenModel = try TapApplePayTokenModel.init(dictionary: applePayToken.jsonAppleToken)
             appleTokenModel.transactionIdentifier = applePayToken.rawAppleToken?.transactionIdentifier
+            appleTokenModel.merchant = Merchant.init(identifier: TapApplePay.merchantID)
             appleTokenModel.paymentMethod = PaymentMethod.init(displayName: applePayToken.rawAppleToken?.paymentMethod.displayName, network: applePayToken.rawAppleToken?.paymentMethod.network?.rawValue, type: applePayToken.rawAppleToken?.paymentMethod.type.toString())
             return TapCreateTokenWithApplePayRequest.init(appleToken: appleTokenModel)
             
