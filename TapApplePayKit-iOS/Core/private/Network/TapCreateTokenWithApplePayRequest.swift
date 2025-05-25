@@ -61,6 +61,9 @@ internal struct TapApplePayTokenModel: Encodable,Decodable {
     internal var transactionIdentifier: String? = ""
     /// The payment method
     internal var paymentMethod: PaymentMethod? = nil
+    /// Merchant ID.
+    internal var merchant: Merchant?
+    
     // MARK: Methods
     
     /// Initializes the model with decoded apple pay token
@@ -89,6 +92,7 @@ internal struct TapApplePayTokenModel: Encodable,Decodable {
         case header                = "header"
         case transactionIdentifier = "transactionIdentifier"
         case paymentMethod         = "paymentMethod"
+        case merchant              = "merchant"
     }
 }
 
