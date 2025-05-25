@@ -19,9 +19,9 @@ import TapNetworkKit_iOS
     /// Indicates the mode the merchant wants to run the sdk with. Default is sandbox mode
     @objc public static var sdkMode:SDKMode = .sandbox
     /// Tap merchant id
-    @objc public static var merchantID:String = ""
+    @objc public static var merchantID:String = "1124340"
     /// Inidcates the tap provided keys for this merchant to use for his transactions. If not set, any transaction will fail. Please if you didn't get a tap key yet, refer to https://www.tap.company/en/sell
-    @objc public static var secretKey:SecretKey = .init(sandbox: "pk_test_Vlk842B1EA7tDN5QbrfGjYzh",
+    @objc public static var secretKey:SecretKey = .init(sandbox: "pk_test_YhUjg9PNT8oDlKJ1aE2fMRz7",
                                                         production: "pk_live_UYnihb8dtBXm9fDSw1kFlPQA")
     
     //MARK: Internal values
@@ -162,6 +162,7 @@ import TapNetworkKit_iOS
         do {
             var appleTokenModel = try TapApplePayTokenModel.init(dictionary: applePayToken.jsonAppleToken)
             appleTokenModel.transactionIdentifier = applePayToken.rawAppleToken?.transactionIdentifier
+            appleTokenModel.merchant = Merchant.init(identifier: TapApplePay.merchantID)
             appleTokenModel.paymentMethod = PaymentMethod.init(displayName: applePayToken.rawAppleToken?.paymentMethod.displayName, network: applePayToken.rawAppleToken?.paymentMethod.network?.rawValue, type: applePayToken.rawAppleToken?.paymentMethod.type.toString())
             return TapCreateTokenWithApplePayRequest.init(appleToken: appleTokenModel)
             
