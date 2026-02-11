@@ -32,7 +32,10 @@ import TapNetworkKit_iOS
     
     /// The apple pay cancel block. it will called when the sheet dismissed
     internal var cancelBlock: (() -> Void)?
-    
+
+    /// The block to be called once the Apple Pay sheet is presented to the user
+    internal var presentedBlock: ((Bool) -> Void)?
+
     /// The latest checkout profile api response
     public static var intitModelResponse: TapInitResponseModel?
     
@@ -75,32 +78,35 @@ import TapNetworkKit_iOS
     
     /**
      Public interface to be used to start Apple pay athprization process without the need to include out Tap APple Pay button
-     - Parameter presenter: The UIViewcontroller you want to show the native Apple Pay sheet in
      - Parameter tapApplePayRequest: The Tap apple request wrapper that has the valid data of your transaction
      - Parameter tokenized: The block to be called once the user successfully authorize the payment
      - Parameter onErrorOccured: The block to call whenever there's an issue showing apple pay sheet
+     - Parameter onCancelled: The block to be called when the user cancels the payment
+     - Parameter onPresented: The block to be called once the Apple Pay sheet is presented to the user (optional)
      */
-    @objc public func authorizePayment(for tapApplePayRequest:TapApplePayRequest, tokenized:@escaping ((TapApplePayToken)->()), onErrorOccured: @escaping((TapApplePayRequestValidationError)->()), onCancelled: @escaping () -> ()) {
-        
+    @objc public func authorizePayment(for tapApplePayRequest:TapApplePayRequest, tokenized:@escaping ((TapApplePayToken)->()), onErrorOccured: @escaping((TapApplePayRequestValidationError)->()), onCancelled: @escaping () -> (), onPresented: ((Bool) -> Void)? = nil) {
+
         // let us make sure the passed data are valid and allowed as merchant configuration
         guard validate(tapApplePayRequest: tapApplePayRequest) == .Valid else {
             onErrorOccured(validate(tapApplePayRequest: tapApplePayRequest))
             return
         }
-        
+
         // Now we are ok to start, let us do it
-        
+
         self.tokenizedBlock = tokenized
         self.cancelBlock = onCancelled
+        self.presentedBlock = onPresented
         tapApplePayRequest.updateValues()
-        
+
         let paymentController = PKPaymentAuthorizationController.init(paymentRequest: tapApplePayRequest.appleRequest)
         paymentController.delegate = self//presenter as? PKPaymentAuthorizationControllerDelegate
-        paymentController.present { (done) in
+        paymentController.present { [weak self] (done) in
             //FlurryLogger.logEvent(with: "Apple_Pay_Sheet_Presented")
             print("PRESENTED : \(done)")
+            self?.presentedBlock?(done)
         }
-        
+
     }
     
     

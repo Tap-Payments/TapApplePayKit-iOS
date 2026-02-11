@@ -286,11 +286,13 @@ To start the payment process with one line call as follows:
 ```swift
 /**
      Public interface to be used to start Apple pay athprization process without the need to include out Tap APple Pay button
-     - Parameter presenter: The UIViewcontroller you want to show the native Apple Pay sheet in
      - Parameter tapApplePayRequest: The Tap apple request wrapper that has the valid data of your transaction
      - Parameter tokenized: The block to be called once the user successfully authorize the payment
+     - Parameter onErrorOccured: The block to call whenever there's an issue showing apple pay sheet
+     - Parameter onCancelled: The block to be called when the user cancels the payment
+     - Parameter onPresented: (Optional) The block to be called once the Apple Pay sheet is presented to the user
      */
-    public func authorizePayment(in presenter:UIViewController, for tapApplePayRequest:TapApplePayRequest, tokenized:@escaping ((TapApplePayToken)->()))
+    public func authorizePayment(for tapApplePayRequest:TapApplePayRequest, tokenized:@escaping ((TapApplePayToken)->()), onErrorOccured: @escaping((TapApplePayRequestValidationError)->()), onCancelled: @escaping () -> (), onPresented: ((Bool) -> Void)? = nil)
 
 ```
 
@@ -358,9 +360,25 @@ myTapApplePayRequest.build(paymentAmount: 10, merchantID: "merchant.tap.gosell")
 
 
 // Then you can start the payment authorization process with one call whenever you. want as follows
-tapApplePay.authorizePayment(in: self, for: myTapApplePayRequest) { [weak self] (token) in
+// Basic usage (without onPresented callback):
+tapApplePay.authorizePayment(for: myTapApplePayRequest, tokenized: { [weak self] (token) in
 	print("I can do whatever i want with the result token")
-}
+}, onErrorOccured: { error in
+	print("Error occurred: \(error.TapApplePayRequestValidationErrorRawValue())")
+}, onCancelled: {
+	print("Payment cancelled by user")
+})
+
+// Or with the optional onPresented callback:
+tapApplePay.authorizePayment(for: myTapApplePayRequest, tokenized: { [weak self] (token) in
+	print("I can do whatever i want with the result token")
+}, onErrorOccured: { error in
+	print("Error occurred: \(error.TapApplePayRequestValidationErrorRawValue())")
+}, onCancelled: {
+	print("Payment cancelled by user")
+}, onPresented: { [weak self] (isPresented) in
+	print("Apple Pay sheet presented: \(isPresented)")
+})
 ```
 
 

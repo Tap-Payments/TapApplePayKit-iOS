@@ -181,7 +181,7 @@ class ViewController: UIViewController {
     }
     
     func authorisePayment() {
-        
+
         tapApplePay.authorizePayment(for: myTapApplePayRequest) { [weak self] (token) in
             self?.showTokenizedData(with: token)
         } onErrorOccured: { error in
@@ -192,6 +192,10 @@ class ViewController: UIViewController {
             let alertControl = UIAlertController(title: "Cancelled", message: "Cancelled", preferredStyle: .alert)
             alertControl.addAction(.init(title: "OK", style: .cancel))
             self.present(alertControl, animated: true)
+        } onPresented: { [weak self] isPresented in
+            print("Apple Pay sheet presented: \(isPresented)")
+            // You can add custom logic here when the Apple Pay sheet is presented
+            // For example, show/hide loading indicators, update UI state, etc.
         }
     }
     
