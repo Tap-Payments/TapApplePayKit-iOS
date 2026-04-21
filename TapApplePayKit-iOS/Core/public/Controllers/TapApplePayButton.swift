@@ -63,6 +63,14 @@ import PassKit
             }
         }
     }
+    /// Corner radius applied to the Apple Pay button. Default is 0.
+    public var cornerRadius: CGFloat = 0 {
+        didSet {
+            applePayButton?.layer.cornerRadius = cornerRadius
+            applePayButton?.clipsToBounds = cornerRadius > 0
+        }
+    }
+    
     /// The actaual apple pay button wrappd inside Tap Kit
     internal var applePayButton:PKPaymentButton?
     
@@ -125,6 +133,8 @@ import PassKit
         applePayButton?.widthAnchor.constraint(equalToConstant: buttonWidth).isActive = true
         applePayButton?.heightAnchor.constraint(equalToConstant: buttonHeight).isActive = true
         
+        applePayButton?.layer.cornerRadius = cornerRadius
+        applePayButton?.clipsToBounds = cornerRadius > 0
         applePayButton?.layoutIfNeeded()
         applePayButton?.addTarget(self, action: #selector(applePayClicked), for: .touchUpInside)
         

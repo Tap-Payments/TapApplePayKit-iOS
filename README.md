@@ -70,7 +70,7 @@ You may face the build error `error while build iOS app in Xcode : Sandbox: rsyn
 
   - On the shelf customisble Apple pay button.
   - Handles Apple payment authorization and processing.
-  - Theme and title are customisable.
+  - Theme, title and corner radius are customisable.
   - <img src="https://i.ibb.co/2t4x2YV/Simulator-Screen-Shot-i-Phone-11-2020-04-15-at-09-50-17.png" alt="Simulator-Screen-Shot-i-Phone-11-2020-04-15-at-09-50-17" style="zoom:50%;" />
 
 - Using your UI:
@@ -273,6 +273,18 @@ After setting its frame as any normal UIView, you can setup it to provide a cust
     public func setup(tapApplePayButtonClicked:((TapApplePayButton)->())? = nil,buttonType:TapApplePayButtonType = .AppleLogoOnly, buttonStyle:TapApplePayButtonStyleOutline = .Black)
 ```
 
+You can also set a custom corner radius on the button at any time:
+
+*Swift*:
+
+```swift
+/// Corner radius applied to the Apple Pay button. Default is 0 (no rounding).
+public var cornerRadius: CGFloat
+
+// Example: apply a corner radius of 12 points
+tapApplePayButton.cornerRadius = 12
+```
+
 ### TapApplePay
 
 `TapApplePayKit` provides an interface to start the Apple pay authorisation process based on an event within your own UI.
@@ -405,6 +417,8 @@ tapApplePayButton.setup(tapApplePayButtonClicked: { (clickedTapApplePayButton:Ta
         }, buttonType: .PayWithApplePay, buttonStyle: .Black)
 // PS : You can use the default values and just call:
 tapApplePayButton.setup()
+// Optionally set a corner radius (default is 0)
+tapApplePayButton.cornerRadius = 12
 // Add the Button to your UI
 tapApplePayButtonHolder.addSubview(tapApplePayButton)
 
