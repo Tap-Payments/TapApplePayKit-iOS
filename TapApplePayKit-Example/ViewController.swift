@@ -20,7 +20,7 @@ class ViewController: UIViewController {
     let myTapApplePayRequest:TapApplePayRequest = .init()
     let tapApplePay:TapApplePay = .init()
     
-    let dataSource = [["Currency Code","Payment Networks","Transaction Amount"],["Check Apple Pay Status","Try Apple Pay Setup","Authorize Payment"],["Tap Apple Pay Button Type","Tap Apple Pay Button Outline"]]
+    let dataSource = [["Currency Code","Payment Networks","Transaction Amount"],["Check Apple Pay Status","Try Apple Pay Setup","Authorize Payment"],["Tap Apple Pay Button Type","Tap Apple Pay Button Outline","Corner Radius"]]
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -104,6 +104,20 @@ class ViewController: UIViewController {
             
             DispatchQueue.main.async {
                 self?.tapApplePayButton?.buttonStyle = TapApplePayButtonStyleOutline.allCases[selectedIndices[0]]
+            }
+        })
+    }
+    
+    func selectCornerRadius() {
+        let radii = ["0","4","8","12","16","20","24"]
+        let current = String(Int(tapApplePayButton?.cornerRadius ?? 0))
+        showPicker(with: "Select Corner Radius", placeHolder: "Search radius", dataSource: radii, preselect: [current], onSelected: {
+            [weak self] (selectedValues, _) in
+            DispatchQueue.main.async {
+                if let value = selectedValues.first, let radius = CGFloat(Float(value) ?? 0) as CGFloat? {
+                    self?.tapApplePayButton?.cornerRadius = radius
+                    self?.featuresTableView.reloadData()
+                }
             }
         })
     }
@@ -282,6 +296,9 @@ extension ViewController:UITableViewDelegate,UITableViewDataSource {
             case 1:
                 cell.detailTextLabel?.text = "Selected \(tapApplePayButton?.buttonStyle.rawValue ?? "")"
                 break
+            case 2:
+                cell.detailTextLabel?.text = "Selected \(tapApplePayButton?.cornerRadius ?? 0)"
+                break
             default:
                 break
             }
@@ -322,6 +339,8 @@ extension ViewController:UITableViewDelegate,UITableViewDataSource {
                 selectButtonType()
             case 1:
                 selectButtonStyle()
+            case 2:
+                selectCornerRadius()
             default:
                 return
             }
