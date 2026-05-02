@@ -1,0 +1,77 @@
+{
+  "pins" : [
+    {
+      "identity" : "commondatamodelskit-ios",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/Tap-Payments/CommonDataModelsKit-iOS.git",
+      "state" : {
+        "revision" : "466f8ce6d0322e0f911586591b1c6371c8d362a3",
+        "version" : "1.0.149"
+      }
+    },
+    {
+      "identity" : "swiftyrsa",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/TakeScoop/SwiftyRSA.git",
+      "state" : {
+        "revision" : "6521919ad0e99dff927685f142d8136479acb452",
+        "version" : "1.8.0"
+      }
+    },
+    {
+      "identity" : "tapadditionskitv2",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/Tap-Payments/TapAdditionsKitV2.git",
+      "state" : {
+        "revision" : "91dbd200ff5c4a51770e945172eb925f8cdf5c56",
+        "version" : "0.0.20"
+      }
+    },
+    {
+      "identity" : "tapapplicationv2",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/Tap-Payments/TapApplicationV2.git",
+      "state" : {
+        "revision" : "8e64b92aaff74aff44f82d64a3d041d6471af5c3",
+        "version" : "0.0.4"
+      }
+    },
+    {
+      "identity" : "tapcardvlidatorkit-ios",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/Tap-Payments/TapCardVlidatorKit-iOS.git",
+      "state" : {
+        "revision" : "61e2949915e2a210d89a57f450cba54d7aac551f",
+        "version" : "1.0.24"
+      }
+    },
+    {
+      "identity" : "tapkeychainv2-ios",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/Tap-Payments/TapKeychainV2-iOS.git",
+      "state" : {
+        "revision" : "c81764be9cf2c76be94b852fb38221909b006e9d",
+        "version" : "1.0.3"
+      }
+    },
+    {
+      "identity" : "tapnetworkkit-ios",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/Tap-Payments/TapNetworkKit-iOS.git",
+      "state" : {
+        "revision" : "5f59f5719bc37a3b9fe1c80275954e79957fc6f2",
+        "version" : "1.0.15"
+      }
+    },
+    {
+      "identity" : "tapswiftfixesv2",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/Tap-Payments/TapSwiftFixesV2.git",
+      "state" : {
+        "revision" : "bfc7e08d2aaeca0f788b7780ae43983adf79186a",
+        "version" : "1.0.4"
+      }
+    }
+  ],
+  "version" : 2
+}
