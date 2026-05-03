@@ -94,7 +94,7 @@ import PassKit
     
     /// Used as a consolidated method to do all the needed steps upon creating the view
     private func commonInit() {
-        self.conentView = setupXIB()
+        self.conentView = setupXIB(from: Bundle.module)
         conentView.backgroundColor = .clear
     }
     
@@ -124,21 +124,21 @@ import PassKit
             applePayButton?.removeTarget(self, action: #selector(applePayClicked), for: .touchUpInside)
         }
         applePayButton = .init(paymentButtonType: self.buttonType.applePayButtonType!, paymentButtonStyle: buttonStyle.applePayButtonStyle!)
-        applePayButton?.frame = CGRect(x: 0,y: 0,width: self.buttonWidth,height: self.buttonHeight)
-        self.addSubview(applePayButton!)
-        self.bringSubviewToFront(applePayButton!)
-        
-        applePayButton?.translatesAutoresizingMaskIntoConstraints = false
-        applePayButton?.centerXAnchor.constraint(equalTo: safeAreaLayoutGuide.centerXAnchor).isActive = true
-        applePayButton?.widthAnchor.constraint(equalToConstant: buttonWidth).isActive = true
-        applePayButton?.heightAnchor.constraint(equalToConstant: buttonHeight).isActive = true
-        
-        applePayButton?.layer.cornerRadius = cornerRadius
-        applePayButton?.clipsToBounds = cornerRadius > 0
-        applePayButton?.layoutIfNeeded()
-        applePayButton?.addTarget(self, action: #selector(applePayClicked), for: .touchUpInside)
-        
-        //FlurryLogger.logEvent(with: "Apple_Pay_Button_Configured", timed:false , params:["type":self.buttonType.rawValue,"style":buttonStyle.rawValue])
+        guard let applePayButton else { return }
+        applePayButton.translatesAutoresizingMaskIntoConstraints = false
+        self.addSubview(applePayButton)
+        self.bringSubviewToFront(applePayButton)
+
+        NSLayoutConstraint.activate([
+            applePayButton.topAnchor.constraint(equalTo: topAnchor),
+            applePayButton.leadingAnchor.constraint(equalTo: leadingAnchor),
+            applePayButton.trailingAnchor.constraint(equalTo: trailingAnchor),
+            applePayButton.bottomAnchor.constraint(equalTo: bottomAnchor),
+        ])
+
+        applePayButton.layer.cornerRadius = cornerRadius
+        applePayButton.clipsToBounds = cornerRadius > 0
+        applePayButton.addTarget(self, action: #selector(applePayClicked), for: .touchUpInside)
     }
     
     

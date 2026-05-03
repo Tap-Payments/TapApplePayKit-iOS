@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import UIKit
 import CoreTelephony
 import TapApplicationV2
 import CommonDataModelsKit_iOS
