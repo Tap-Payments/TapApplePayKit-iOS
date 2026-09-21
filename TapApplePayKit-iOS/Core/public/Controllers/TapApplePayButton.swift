@@ -94,7 +94,11 @@ import PassKit
     
     /// Used as a consolidated method to do all the needed steps upon creating the view
     private func commonInit() {
+        #if SWIFT_PACKAGE
         self.conentView = setupXIB(from: Bundle.module)
+        #else
+        self.conentView = setupXIB()
+        #endif
         conentView.backgroundColor = .clear
     }
     
