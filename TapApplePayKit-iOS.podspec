@@ -16,7 +16,7 @@ Pod::Spec.new do |spec|
   #
 
   spec.name         = "TapApplePayKit-iOS"
-  spec.version      = "1.0.32"
+  spec.version      = "1.0.34"
   spec.summary      = "Provide an interface and an easy wrapper for Apple Pay functionalities."
 
   # This description is used to generate tags and improve search results.
@@ -144,4 +144,5 @@ Go all the way until Apple Pay tokenisation data."
   spec.dependency "CommonDataModelsKit-iOS"
   spec.dependency "TapNetworkKit-iOS"
   spec.dependency "TapApplicationV2"
+  spec.dependency "TapCardVlidatorKit-iOS", ">= 1.0.25"
 end

@@ -117,6 +117,8 @@ case QuicPay
 case Suica
 case Visa
 case VPay
+@available(iOS 18.4, *)
+case Jaywan
 
 ```
 

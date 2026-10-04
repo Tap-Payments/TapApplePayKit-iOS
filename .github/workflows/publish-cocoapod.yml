@@ -1,0 +1,45 @@
+# Publishes TapApplePayKit-iOS to CocoaPods trunk.
+#
+# Runs on a GitHub macOS runner with Xcode 16, because newer Xcode versions only build for
+# iOS 15+ and fail `pod trunk push` validation on the dependencies' lower deployment targets.
+#
+# Triggered by pushing a version tag (ex 1.0.34), or manually for an existing tag.
+# Needs the COCOAPODS_TRUNK_TOKEN repository secret (the trunk.cocoapods.org password in ~/.netrc).
+
+name: Publish CocoaPod
+
+on:
+  push:
+    tags:
+      - '[0-9]+.[0-9]+.[0-9]+'
+  workflow_dispatch:
+    inputs:
+      tag:
+        description: 'Existing tag to publish, ex 1.0.34'
+        required: true
+
+jobs:
+  publish:
+    runs-on: macos-15
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ inputs.tag || github.ref }}
+
+      - name: Select Xcode 16.4
+        run: sudo xcode-select -s /Applications/Xcode_16.4.app
+
+      - name: Check podspec version matches the tag
+        run: |
+          TAG="${{ inputs.tag || github.ref_name }}"
+          VERSION=$(grep -E "spec.version\s*=" TapApplePayKit-iOS.podspec | sed -E "s/.*[\"'](.*)[\"'].*/\1/")
+          if [ "$TAG" != "$VERSION" ]; then
+            echo "Tag $TAG does not match podspec version $VERSION"
+            exit 1
+          fi
+
+      - name: Push to trunk
+        env:
+          COCOAPODS_TRUNK_TOKEN: ${{ secrets.COCOAPODS_TRUNK_TOKEN }}
+          LANG: en_US.UTF-8
+        run: pod trunk push TapApplePayKit-iOS.podspec --allow-warnings
