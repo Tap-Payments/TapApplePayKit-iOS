@@ -21,6 +21,9 @@ import TapCardVlidatorKit_iOS
             allCasesArray.append(.Mada)
             allCasesArray.append(.Elo)
         }
+        if #available(iOS 18.4, *) {
+            allCasesArray.append(.Jaywan)
+        }
         return allCasesArray
       }
     }
@@ -45,6 +48,8 @@ import TapCardVlidatorKit_iOS
     case Suica
     case Visa
     case VPay
+    @available(iOS 18.4, *)
+    case Jaywan
 
     
     
@@ -83,6 +88,10 @@ import TapCardVlidatorKit_iOS
             case "vpay":
                 self = .VPay
             default:
+                if #available(iOS 18.4, *), rawValue.lowercased() == "jaywan" {
+                    self = .Jaywan
+                    return
+                }
                 if #available(iOS 12.1.1, *) {
                     switch rawValue.lowercased() {
                             case "elo":
@@ -130,6 +139,10 @@ import TapCardVlidatorKit_iOS
         case .vPay:
             self = .VPay
             default:
+                if #available(iOS 18.4, *), applePayNetwork == .jaywan {
+                    self = .Jaywan
+                    return
+                }
                 if #available(iOS 12.1.1, *) {
                     switch applePayNetwork {
                         case .elo:
@@ -184,6 +197,8 @@ import TapCardVlidatorKit_iOS
                             return "Elo"
                         case .Mada:
                             return "Mada"
+                        case .Jaywan:
+                            return "Jaywan"
                         default:
                             return ""
                     }
@@ -230,6 +245,10 @@ import TapCardVlidatorKit_iOS
                             return .elo
                         case .Mada:
                             return .mada
+                        case .Jaywan:
+                            if #available(iOS 18.4, *) {
+                                return .jaywan
+                            } else { return nil }
                         default:
                             return nil
                     }
@@ -262,6 +281,8 @@ import TapCardVlidatorKit_iOS
                 switch self {
                 case .Mada:
                     return .mada
+                case .Jaywan:
+                    return .jaywan
                 default:
                     return .unknown
                 }

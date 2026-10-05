@@ -15,7 +15,8 @@ let package = Package(
     dependencies: [
         .package(url: "https://github.com/Tap-Payments/CommonDataModelsKit-iOS.git", from: "1.0.150"),
         .package(url: "https://github.com/Tap-Payments/TapNetworkKit-iOS.git", from: "1.0.18"),
-        .package(url: "https://github.com/Tap-Payments/TapApplicationV2.git", from: "0.0.6")
+        .package(url: "https://github.com/Tap-Payments/TapApplicationV2.git", from: "0.0.6"),
+        .package(url: "https://github.com/Tap-Payments/TapCardVlidatorKit-iOS.git", from: "1.0.25")
     ],
     targets: [
         .target(
@@ -23,7 +24,8 @@ let package = Package(
             dependencies: [
                 .product(name: "CommonDataModelsKit_iOS", package: "CommonDataModelsKit-iOS"),
                 .product(name: "TapNetworkKit_iOS", package: "TapNetworkKit-iOS"),
-                .product(name: "TapApplicationV2", package: "TapApplicationV2")
+                .product(name: "TapApplicationV2", package: "TapApplicationV2"),
+                .product(name: "TapCardVlidatorKit-iOS", package: "TapCardVlidatorKit-iOS")
             ],
             path: "TapApplePayKit-iOS/Core",
             resources: [

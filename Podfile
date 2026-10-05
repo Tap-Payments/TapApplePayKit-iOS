@@ -15,6 +15,7 @@ target 'TapApplePayKit-iOS' do
  pod 'CommonDataModelsKit-iOS'
  pod 'TapNetworkKit-iOS'
  pod 'TapApplicationV2'
+ pod 'TapCardVlidatorKit-iOS', '>= 1.0.25'
   # Pods for TapApplePayKit-iOS
 
 end

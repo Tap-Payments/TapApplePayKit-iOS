@@ -56,7 +56,7 @@ import TapNetworkKit_iOS
             // Pay is available as per the device capability!
             // Check if the caller wants to determine for certain payments networks
             if !tapPaymentNetworks.isEmpty {
-                if PKPaymentAuthorizationController.canMakePayments(usingNetworks: tapPaymentNetworks.map { $0.applePayNetwork! }) {
+                if PKPaymentAuthorizationController.canMakePayments(usingNetworks: tapPaymentNetworks.compactMap { $0.applePayNetwork }) {
                     // The device can make payments using the provided payment networks
                     return .Eligible
                 }else {
