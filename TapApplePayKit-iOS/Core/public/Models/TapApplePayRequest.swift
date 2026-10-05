@@ -74,7 +74,7 @@ import enum CommonDataModelsKit_iOS.TapCurrencyCode
         appleRequest.currencyCode = currencyCode.appleRawValue
         appleRequest.paymentSummaryItems = paymentItems
         appleRequest.paymentSummaryItems.append(.init(label: "\(TapApplePay.intitModelResponse?.data.merchant?.name ?? "")", amount: NSDecimalNumber(value: paymentAmount)))
-        appleRequest.supportedNetworks = paymentNetworks.map{ $0.applePayNetwork! }
+        appleRequest.supportedNetworks = paymentNetworks.compactMap{ $0.applePayNetwork }
         appleRequest.merchantIdentifier = applePayMerchantID
         appleRequest.merchantCapabilities = merchantCapabilities
         // Check subscription details
